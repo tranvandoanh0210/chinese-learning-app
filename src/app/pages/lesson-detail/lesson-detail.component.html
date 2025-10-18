@@ -1,0 +1,67 @@
+<div class="lesson-detail">
+  <div class="lesson-hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="lesson-badge">Bài {{ lesson?.order }}</div>
+        <h1>{{ lesson?.name_vi }}</h1>
+        <h2 class="chinese-title">{{ lesson?.name_zh }}</h2>
+        <p class="lesson-description">{{ lesson?.description }}</p>
+        <div class="lesson-stats">
+          <div class="stat">
+            <div class="stat-number">{{ getTotalExercises() }}</div>
+            <div class="stat-label">Bài tập</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">{{ lesson?.categories?.length }}</div>
+            <div class="stat-label">Chuyên mục</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-navigation">
+    <div class="container">
+      <div class="category-tabs">
+        @for (category of lesson?.categories; track category.id) {
+        <div
+          class="category-tab"
+          [class.active]="selectedCategory?.id === category.id"
+          (click)="selectCategory(category)"
+        >
+          <div class="category-icon">
+            <i [class]="getCategoryIcon(category.type)"></i>
+          </div>
+          <div class="category-info">
+            <div class="category-name">{{ category.name }}</div>
+          </div>
+          <div class="exercise-count">{{ category.exercises.length }} bài</div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="category-content" *ngIf="selectedCategory">
+    <div class="container">
+      <div class="content-header">
+        <h3>{{ selectedCategory.name }}</h3>
+        <p>{{ selectedCategory.description }}</p>
+      </div>
+      <app-exercise-display
+        [category]="selectedCategory"
+        (exerciseCompleted)="onExerciseCompleted($event)"
+      >
+      </app-exercise-display>
+    </div>
+  </div>
+  <div *ngIf="!selectedCategory && lesson" class="no-category-selected">
+    <div class="container">
+      <div class="no-category-content">
+        <div class="no-category-icon">📚</div>
+        <h3>Chọn một chuyên mục để bắt đầu học</h3>
+        <p>Hãy chọn một trong các chuyên mục ở trên để xem nội dung bài học</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="home-page">
+  <div class="container">
+    <div class="welcome-section">
+      <h2>Chào mừng đến với ứng dụng học tiếng Trung</h2>
+      <p>Chọn bài học để bắt đầu nhé</p>
+    </div>
+
+    <div class="lessons-overview">
+      @for (lesson of lessons; track $index) {
+      <div class="lesson-card" (click)="selectLesson(lesson.id)">
+        <h3>Bài {{ lesson.order }}: {{ lesson.name_vi }}</h3>
+        <p>{{ lesson.name_zh }}</p>
+        <span class="description">{{ lesson.description }}</span>
+      </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,160 @@
+<div class="speaking-exercise">
+  <!-- Progress Header -->
+  <div class="progress-header">
+    <div class="progress-info">
+      <div class="progress-text">
+        Câu {{ currentIndex + 1 }} / {{ getSpeakingExercises().length }}
+      </div>
+      <div class="progress-bar">
+        <div
+          class="progress-fill"
+          [style.width.%]="(currentIndex / getSpeakingExercises().length) * 100"
+        ></div>
+      </div>
+    </div>
+    <div class="completed-count">
+      Đã hoàn thành: {{ getCompletedCount() }}/{{ getSpeakingExercises().length }}
+    </div>
+  </div>
+
+  <!-- Current Exercise -->
+  <div class="current-exercise" *ngIf="currentExercise">
+    <div class="speaking-card">
+      <!-- Question Header -->
+      <div class="question-header">
+        <h3 class="question-title">Luyện phát âm</h3>
+        <div class="question-text">{{ currentExercise.question }}</div>
+        <div class="pinyin">{{ currentExercise.pinyin }}</div>
+        <div class="meaning">Nghĩa: {{ currentExercise.answer }}</div>
+      </div>
+
+      <!-- Audio Controls -->
+      <div class="audio-controls">
+        <button
+          class="btn btn-primary"
+          (click)="playSampleAudio(currentExercise.question)"
+          [disabled]="getCurrentState().isPlaying"
+        >
+          {{ getCurrentState().isPlaying ? '🔊 Đang phát...' : '🔊 Nghe mẫu' }}
+        </button>
+
+        <button
+          class="btn btn-secondary"
+          (click)="playVietnameseAudio(currentExercise.answer)"
+          [disabled]="getCurrentState().isPlaying"
+        >
+          🔊 Nghe nghĩa
+        </button>
+      </div>
+
+      <!-- Recording Section -->
+      <div class="recording-section" *ngIf="!getCurrentState().isCompleted">
+        <div class="recording-controls">
+          <button
+            class="btn-record"
+            [class.recording]="getCurrentState().isRecording"
+            [class.success]="getCurrentState().result?.matches"
+            [class.error]="getCurrentState().result && !getCurrentState().result?.matches"
+            (click)="toggleRecording(currentExercise.question)"
+          >
+            <div class="mic-icon">
+              <span *ngIf="!getCurrentState().isRecording">🎤</span>
+              <span *ngIf="getCurrentState().isRecording" class="pulse">🔴</span>
+            </div>
+            <div class="record-text">
+              {{ getRecordButtonText() }}
+            </div>
+          </button>
+        </div>
+
+        <!-- User Speech Display -->
+        <div *ngIf="getCurrentState().userSpeech" class="user-speech">
+          <div class="speech-label">Bạn nói:</div>
+          <div class="speech-text">{{ getCurrentState().userSpeech }}</div>
+        </div>
+
+        <!-- Pronunciation Result -->
+        <div *ngIf="getCurrentState().result" class="pronunciation-result">
+          <div class="result-header">
+            <div class="accuracy-score">
+              Độ chính xác: {{ getCurrentState().result?.accuracy }}%
+            </div>
+            <div class="confidence">Độ tin cậy: {{ getConfidencePercentage() }}%</div>
+          </div>
+
+          <div
+            class="feedback"
+            [class.success]="getCurrentState().result?.matches"
+            [class.error]="getCurrentState().result && !getCurrentState().result?.matches"
+          >
+            {{ getCurrentState().result?.feedback }}
+          </div>
+
+          <div class="result-actions">
+            <button class="btn btn-outline" (click)="tryAgain()">🔄 Thử lại</button>
+            <button class="btn btn-success" (click)="completeCurrentExercise()">
+              ✅ Hoàn thành
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Completed State -->
+      <div *ngIf="getCurrentState().isCompleted" class="completed-state">
+        <div class="success-message">✅ Đã hoàn thành bài luyện nói!</div>
+        <div class="completed-actions">
+          <button class="btn btn-outline" (click)="tryAgain()">🔄 Luyện tập lại</button>
+          <button *ngIf="!isLastExercise" class="btn btn-primary" (click)="nextExercise()">
+            Câu tiếp theo →
+          </button>
+          <button *ngIf="isLastExercise" class="btn btn-success" (click)="finishAllExercises()">
+            🎉 Hoàn thành tất cả
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="navigation-controls">
+    <button class="btn-nav prev" (click)="previousExercise()" [disabled]="currentIndex === 0">
+      ← Câu trước
+    </button>
+
+    <div class="exercise-dots">
+      <span
+        *ngFor="let exercise of getSpeakingExercises(); let i = index"
+        class="dot"
+        [class.active]="i === currentIndex"
+        [class.completed]="getSpeakingState(i).isCompleted"
+        (click)="goToExercise(i)"
+      >
+        {{ i + 1 }}
+      </span>
+    </div>
+
+    <button class="btn-nav next" (click)="nextExercise()" [disabled]="isLastExercise">
+      Câu tiếp theo →
+    </button>
+  </div>
+
+  <!-- All Completed -->
+  <div *ngIf="allExercisesCompleted" class="all-completed">
+    <div class="completion-card">
+      <div class="completion-icon">🎉</div>
+      <h3>Chúc mừng!</h3>
+      <p>Bạn đã hoàn thành tất cả {{ getSpeakingExercises().length }} bài luyện nói</p>
+      <div class="completion-stats">
+        <div class="stat">
+          <div class="stat-value">{{ getCompletedCount() }}</div>
+          <div class="stat-label">Câu đã hoàn thành</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">{{ getSuccessRate() }}%</div>
+          <div class="stat-label">Tỷ lệ thành công</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" (click)="restartAll()">🔄 Làm lại tất cả</button>
+    </div>
+  </div>
+</div>

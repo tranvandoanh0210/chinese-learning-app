@@ -1,0 +1,242 @@
+.lesson-detail {
+  min-height: 100vh;
+  margin-left: 320px;
+  /* Width of sidebar */
+
+  .lesson-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 0;
+
+    .hero-content {
+      text-align: center;
+      margin: 0 auto;
+
+      .lesson-badge {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1.5rem;
+        border-radius: 25px;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        backdrop-filter: blur(10px);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .chinese-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        opacity: 0.9;
+        font-weight: 500;
+      }
+
+      .lesson-description {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      .lesson-stats {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+
+        .stat {
+          text-align: center;
+
+          .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+          }
+
+          .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+
+  .category-navigation {
+    background: white;
+    border-bottom: 1px solid #e9ecef;
+    /* padding: 1.5rem 0; */
+    position: sticky;
+    top: 80px;
+    /* Header height */
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+    .category-tabs {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 0.5rem 0;
+
+      .category-tab {
+        display: flex;
+        align-items: center;
+        padding: 6px 8px;
+        background: #f8f9fa;
+        border: 2px solid #b1c1cc;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 200px;
+
+        &:hover {
+          background: #e9ecef;
+          transform: translateY(-2px);
+        }
+
+        &.active {
+          border-color: #3498db;
+          box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+
+          .category-icon {
+            color: #3498db;
+          }
+        }
+
+        .category-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 0.5rem;
+          transition: all 0.3s ease;
+          font-size: 1.2rem;
+        }
+
+        .category-info {
+          flex: 1;
+
+          .category-name {
+            font-weight: 600;
+            color: #2c3e50;
+          }
+
+          .category-chinese {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+          }
+        }
+
+        .exercise-count {
+          background: #3498db;
+          color: white;
+          padding: 0.1rem 0.4rem;
+          border-radius: 8px;
+          font-size: 0.8rem;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .category-content {
+    padding: 1rem 0;
+
+    .content-header {
+      text-align: center;
+      margin-bottom: 1rem;
+
+      h3 {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 1.1rem;
+        color: #7f8c8d;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  .no-category-selected {
+    padding: 4rem 0;
+    text-align: center;
+
+    .no-category-content {
+      max-width: 500px;
+      margin: 0 auto;
+
+      .no-category-icon {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.7;
+      }
+
+      h3 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      p {
+        color: #7f8c8d;
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .lesson-detail {
+    margin-left: 0;
+
+    .lesson-hero {
+      padding: 2rem 0;
+
+      .hero-content {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .chinese-title {
+          font-size: 1.4rem;
+        }
+
+        .lesson-stats {
+          gap: 2rem;
+
+          .stat .stat-number {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .category-navigation {
+      top: 0;
+      /* Reset top position on mobile */
+
+      .category-tabs {
+        .category-tab {
+          min-width: 250px;
+          padding: 0.8rem 1.2rem;
+
+          .category-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}

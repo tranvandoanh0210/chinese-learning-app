@@ -1,0 +1,18 @@
+<div class="vocabulary-exercise">
+  <div *ngFor="let exercise of getVocabularyExercises(); let i = index" class="exercise-item">
+    <div class="vocabulary-card">
+      <div class="chinese-character">{{ exercise.question }}</div>
+      <div class="pinyin">{{ exercise.pinyin }}</div>
+      <div class="answer">{{ exercise.answer }}</div>
+      <div class="audio-controls">
+        <button
+          class="audio-btn"
+          [class.disabled]="isSpeaking"
+          (click)="playChineseAudio(exercise.question)"
+        >
+          🔊
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

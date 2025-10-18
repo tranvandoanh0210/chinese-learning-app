@@ -1,0 +1,58 @@
+<div class="grammar-exercise">
+  <div *ngFor="let exercise of getGrammarExercises()" class="grammar-lesson">
+    <!-- Lesson Header -->
+    <div class="lesson-header">
+      <h2 class="lesson-title">{{ exercise.question }}</h2>
+      <div *ngIf="exercise.description" class="lesson-subtitle">
+        {{ exercise.description }}
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="lesson-content">
+      <!-- Main Explanation -->
+      <div *ngIf="exercise.content" class="content-block main-explanation">
+        <div class="content-text" [innerHTML]="formatContent(exercise.content)"></div>
+      </div>
+
+      <!-- Examples -->
+      <div
+        *ngIf="exercise.examples && exercise.examples.length"
+        class="content-block examples-block"
+      >
+        <h3 class="block-title">
+          <span class="icon">📚</span>
+          Ví dụ minh họa
+        </h3>
+        <div class="examples-list">
+          <div *ngFor="let example of exercise.examples" class="example-item">
+            <div class="example-chinese">{{ getChineseExample(example) }}</div>
+            <div class="example-pinyin">{{ getPinyinExample(example) }}</div>
+            <div class="example-vietnamese">{{ getVietnameseExample(example) }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final Explanation -->
+      <div *ngIf="exercise.explanation" class="content-block explanation-block">
+        <h3 class="block-title">
+          <span class="icon">🎯</span>
+          Ghi nhớ
+        </h3>
+        <div class="explanation-content">
+          {{ exercise.explanation }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson Footer -->
+    <div class="lesson-footer">
+      <div class="difficulty-badge" [class]="getDifficultyClass(exercise)">
+        {{ getDifficultyText(exercise) }}
+      </div>
+      <div class="completion-status">
+        <button class="btn-complete" (click)="markAsCompleted(exercise)">✅ Đánh dấu đã học</button>
+      </div>
+    </div>
+  </div>
+</div>

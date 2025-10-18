@@ -1,0 +1,123 @@
+.sidebar-navigation {
+  width: 320px;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  height: calc(100vh - 80px);
+  /* Subtract header height */
+  position: fixed;
+  top: 80px;
+  /* Start below header */
+  left: 0;
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+
+  .nav-header {
+    padding: 2rem 1.5rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    span {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  }
+
+  .lesson-list {
+    list-style: none;
+    padding: 1rem 0;
+
+    .lesson-item {
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+
+      &:hover {
+        background: rgba(52, 152, 219, 0.1);
+        border-left-color: #3498db;
+      }
+
+      &.active {
+        background: rgba(52, 152, 219, 0.2);
+        border-left-color: #3498db;
+
+        .lesson-number {
+          background: #3498db;
+        }
+      }
+
+      .lesson-number {
+        background: rgba(255, 255, 255, 0.1);
+        color: #3498db;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+        transition: all 0.3s ease;
+      }
+
+      .lesson-info {
+        margin-bottom: 0.8rem;
+
+        .lesson-name {
+          font-weight: 600;
+          margin-bottom: 0.3rem;
+          font-size: 1rem;
+        }
+
+        .lesson-chinese,
+        .lesson-description {
+          font-size: 0.85rem;
+          opacity: 0.8;
+        }
+      }
+
+      .lesson-progress {
+        .progress-bar {
+          width: 100%;
+          height: 6px;
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 3px;
+          overflow: hidden;
+          margin-bottom: 0.5rem;
+
+          .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+          }
+        }
+
+        .progress-text {
+          font-size: 0.8rem;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-navigation {
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    height: calc(100vh - 80px);
+
+    &.mobile-open {
+      transform: translateX(0);
+    }
+  }
+}

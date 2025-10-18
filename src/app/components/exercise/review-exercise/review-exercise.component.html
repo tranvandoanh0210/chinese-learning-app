@@ -1,0 +1,32 @@
+<div class="review-exercise">
+  @if(currentFlashcardExercise){
+
+  <div class="flashcard-container">
+    <div class="flashcard" [class.flipped]="isFlipped" (click)="flipCard()">
+      <div class="front">
+        <div class="chinese-character">{{ currentFlashcardExercise.question }}</div>
+        <div class="pinyin">{{ currentFlashcardExercise.pinyin }}</div>
+        <button
+          class="audio-btn"
+          [class.disabled]="isSpeaking"
+          (click)="playChineseAudio(currentFlashcardExercise.question); $event.stopPropagation()"
+        >
+          🔊
+        </button>
+      </div>
+      <div class="back">
+        <div class="answer">{{ currentFlashcardExercise.answer }}</div>
+        <div class="description">{{ currentFlashcardExercise.description }}</div>
+      </div>
+    </div>
+  </div>
+  } @if(getFlashcardExercises().length){
+  <div class="navigation">
+    <button (click)="previousCard()" [disabled]="currentIndex === 0">← Câu trước</button>
+    <span>{{ currentIndex + 1 }} / {{ getFlashcardExercises().length }}</span>
+    <button (click)="nextCard()" [disabled]="currentIndex === getFlashcardExercises().length - 1">
+      Câu tiếp theo →
+    </button>
+  </div>
+  }
+</div>

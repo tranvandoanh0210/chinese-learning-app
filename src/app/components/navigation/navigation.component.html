@@ -1,0 +1,24 @@
+<nav class="sidebar-navigation">
+  <div class="nav-header">
+    <h3>课程列表</h3>
+    <span>Danh sách bài học</span>
+  </div>
+  <ul class="lesson-list">
+    @for (lesson of lessons; track lesson.id) {
+    <li [class.active]="isActive(lesson.id)" (click)="selectLesson(lesson.id)" class="lesson-item">
+      <div class="lesson-number"></div>
+      <div class="lesson-info">
+        <div class="lesson-name">Bài {{ lesson.order }}: {{ lesson.name_vi }}</div>
+        <div class="lesson-chinese">{{ lesson.name_zh }}</div>
+        <span class="lesson-description">{{ lesson.description }}</span>
+      </div>
+      <div class="lesson-progress">
+        <div class="progress-bar">
+          <div class="progress" [style.width.%]="getProgress(lesson.id)"></div>
+        </div>
+        <span class="progress-text">{{ getProgress(lesson.id) }}%</span>
+      </div>
+    </li>
+    }
+  </ul>
+</nav>

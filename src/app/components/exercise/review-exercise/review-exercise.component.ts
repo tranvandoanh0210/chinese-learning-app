@@ -1,0 +1,66 @@
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Exercise, FlashcardExercise, isFlashcardExercise } from '../../../models/exercise.model';
+import { SpeechService } from '../../../services/speech.service';
+
+@Component({
+  selector: 'app-review-exercise',
+  templateUrl: './review-exercise.component.html',
+  styleUrls: ['./review-exercise.component.css'],
+})
+export class ReviewExerciseComponent {
+  @Input() exercises: Exercise[] = [];
+  @Output() completed = new EventEmitter<any>();
+  isSpeaking = false;
+
+  currentIndex = 0;
+  isFlipped = false;
+  constructor(private speechService: SpeechService) {}
+  ngOnDestroy() {
+    this.speechService.stop();
+  }
+  getFlashcardExercises(): FlashcardExercise[] {
+    return this.exercises.filter((ex) => isFlashcardExercise(ex)) as FlashcardExercise[];
+  }
+
+  get currentFlashcardExercise(): FlashcardExercise | undefined {
+    const flashcards = this.getFlashcardExercises();
+    return flashcards[this.currentIndex];
+  }
+
+  flipCard() {
+    this.isFlipped = !this.isFlipped;
+  }
+
+  nextCard() {
+    const flashcards = this.getFlashcardExercises();
+    if (this.currentIndex < flashcards.length - 1) {
+      this.currentIndex++;
+      this.isFlipped = false;
+    }
+  }
+
+  previousCard() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.isFlipped = false;
+    }
+  }
+  async playChineseAudio(text: string): Promise<void> {
+    if (this.isSpeaking) {
+      this.stopAudio();
+      return;
+    }
+
+    this.isSpeaking = true;
+    try {
+      await this.speechService.speakChinese(text);
+    } catch (error) {
+    } finally {
+      this.isSpeaking = false;
+    }
+  }
+  stopAudio(): void {
+    this.speechService.stop();
+    this.isSpeaking = false;
+  }
+}

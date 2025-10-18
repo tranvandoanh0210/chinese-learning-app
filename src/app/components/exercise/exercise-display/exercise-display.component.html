@@ -1,0 +1,26 @@
+<div class="exercise-container">
+  <div *ngIf="category.type === 'vocabulary'">
+    <app-vocabulary-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
+    </app-vocabulary-exercise>
+  </div>
+
+  <div *ngIf="category.type === 'grammar'">
+    <app-grammar-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
+    </app-grammar-exercise>
+  </div>
+
+  <div *ngIf="category.type === 'test'">
+    <app-test-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
+    </app-test-exercise>
+  </div>
+
+  <div *ngIf="category.type === 'review'">
+    <app-review-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
+    </app-review-exercise>
+  </div>
+
+  <div *ngIf="category.type === 'speaking'">
+    <app-speaking-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
+    </app-speaking-exercise>
+  </div>
+</div>

@@ -1,0 +1,200 @@
+<div class="test-exercise">
+  <!-- Start Screen -->
+  <div *ngIf="!testStarted && !showResults" class="start-screen">
+    <div class="start-card">
+      <div class="start-icon">📝</div>
+      <h2>Bài Kiểm Tra</h2>
+      <div class="test-info">
+        <div class="info-item">
+          <span class="info-label">Số câu:</span>
+          <span class="info-value">{{ exercises.length }} câu</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Thời gian:</span>
+          <span class="info-value">Không giới hạn</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Loại bài:</span>
+          <span class="info-value">Trắc nghiệm & Tự luận</span>
+        </div>
+      </div>
+      <button class="btn-start" (click)="startTest()">🚀 Bắt đầu làm bài</button>
+    </div>
+  </div>
+
+  <!-- Test Interface -->
+  <div *ngIf="testStarted && !showResults" class="test-interface">
+    <!-- Test Header -->
+    <div class="test-header">
+      <div class="progress-info">
+        <div class="progress-text">Câu {{ currentIndex + 1 }} / {{ exercises.length }}</div>
+        <div class="progress-bar">
+          <div
+            class="progress-fill"
+            [style.width.%]="(currentIndex / exercises.length) * 100"
+          ></div>
+        </div>
+      </div>
+      <div class="timer" [class.warning]="elapsedTime.totalSeconds > 300">
+        ⏱️ {{ formatTime(elapsedTime) }}
+      </div>
+    </div>
+
+    <!-- Current Question -->
+    <div class="question-container" *ngIf="currentExercise">
+      <div class="question-card">
+        <div class="question-header">
+          <h3 class="question-title">{{ currentExercise.question }}</h3>
+          <div *ngIf="currentExercise.description" class="question-description">
+            {{ currentExercise.description }}
+          </div>
+        </div>
+
+        <!-- Multiple Choice -->
+        <div *ngIf="isMultipleChoiceExercise(currentExercise)" class="options-container">
+          <div
+            *ngFor="let option of getMultipleChoiceOptions(currentExercise); let i = index"
+            class="option-card"
+            [class.selected]="getUserAnswer(currentIndex) === option"
+            [class.correct]="showResults && option === currentExercise.answer"
+            [class.incorrect]="
+              showResults &&
+              getUserAnswer(currentIndex) === option &&
+              option !== currentExercise.answer
+            "
+            (click)="selectOption(option)"
+          >
+            <div class="option-letter">{{ getOptionLetter(i) }}</div>
+            <div class="option-text">{{ option }}</div>
+            <div *ngIf="showResults && option === currentExercise.answer" class="correct-indicator">
+              ✓
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Answer -->
+        <div *ngIf="isInputExercise(currentExercise)" class="input-container">
+          <input
+            type="text"
+            [placeholder]="getInputPlaceholder(currentExercise)"
+            [value]="getUserAnswer(currentIndex) || ''"
+            (input)="updateInputAnswer($event)"
+            class="answer-input"
+            [class.correct]="showResults && isAnswerCorrect(currentIndex)"
+            [class.incorrect]="showResults && !isAnswerCorrect(currentIndex)"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="navigation-buttons">
+      <button
+        class="btn btn-secondary"
+        (click)="previousQuestion()"
+        [disabled]="currentIndex === 0"
+      >
+        ← Câu trước
+      </button>
+
+      <button *ngIf="!isLastQuestion" class="btn btn-primary" (click)="nextQuestion()">
+        Câu tiếp theo →
+      </button>
+
+      <button *ngIf="isLastQuestion" class="btn btn-success" (click)="submitTest()">
+        🎯 Nộp bài
+      </button>
+    </div>
+  </div>
+
+  <!-- Results Summary -->
+  <div *ngIf="showResults" class="results-summary">
+    <div class="results-card">
+      <div class="results-header">
+        <h3>🎉 Kết quả bài kiểm tra</h3>
+        <div class="score">{{ correctCount }}/{{ exercises.length }}</div>
+      </div>
+
+      <div class="test-meta">
+        <div class="meta-item">
+          <span class="meta-label">Thời gian hoàn thành:</span>
+          <span class="meta-value">{{ formatTime(elapsedTime) }}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Số câu đã làm:</span>
+          <span class="meta-value">{{ getAnsweredCount() }}/{{ exercises.length }}</span>
+        </div>
+      </div>
+
+      <div class="score-breakdown">
+        <div class="score-item correct">
+          <span class="score-label">Đúng:</span>
+          <span class="score-value">{{ correctCount }}</span>
+        </div>
+        <div class="score-item incorrect">
+          <span class="score-label">Sai:</span>
+          <span class="score-value">{{ incorrectCount }}</span>
+        </div>
+        <div class="score-item percentage">
+          <span class="score-label">Tỷ lệ:</span>
+          <span class="score-value">{{ getPercentage() }}%</span>
+        </div>
+      </div>
+
+      <div class="progress-circle">
+        <div class="circle-background"></div>
+        <div
+          class="circle-progress"
+          [style.transform]="'rotate(' + getPercentage() * 3.6 + 'deg)'"
+        ></div>
+        <div class="circle-text">
+          <span class="percentage">{{ getPercentage() }}%</span>
+          <span class="label">Điểm số</span>
+        </div>
+      </div>
+
+      <div class="answers-review">
+        <h4>Chi tiết bài làm:</h4>
+        <div
+          *ngFor="let exercise of exercises; let i = index"
+          class="answer-item"
+          [class.correct]="userAnswers[i]?.isCorrect"
+          [class.incorrect]="userAnswers[i] && !userAnswers[i]!.isCorrect"
+          [class.unanswered]="!userAnswers[i]"
+        >
+          <div class="answer-header">
+            <div class="question-number">Câu {{ i + 1 }}</div>
+            <div class="answer-status">
+              <span *ngIf="userAnswers[i]?.isCorrect" class="status-correct">✓ Đúng</span>
+              <span *ngIf="userAnswers[i] && !userAnswers[i]!.isCorrect" class="status-incorrect"
+                >✗ Sai</span
+              >
+              <span *ngIf="!userAnswers[i]" class="status-unanswered">⏸️ Chưa làm</span>
+            </div>
+          </div>
+          <div class="answer-question">
+            {{ exercise.question }}
+          </div>
+          <div class="answer-details">
+            <div class="detail-item">
+              <span class="detail-label">Đáp án của bạn:</span>
+              <span class="detail-value">{{ getUserAnswer(i) || 'Chưa trả lời' }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Đáp án đúng:</span>
+              <span class="detail-value correct-answer">{{ exercise.answer }}</span>
+            </div>
+            <div *ngIf="exercise.explanation" class="detail-item explanation">
+              <span class="detail-label">Giải thích:</span>
+              <span class="detail-value">{{ exercise.explanation }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-actions">
+        <button class="btn btn-primary" (click)="restartTest()">🔄 Làm lại từ đầu</button>
+      </div>
+    </div>
+  </div>
+</div>

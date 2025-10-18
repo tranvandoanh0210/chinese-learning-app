@@ -14,6 +14,7 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
+            "baseHref": "/chinese-learning-website/",
             "polyfills": [
               "zone.js"
             ],
@@ -31,6 +32,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/chinese-learning-website/",
               "budgets": [
                 {
                   "type": "initial",

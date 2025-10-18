@@ -4,10 +4,17 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --configuration production --base-href /chinese-learning-website/ && npx angular-cli-ghpages --dir=dist/chinese-learning-website/browser"
+    "build": "ng build --configuration production",
+    "predeploy": "npm run build",
+    "deploy": "npx angular-cli-ghpages --dir=dist/chinese-learning-website/browser",
+    "deploy:ci": "npm run build && npx angular-cli-ghpages --dir=dist/chinese-learning-website/browser --no-silent",
+    "serve:local": "ng build --base-href / && npx http-server dist/chinese-learning-website/browser -p 8080 -o",
+    "build:local": "ng build --configuration production --base-href /",
+    "build:gh-pages": "ng build --configuration production --base-href /chinese-learning-website/",
+    "serve:gh-pages": "npm run build:gh-pages && npx http-server dist/chinese-learning-website/browser -p 8080 -o",
+    "serve:dist": "ng build --configuration production && cp dist/chinese-learning-website/browser/index.html dist/chinese-learning-website/browser/404.html && npx http-server dist/chinese-learning-website/browser -p 8080 -o"
   },
   "prettier": {
     "printWidth": 100,
@@ -43,6 +50,7 @@
     "@angular/cli": "^20.3.6",
     "@angular/compiler-cli": "^20.3.0",
     "@types/jasmine": "~5.1.0",
+    "angular-cli-ghpages": "^2.0.3",
     "jasmine-core": "~5.9.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

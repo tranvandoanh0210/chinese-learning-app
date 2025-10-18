@@ -6,15 +6,15 @@
     "start": "ng serve",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build": "ng build --configuration production",
+    "build": "ng build --configuration production && cp src/404.html dist/chinese-learning-website/browser/404.html",
     "predeploy": "npm run build",
-    "deploy": "npx angular-cli-ghpages --dir=dist/chinese-learning-website/browser",
-    "deploy:ci": "npm run build && npx angular-cli-ghpages --dir=dist/chinese-learning-website/browser --no-silent",
-    "serve:local": "ng build --base-href / && npx http-server dist/chinese-learning-website/browser -p 8080 -o",
+    "deploy": "npx angular-cli-ghpages --dir=dist/chinese-learning-app/browser",
+    "deploy:ci": "npm run build && npx angular-cli-ghpages --dir=dist/chinese-learning-app/browser --no-silent",
+    "serve:local": "ng build --base-href / && npx http-server dist/chinese-learning-app/browser -p 8080 -o",
     "build:local": "ng build --configuration production --base-href /",
-    "build:gh-pages": "ng build --configuration production --base-href /chinese-learning-website/",
-    "serve:gh-pages": "npm run build:gh-pages && npx http-server dist/chinese-learning-website/browser -p 8080 -o",
-    "serve:dist": "ng build --configuration production && cp dist/chinese-learning-website/browser/index.html dist/chinese-learning-website/browser/404.html && npx http-server dist/chinese-learning-website/browser -p 8080 -o"
+    "build:gh-pages": "ng build --configuration production --base-href /chinese-learning-app/",
+    "serve:gh-pages": "npm run build:gh-pages && npx http-server dist/chinese-learning-app/browser -p 8080 -o",
+    "serve:dist": "ng build --configuration production && cp dist/chinese-learning-app/browser/index.html dist/chinese-learning-app/browser/404.html && npx http-server dist/chinese-learning-app/browser -p 8080 -o"
   },
   "prettier": {
     "printWidth": 100,

@@ -60,6 +60,7 @@ export interface DialogueLine {
 
 export interface DialogueExercise extends BaseExercise {
   type: 'dialogue';
+  context: String;
   lines: DialogueLine[];
 }
 // Union type for all exercises

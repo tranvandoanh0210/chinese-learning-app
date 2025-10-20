@@ -178,8 +178,13 @@ export class ExcelService {
 
         const lesson = lessonsMap.get(lessonName)!;
         const category = this.findOrCreateCategory(lesson, categoryType);
-        const exercises = this.parseExercises(data, categoryType, errors, sheetName);
-
+        let exercises: Exercise[] = [];
+        if (categoryType === 'dialogue') {
+          // Xử lý dialogue với context
+          exercises = this.parseDialogueSheet(data, sheetName, errors);
+        } else {
+          exercises = this.parseExercises(data, categoryType, errors, sheetName);
+        }
         category.exercises.push(...exercises);
       } catch (error) {
         errors.push(`Lỗi xử lý sheet ${sheetName}: ${error}`);
@@ -325,10 +330,6 @@ export class ExcelService {
             } as WritingExercise;
             break;
 
-          case 'dialogue':
-            // Xử lý đặc biệt cho dialogue - sẽ xử lý riêng
-            return;
-
           // case 'flashcard':
           //   exercise = {
           //     ...baseExercise,
@@ -407,21 +408,18 @@ export class ExcelService {
 
     data.forEach((row, index) => {
       try {
-        if (!row.context || !row.speaker || !row.text) {
-          errors.push(`Sheet ${sheetName} - Dòng ${index + 2}: Thiếu context, speaker hoặc text`);
+        if (!row.speaker || !row.text || !row.pinyin || !row.translation || !row.context) {
+          errors.push(`Sheet ${sheetName} - Dòng ${index + 2}: Thiếu dữ liệu`);
           return;
         }
 
-        const context = row.context;
+        const context = row.context || `${sheetName} - Hội thoại ${index + 1}`;
         if (!dialogues.has(context)) {
           dialogues.set(context, {
             id: this.generateId('dialogue'),
             categoryId: '', // Sẽ set sau
             type: 'dialogue',
-            question: context,
-            description: `Hội thoại: ${context}`,
-            answer: 'Hội thoại hoàn thành',
-            explanation: '',
+            context: context,
             lines: [],
           });
         }
@@ -535,6 +533,7 @@ export class ExcelService {
   }
   private prepareDialogueData(dialogue: DialogueExercise): any[] {
     return dialogue.lines.map((line) => ({
+      context: dialogue.context,
       speaker: line.speaker,
       text: line.text,
       pinyin: line.pinyin,

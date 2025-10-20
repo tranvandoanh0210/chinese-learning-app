@@ -2,59 +2,59 @@ import { Lesson } from '../app/models/lesson.model';
 
 export const SAMPLE_DATA: Lesson[] = [
   {
-    "id": "lesson_1760953095829_vg9xz0izs",
+    "id": "lesson_1760953113701_hmfnyvzyz",
     "name_zh": "",
     "name_vi": "Chào hỏi",
     "description": "Bài học Chào hỏi",
     "order": 1,
     "categories": [
       {
-        "id": "category_1760953095829_lxpl00tns",
-        "lessonId": "lesson_1760953095829_vg9xz0izs",
+        "id": "category_1760953113701_zspsb8kg4",
+        "lessonId": "lesson_1760953113701_hmfnyvzyz",
         "type": "vocabulary",
         "name": "Từ vựng",
         "description": "Bài tập Từ vựng",
         "order": 1,
         "exercises": [
           {
-            "id": "ex_1760953095829_i0y9jlypf",
+            "id": "ex_1760953113701_ahqf3nmcw",
             "categoryId": "",
             "type": "vocabulary",
             "question": "你好",
             "description": "",
-            "answer": "Xin chào",
+            "answer": "Xin chào1",
             "explanation": "",
             "pinyin": "nǐ hǎo"
           },
           {
-            "id": "ex_1760953095829_pv2cp63lv",
+            "id": "ex_1760953113701_qst8aufnd",
             "categoryId": "",
             "type": "vocabulary",
             "question": "谢谢",
             "description": "",
-            "answer": "Cảm ơn",
+            "answer": "Cảm ơn1",
             "explanation": "",
             "pinyin": "xiè xie"
           }
         ]
       },
       {
-        "id": "category_1760953095829_uje601t40",
-        "lessonId": "lesson_1760953095829_vg9xz0izs",
+        "id": "category_1760953113701_wsip0rrjj",
+        "lessonId": "lesson_1760953113701_hmfnyvzyz",
         "type": "grammar",
         "name": "Ngữ pháp",
         "description": "Bài tập Ngữ pháp",
         "order": 2,
         "exercises": [
           {
-            "id": "ex_1760953095829_0dop38m87",
+            "id": "ex_1760953113701_p6fwy87o9",
             "categoryId": "",
             "type": "grammar",
             "question": "Câu có động từ \"是\" (shì)",
-            "description": "Cấu trúc câu cơ bản với động từ \"là\"",
+            "description": "Cấu trúc câu cơ bản với động từ \"là\"1",
             "answer": "",
             "explanation": "Đây là một trong những cấu trúc câu cơ bản và quan trọng nhất trong tiếng Hán.",
-            "content": "Động từ '是' (shì) - 'là' được dùng để nối hai danh từ, đại từ hoặc cụm danh từ, biểu thị sự tương đồng hoặc xác định.\n\nCấu trúc cơ bản: **Chủ ngữ + 是 + Tân ngữ**.\n\nĐây là một trong những cấu trúc câu cơ bản và quan trọng nhất trong tiếng Hán. Nó tương đương với động từ \"to be\" trong tiếng Anh.\n\nCách sử dụng: Dùng để giới thiệu bản thân, nghề nghiệp, quốc tịch, hoặc xác định mối quan hệ giữa các sự vật, sự việc.\n\nDạng phủ định là '不是' (bú shì), trong đó '不' (bù) khi đứng trước một từ mang thanh 4 sẽ biến điệu thành thanh 2 (bú).\n\nPhân tích cấu trúc:\n- **Chủ ngữ (Subject)**: Người hoặc vật thực hiện hành động (ví dụ: 我, 他).\n- **Vị ngữ (Predicate)**: Phần mô tả chủ ngữ, ở đây là '是 + Tân ngữ'.\n- **Tân ngữ (Object)**: Đối tượng được đề cập đến (ví dụ: 法国人, 老师).\n\nĐiểm quan trọng:\n- Không dùng '是' với tính từ (dùng 很 thay thế)\n- '是' luôn đứng sau chủ ngữ và trước tân ngữ\n- Trong câu hỏi, thêm 吗 ở cuối câu",
+            "content": "Động từ '是' (shì) - 'là' được dùng để nối hai danh từ, đại từ hoặc cụm danh từ, biểu thị sự tương đồng hoặc xác định.\r\n\r\nCấu trúc cơ bản: **Chủ ngữ + 是 + Tân ngữ**.\r\n\r\nĐây là một trong những cấu trúc câu cơ bản và quan trọng nhất trong tiếng Hán. Nó tương đương với động từ \"to be\" trong tiếng Anh.\r\n\r\nCách sử dụng: Dùng để giới thiệu bản thân, nghề nghiệp, quốc tịch, hoặc xác định mối quan hệ giữa các sự vật, sự việc.\r\n\r\nDạng phủ định là '不是' (bú shì), trong đó '不' (bù) khi đứng trước một từ mang thanh 4 sẽ biến điệu thành thanh 2 (bú).\r\n\r\nPhân tích cấu trúc:\r\n- **Chủ ngữ (Subject)**: Người hoặc vật thực hiện hành động (ví dụ: 我, 他).\r\n- **Vị ngữ (Predicate)**: Phần mô tả chủ ngữ, ở đây là '是 + Tân ngữ'.\r\n- **Tân ngữ (Object)**: Đối tượng được đề cập đến (ví dụ: 法国人, 老师).\r\n\r\nĐiểm quan trọng:\r\n- Không dùng '是' với tính từ (dùng 很 thay thế)\r\n- '是' luôn đứng sau chủ ngữ và trước tân ngữ\r\n- Trong câu hỏi, thêm 吗 ở cuối câu",
             "examples": [
               "我是学生 (wǒ shì xuéshēng) Tôi là học sinh",
               "他是老师 (tā shì lǎoshī) Anh ấy là giáo viên",
@@ -65,18 +65,18 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1760953095829_4xtewx23d",
-        "lessonId": "lesson_1760953095829_vg9xz0izs",
+        "id": "category_1760953113701_8vnk4khpf",
+        "lessonId": "lesson_1760953113701_hmfnyvzyz",
         "type": "test",
         "name": "Kiểm tra",
         "description": "Bài tập Kiểm tra",
         "order": 3,
         "exercises": [
           {
-            "id": "ex_1760953095829_0mqrvhmpy",
+            "id": "ex_1760953113701_36mo2td4i",
             "categoryId": "",
             "type": "multiple_choice",
-            "question": "你好 nghĩa là gì?",
+            "question": "你好 nghĩa là gì?1",
             "description": "",
             "answer": "Xin chào",
             "explanation": "你好 có nghĩa là Xin chào",
@@ -88,7 +88,7 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1760953095829_omo36by5z",
+            "id": "ex_1760953113701_npf0d4jz8",
             "categoryId": "",
             "type": "input",
             "question": "Viết pinyin của từ \"Cảm ơn\"",
@@ -98,7 +98,7 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập pinyin..."
           },
           {
-            "id": "ex_1760953095829_tcvornuw1",
+            "id": "ex_1760953113701_xrszfrivj",
             "categoryId": "",
             "type": "multiple_choice",
             "question": "Từ nào dùng để chào hỏi?",
@@ -115,55 +115,55 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1760953095829_wefmbv0z0",
-        "lessonId": "lesson_1760953095829_vg9xz0izs",
+        "id": "category_1760953113701_x81un6995",
+        "lessonId": "lesson_1760953113701_hmfnyvzyz",
         "type": "review",
         "name": "Ôn tập",
         "description": "Bài tập Ôn tập",
         "order": 4,
         "exercises": [
           {
-            "id": "ex_1760953095829_cgwf21bps",
+            "id": "ex_1760953113701_v5ihwegyj",
             "categoryId": "",
             "type": "flashcard",
             "question": "你好",
             "description": "Chào hỏi thông thường",
-            "answer": "Xin chào",
+            "answer": "Xin chào1",
             "explanation": "",
             "pinyin": "nǐ hǎo"
           },
           {
-            "id": "ex_1760953095829_2f02idshy",
+            "id": "ex_1760953113701_zibb3wj6i",
             "categoryId": "",
             "type": "flashcard",
             "question": "谢谢",
             "description": "Diễn đạt lòng biết ơn",
-            "answer": "Cảm ơn",
+            "answer": "Cảm ơn1",
             "explanation": "",
             "pinyin": "xiè xie"
           }
         ]
       },
       {
-        "id": "category_1760953095829_kbggrfy8o",
-        "lessonId": "lesson_1760953095829_vg9xz0izs",
+        "id": "category_1760953113701_cic15th8w",
+        "lessonId": "lesson_1760953113701_hmfnyvzyz",
         "type": "speaking",
         "name": "Luyện nói",
         "description": "Bài tập Luyện nói",
         "order": 5,
         "exercises": [
           {
-            "id": "ex_1760953095829_6b8xplbdy",
+            "id": "ex_1760953113701_0cr3rs55e",
             "categoryId": "",
             "type": "speaking",
             "question": "你好",
             "description": "Chào hỏi cơ bản",
-            "answer": "Xin chào",
+            "answer": "Xin chào1",
             "explanation": "",
             "pinyin": "nǐ hǎo"
           },
           {
-            "id": "ex_1760953095829_z9jnsbf3e",
+            "id": "ex_1760953113701_v7el7w7vf",
             "categoryId": "",
             "type": "speaking",
             "question": "谢谢",
@@ -175,18 +175,18 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1760953095829_us2bz108g",
-        "lessonId": "lesson_1760953095829_vg9xz0izs",
+        "id": "category_1760953113701_fujk47arz",
+        "lessonId": "lesson_1760953113701_hmfnyvzyz",
         "type": "writing",
         "name": "Luyện viết",
         "description": "Bài tập Luyện viết",
         "order": 6,
         "exercises": [
           {
-            "id": "ex_1760953095829_029560q80",
+            "id": "ex_1760953113701_mx433qvh3",
             "categoryId": "",
             "type": "writing",
-            "question": "Luyện viết chữ \"你好\"",
+            "question": "Luyện viết chữ \"你好\"1",
             "description": "Học viết chữ chào hỏi cơ bản",
             "answer": "你好",
             "explanation": "",
@@ -195,7 +195,7 @@ export const SAMPLE_DATA: Lesson[] = [
             "meaning": "Xin chào"
           },
           {
-            "id": "ex_1760953095829_fryb4js4z",
+            "id": "ex_1760953113701_42rb2z2vg",
             "categoryId": "",
             "type": "writing",
             "question": "Luyện viết chữ \"你好\"",
@@ -209,8 +209,8 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1760953095829_ao61e8k28",
-        "lessonId": "lesson_1760953095829_vg9xz0izs",
+        "id": "category_1760953113701_ilqmmfgpu",
+        "lessonId": "lesson_1760953113701_hmfnyvzyz",
         "type": "dialogue",
         "name": "Hội thoại",
         "description": "Bài tập Hội thoại",

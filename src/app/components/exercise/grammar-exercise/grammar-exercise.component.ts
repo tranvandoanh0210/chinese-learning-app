@@ -107,33 +107,6 @@ export class GrammarExerciseComponent {
     const parts = example.split(')');
     return parts.length > 1 ? parts[1].trim() : '';
   }
-
-  getDifficultyClass(exercise: GrammarExercise): string {
-    switch (exercise.difficulty) {
-      case 'easy':
-        return 'difficulty-easy';
-      case 'medium':
-        return 'difficulty-medium';
-      case 'hard':
-        return 'difficulty-hard';
-      default:
-        return 'difficulty-easy';
-    }
-  }
-
-  getDifficultyText(exercise: GrammarExercise): string {
-    switch (exercise.difficulty) {
-      case 'easy':
-        return 'Dễ';
-      case 'medium':
-        return 'Trung bình';
-      case 'hard':
-        return 'Khó';
-      default:
-        return 'Cơ bản';
-    }
-  }
-
   markAsCompleted(exercise: GrammarExercise): void {
     // In a real app, you would save this to a service
     console.log('Marked as completed:', exercise.id);

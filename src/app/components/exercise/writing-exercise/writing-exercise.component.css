@@ -1,0 +1,282 @@
+.writing-exercise {
+  max-width: 900px;
+  margin: 0 auto;
+
+  .exercise-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .writing-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border: 1px solid #e9ecef;
+
+    .character-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #f8f9fa;
+
+      .main-character {
+        font-size: 4rem;
+        font-weight: bold;
+        color: #2c3e50;
+        font-family: 'SimSun', 'STKaiti', serif;
+      }
+
+      .character-details {
+        text-align: left;
+
+        .pinyin {
+          font-size: 1.5rem;
+          color: #e74c3c;
+          margin-bottom: 0.5rem;
+          font-style: italic;
+        }
+
+        .meaning {
+          font-size: 1.2rem;
+          color: #27ae60;
+          margin-bottom: 0.5rem;
+          font-weight: 500;
+        }
+
+        .stroke-count,
+        .radical {
+          font-size: 1rem;
+          color: #7f8c8d;
+        }
+      }
+    }
+
+    .stroke-guide {
+      margin-bottom: 1.5rem;
+
+      h4 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .gif-guide {
+        text-align: center;
+
+        .stroke-gif {
+          max-width: 300px;
+          height: auto;
+          border-radius: 8px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          margin-bottom: 1rem;
+        }
+
+        .guide-note {
+          color: #7f8c8d;
+          font-style: italic;
+        }
+      }
+    }
+
+    .practice-section {
+      h4 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .canvas-container {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        margin: 0 auto 2rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        background: #f8f9fa;
+
+        .writing-canvas {
+          width: 100%;
+          height: 100%;
+          cursor: crosshair;
+          position: relative;
+          z-index: 2;
+          background: transparent;
+        }
+
+        .character-template {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 8rem;
+          color: rgba(44, 62, 80, 0.1);
+          font-family: 'SimSun', 'STKaiti', serif;
+          pointer-events: none;
+          z-index: 1;
+        }
+      }
+
+      .drawing-controls {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+
+        .btn {
+          padding: 0.8rem 1.5rem;
+          border: none;
+          border-radius: 8px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+
+          &.btn-outline {
+            background: transparent;
+            border: 2px solid #95a5a6;
+            color: #95a5a6;
+
+            &:hover:not(:disabled) {
+              background: #95a5a6;
+              color: white;
+            }
+          }
+
+          &.btn-primary {
+            background: #3498db;
+            color: white;
+
+            &:hover:not(:disabled) {
+              background: #2980b9;
+            }
+          }
+
+          &.btn-secondary {
+            background: #95a5a6;
+            color: white;
+
+            &:hover:not(:disabled) {
+              background: #7f8c8d;
+            }
+          }
+
+          &.btn-success {
+            background: #27ae60;
+            color: white;
+
+            &:hover:not(:disabled) {
+              background: #219a52;
+            }
+          }
+        }
+      }
+
+      .writing-progress {
+        margin-bottom: 1.5rem;
+
+        .progress-info {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.5rem;
+
+          span {
+            color: #7f8c8d;
+            font-weight: 500;
+          }
+
+          .completion-badge {
+            color: #27ae60;
+            font-weight: 600;
+          }
+        }
+
+        .progress-bar {
+          width: 100%;
+          height: 8px;
+          background: #ecf0f1;
+          border-radius: 4px;
+          overflow: hidden;
+
+          .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+          }
+        }
+      }
+
+      .completion-message {
+        text-align: center;
+        padding: 2rem;
+        background: #d5f4e6;
+        border-radius: 12px;
+        border: 2px solid #27ae60;
+
+        .success-icon {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+        }
+
+        h3 {
+          color: #27ae60;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          color: #34495e;
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .writing-exercise {
+    .writing-card {
+      padding: 1.5rem;
+
+      .character-info {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+
+        .character-details {
+          text-align: center;
+        }
+      }
+
+      .practice-section .canvas-container {
+        width: 100%;
+        height: 300px;
+
+        .character-template {
+          font-size: 6rem;
+        }
+      }
+
+      .drawing-controls {
+        flex-direction: column;
+        align-items: center;
+
+        .btn {
+          width: 100%;
+          max-width: 200px;
+        }
+      }
+    }
+  }
+}

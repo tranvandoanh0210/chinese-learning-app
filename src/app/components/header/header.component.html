@@ -9,7 +9,6 @@
         </div>
       </div>
     </div>
-
     <div class="user-section">
       <div class="header-stats">
         <div class="stat">
@@ -17,15 +16,17 @@
           <div class="stat-label">Bài học</div>
         </div>
       </div>
+      @if(user){
       <div class="user-info">
         <div class="user-avatar">
-          <i class="fas fa-user"></i>
+          {{ getInitials(user.name) }}
         </div>
         <div class="user-details">
-          <div class="user-name">Người dùng</div>
-          <div class="user-level">Trình độ: Sơ cấp</div>
+          <div class="user-name" (click)="selectData()">{{ user.name }}</div>
+          <div class="user-level">{{ user.level }}</div>
         </div>
       </div>
+      }
     </div>
   </div>
 </header>

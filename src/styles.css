@@ -29,6 +29,10 @@ body {
   flex: 1;
 }
 
+.app-outlet {
+  margin-left: 320px;
+}
+
 /* Header Styles */
 .header {
   background: #2c3e50;

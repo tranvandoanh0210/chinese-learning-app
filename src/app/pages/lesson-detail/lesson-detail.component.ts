@@ -66,6 +66,8 @@ export class LessonDetailComponent implements OnInit, OnDestroy {
       speaking: 'fas fa-microphone',
       test: 'fas fa-clipboard-check',
       review: 'fas fa-sync-alt',
+      dialogue: 'fas fa-comment-dots',
+      writing: 'fas fa-file-word',
     };
     return icons[type] || 'fas fa-circle';
   }

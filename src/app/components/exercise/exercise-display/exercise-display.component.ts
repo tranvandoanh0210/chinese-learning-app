@@ -6,11 +6,14 @@ import { GrammarExerciseComponent } from '../grammar-exercise/grammar-exercise.c
 import { ReviewExerciseComponent } from '../review-exercise/review-exercise.component';
 import { CommonModule } from '@angular/common';
 import { SpeakingExerciseComponent } from '../speaking-exercise/speaking-exercise.component';
+import { WritingExerciseComponent } from '../writing-exercise/writing-exercise.component';
+import { DialogueExerciseComponent } from '../dialogue-exercise/dialogue-exercise.component';
 
 @Component({
   selector: 'app-exercise-display',
   templateUrl: './exercise-display.component.html',
   styleUrls: ['./exercise-display.component.css'],
+  standalone: true,
   imports: [
     CommonModule,
     VocabularyExerciseComponent,
@@ -18,6 +21,8 @@ import { SpeakingExerciseComponent } from '../speaking-exercise/speaking-exercis
     GrammarExerciseComponent,
     ReviewExerciseComponent,
     SpeakingExerciseComponent,
+    WritingExerciseComponent,
+    DialogueExerciseComponent,
   ],
 })
 export class ExerciseDisplayComponent {

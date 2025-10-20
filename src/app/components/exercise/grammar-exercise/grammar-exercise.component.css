@@ -244,31 +244,6 @@
       background: #f8f9fa;
       border-top: 1px solid #e9ecef;
 
-      .difficulty-badge {
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-weight: 600;
-        font-size: 0.9rem;
-
-        &.difficulty-easy {
-          background: #d5f4e6;
-          color: #27ae60;
-          border: 1px solid #27ae60;
-        }
-
-        &.difficulty-medium {
-          background: #fef5e7;
-          color: #f39c12;
-          border: 1px solid #f39c12;
-        }
-
-        &.difficulty-hard {
-          background: #fde8e6;
-          color: #e74c3c;
-          border: 1px solid #e74c3c;
-        }
-      }
-
       .completion-status {
         .btn-complete {
           background: #27ae60;

@@ -1,0 +1,54 @@
+<div class="writing-exercise">
+  <div *ngFor="let exercise of getWritingExercises(); let i = index" class="exercise-item">
+    <div class="writing-card">
+      <!-- Character Info -->
+      <div class="character-info">
+        <div class="main-character">{{ exercise.character }}</div>
+        <div class="character-details">
+          <div class="pinyin">{{ exercise.pinyin }}</div>
+          <div class="meaning">{{ exercise.meaning }}</div>
+        </div>
+      </div>
+
+      <!-- Stroke Order Guide - Sử dụng SVG thay vì GIF -->
+      <!-- <div class="stroke-guide">
+        <h4>Hướng dẫn thứ tự viết các nét:</h4>
+      </div> -->
+
+      <!-- Practice Canvas -->
+      <div class="practice-section">
+        <div class="canvas-container">
+          <canvas
+            #writingCanvas
+            width="400"
+            height="400"
+            (mousedown)="onMouseDown($event, i)"
+            (mousemove)="onMouseMove($event, i)"
+            (mouseup)="onMouseUp(i)"
+            (mouseleave)="onMouseUp(i)"
+            (touchstart)="onTouchStart($event, i)"
+            (touchmove)="onTouchMove($event, i)"
+            (touchend)="onTouchEnd(i)"
+            class="writing-canvas"
+          >
+          </canvas>
+
+          <!-- Character Template (background) -->
+          <div class="character-template">{{ exercise.character }}</div>
+        </div>
+
+        <!-- Drawing Controls -->
+        <div class="drawing-controls">
+          <button class="btn btn-outline" (click)="undoStroke(i)" [disabled]="!canUndo(i)">
+            ↩️ Undo
+          </button>
+          <button class="btn btn-outline" (click)="redoStroke(i)" [disabled]="!canRedo(i)">
+            ↪️ Redo
+          </button>
+          <button class="btn btn-secondary" (click)="clearCanvas(i)">🗑️ Xóa hết</button>
+          <!-- <button class="btn btn-success" (click)="completeWriting(exercise)">✅ Hoàn thành</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

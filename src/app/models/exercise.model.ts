@@ -3,9 +3,9 @@ export interface BaseExercise {
   id: string;
   categoryId: string;
   type: string;
-  question: string;
+  question?: string;
   description?: string;
-  answer: string;
+  answer?: string;
   explanation?: string;
 }
 
@@ -13,7 +13,6 @@ export interface BaseExercise {
 export interface VocabularyExercise extends BaseExercise {
   type: 'vocabulary';
   pinyin: string;
-  audio_url?: string;
 }
 
 // Grammar Exercise
@@ -21,7 +20,6 @@ export interface GrammarExercise extends BaseExercise {
   type: 'grammar';
   content: string;
   examples?: string[];
-  difficulty: string;
 }
 
 // Multiple Choice Exercise
@@ -40,17 +38,30 @@ export interface InputExercise extends BaseExercise {
 export interface SpeakingExercise extends BaseExercise {
   type: 'speaking';
   pinyin: string;
-  difficulty?: 'easy' | 'medium' | 'hard';
-  sample_audio?: string;
 }
 
 // Flashcard Exercise
 export interface FlashcardExercise extends BaseExercise {
   type: 'flashcard';
   pinyin: string;
-  audio_url?: string;
+}
+export interface WritingExercise extends BaseExercise {
+  type: 'writing';
+  character: string;
+  pinyin: string;
+  meaning: string;
+}
+export interface DialogueLine {
+  speaker: string;
+  text: string;
+  pinyin?: string;
+  translation: string;
 }
 
+export interface DialogueExercise extends BaseExercise {
+  type: 'dialogue';
+  lines: DialogueLine[];
+}
 // Union type for all exercises
 export type Exercise =
   | VocabularyExercise
@@ -58,7 +69,9 @@ export type Exercise =
   | MultipleChoiceExercise
   | InputExercise
   | SpeakingExercise
-  | FlashcardExercise;
+  | FlashcardExercise
+  | DialogueExercise
+  | WritingExercise;
 
 // Type guard functions
 export function isVocabularyExercise(exercise: Exercise): exercise is VocabularyExercise {
@@ -82,4 +95,10 @@ export function isFlashcardExercise(exercise: Exercise): exercise is FlashcardEx
 }
 export function isSpeakingExercise(exercise: Exercise): exercise is SpeakingExercise {
   return exercise.type === 'speaking';
+}
+export function isWritingExercise(exercise: Exercise): exercise is WritingExercise {
+  return exercise.type === 'writing';
+}
+export function isDialogueExercise(exercise: Exercise): exercise is DialogueExercise {
+  return exercise.type === 'dialogue';
 }

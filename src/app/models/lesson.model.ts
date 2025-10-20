@@ -12,7 +12,7 @@ export interface Lesson {
 export interface Category {
   id: string;
   lessonId: string;
-  type: 'vocabulary' | 'grammar' | 'speaking' | 'test' | 'review';
+  type: 'vocabulary' | 'grammar' | 'speaking' | 'test' | 'review' | 'writing' | 'dialogue';
   name: string;
   description: string;
   order: number;

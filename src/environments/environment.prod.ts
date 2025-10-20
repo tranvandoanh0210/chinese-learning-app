@@ -1,5 +1,10 @@
 export const environment = {
-  production: true,
-  appName: 'Chinese Learning Website',
-  version: '1.0.0',
+  production: false,
+  github: {
+    owner: 'tranvandoanh0210',
+    repo: 'chinese-learning-app',
+    branch: 'main',
+    token: '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',
+    dataPath: 'src/util/data.ts',
+  },
 };

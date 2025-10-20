@@ -23,4 +23,13 @@
     <app-speaking-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
     </app-speaking-exercise>
   </div>
+  <div *ngIf="category.type === 'writing'">
+    <app-writing-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
+    </app-writing-exercise>
+  </div>
+
+  <div *ngIf="category.type === 'dialogue'">
+    <app-dialogue-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
+    </app-dialogue-exercise>
+  </div>
 </div>

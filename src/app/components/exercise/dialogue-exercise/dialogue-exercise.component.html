@@ -1,0 +1,61 @@
+<div class="dialogue-exercise">
+  <div *ngFor="let exercise of getDialogueExercises()" class="exercise-item">
+    <div class="dialogue-card">
+      <!-- Dialogue Content - Chat Layout -->
+      <div class="dialogue-content chat-layout">
+        <div class="chat-messages">
+          <div
+            *ngFor="let line of exercise.lines"
+            class="message"
+            [class.left]="exercise.lines.indexOf(line) % 2 == 0"
+            [class.right]="exercise.lines.indexOf(line) % 2 == 1"
+          >
+            <!-- Speaker A (left side) -->
+            <div *ngIf="exercise.lines.indexOf(line) % 2 == 0" class="message-left">
+              <div class="message-avatar">
+                <div class="avatar">{{ line.speaker }}</div>
+              </div>
+              <div class="message-content">
+                <div class="message-bubble left-bubble">
+                  <div class="message-pinyin">{{ line.pinyin }}</div>
+                  <div class="message-text">{{ line.text }}</div>
+                  <div class="message-meaning">{{ line.translation }}</div>
+                </div>
+                <button class="audio-btn" (click)="playLineAudio(line.text)" [disabled]="isPlaying">
+                  {{ isPlaying ? '🔊...' : '🔊' }}
+                </button>
+              </div>
+            </div>
+
+            <!-- Speaker B (right side) -->
+            <div *ngIf="exercise.lines.indexOf(line) % 2 == 1" class="message-right">
+              <div class="message-content">
+                <div class="message-bubble right-bubble">
+                  <div class="message-text">{{ line.text }}</div>
+                  <div class="message-pinyin">{{ line.pinyin }}</div>
+                </div>
+                <button class="audio-btn" (click)="playLineAudio(line.text)" [disabled]="isPlaying">
+                  {{ isPlaying ? '🔊...' : '🔊' }}
+                </button>
+              </div>
+              <div class="message-avatar">
+                <div class="avatar">{{ line.speaker }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="dialogue-controls">
+        <button
+          class="btn btn-primary play-all-btn"
+          (click)="playAllDialogue(exercise.lines)"
+          [disabled]="isPlaying"
+        >
+          {{ isPlaying ? '🔊 Đang phát...' : '🎭 Nghe toàn bộ hội thoại' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

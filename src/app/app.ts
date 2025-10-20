@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, signal } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,18 @@ import { NavigationComponent } from './components/navigation/navigation.componen
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
+export class App implements OnInit {
+  hasUser = false;
   title = 'Chinese Learning App';
   // protected readonly title = signal('chinese-learning-website');
+  constructor(private userService: UserService, private router: Router) {}
+  ngOnInit() {
+    this.userService.user$.subscribe((user) => {
+      this.hasUser = !!user;
+
+      if (!user && !window.location.hash.includes('welcome')) {
+        this.router.navigate(['/welcome']);
+      }
+    });
+  }
 }

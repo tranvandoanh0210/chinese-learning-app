@@ -1,0 +1,49 @@
+<div class="welcome-page">
+  <div class="welcome-container">
+    <div class="welcome-card">
+      <div class="welcome-header">
+        <div class="logo">中</div>
+        <h1>中文学习</h1>
+        <p>Chào mừng đến với ứng dụng học tiếng Trung</p>
+      </div>
+
+      <div class="welcome-form">
+        <h2>Bắt đầu học tập</h2>
+        <p class="form-description">
+          Vui lòng nhập tên của bạn để bắt đầu hành trình học tiếng Trung
+        </p>
+
+        <div class="input-group">
+          <label for="userName">Tên của bạn</label>
+          <input
+            type="text"
+            id="userName"
+            [(ngModel)]="userName"
+            placeholder="Nhập tên của bạn..."
+            (keyup.enter)="startLearning()"
+            class="name-input"
+          />
+        </div>
+
+        <button class="start-btn" (click)="startLearning()" [disabled]="!userName.trim()">
+          🚀 Bắt đầu học
+        </button>
+
+        <div class="feature-highlights">
+          <div class="feature">
+            <span class="icon">📚</span>
+            <span>Bài học đa dạng</span>
+          </div>
+          <div class="feature">
+            <span class="icon">🎤</span>
+            <span>Luyện phát âm</span>
+          </div>
+          <div class="feature">
+            <span class="icon">✍️</span>
+            <span>Luyện viết chữ Hán</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

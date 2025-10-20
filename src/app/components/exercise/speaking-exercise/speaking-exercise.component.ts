@@ -113,10 +113,10 @@ export class SpeakingExerciseComponent implements OnDestroy {
     return total > 0 ? Math.round((completed / total) * 100) : 0;
   }
 
-  async playSampleAudio(text: string): Promise<void> {
+  async playSampleAudio(text: string | undefined): Promise<void> {
     this.updateCurrentState({ isPlaying: true });
     try {
-      await this.speechService.speakChinese(text);
+      if (text) await this.speechService.speakChinese(text);
     } catch (error) {
       console.error('Error playing sample audio:', error);
     } finally {
@@ -124,10 +124,10 @@ export class SpeakingExerciseComponent implements OnDestroy {
     }
   }
 
-  async playVietnameseAudio(text: string): Promise<void> {
+  async playVietnameseAudio(text: string | undefined): Promise<void> {
     this.updateCurrentState({ isPlaying: true });
     try {
-      await this.speechService.speakVietnamese(text);
+      if (text) await this.speechService.speakVietnamese(text);
     } catch (error) {
       console.error('Error playing Vietnamese audio:', error);
     } finally {
@@ -135,12 +135,12 @@ export class SpeakingExerciseComponent implements OnDestroy {
     }
   }
 
-  toggleRecording(expectedText: string): void {
+  toggleRecording(expectedText: string | undefined): void {
     const state = this.getCurrentState();
 
     if (state.isRecording) {
       this.stopRecording();
-    } else {
+    } else if (expectedText) {
       this.startRecording(expectedText);
     }
   }

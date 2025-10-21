@@ -1,13 +1,16 @@
 @if(hasUser){
 <div class="app-container">
-  <app-header></app-header>
+  <app-header (mobileMenuToggle)="onMobileMenuToggle()"></app-header>
   <div class="main-layout">
-    <app-navigation></app-navigation>
-    <main class="main-content">
+    <app-navigation
+      [class.mobile-open]="isMobileNavOpen"
+      [isMobileOpen]="isMobileNavOpen"
+    ></app-navigation>
+    <main class="main-content" [class.menu-open]="isMobileNavOpen">
       <router-outlet></router-outlet>
     </main>
   </div>
 </div>
-}
-
+} @if(!hasUser){
 <router-outlet></router-outlet>
+}

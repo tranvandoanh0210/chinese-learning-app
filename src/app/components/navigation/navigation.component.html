@@ -1,7 +1,9 @@
-<nav class="sidebar-navigation">
+<div class="sidebar-overlay" [class.mobile-open]="isMobileOpen" (click)="closeMobileNav()"></div>
+<nav class="sidebar-navigation" [class.mobile-open]="isMobileOpen">
   <div class="nav-header">
     <h3>课程列表</h3>
     <span>Danh sách bài học</span>
+    <button class="close-mobile-nav" (click)="closeMobileNav()" *ngIf="isMobileDevice()">×</button>
   </div>
   <ul class="lesson-list">
     @for (lesson of lessons; track lesson.id) {

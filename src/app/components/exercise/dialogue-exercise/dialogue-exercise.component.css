@@ -1,6 +1,8 @@
 .dialogue-exercise {
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 1rem;
+  /* Thêm padding để tránh sát mép màn hình */
 
   .exercise-item {
     margin-bottom: 1.5rem;
@@ -123,6 +125,8 @@
         cursor: pointer;
         transition: all 0.3s ease;
         font-size: 1rem;
+        min-height: 50px;
+        /* Tối ưu cho mobile touch */
 
         &:disabled {
           opacity: 0.5;
@@ -217,6 +221,8 @@
   justify-content: center;
   font-weight: bold;
   font-size: 14px;
+  flex-shrink: 0;
+  /* Ngăn avatar bị co lại */
 }
 
 .message-right .avatar {
@@ -245,12 +251,15 @@
 .message-text {
   font-size: 16px;
   margin-bottom: 4px;
+  font-family: 'SimSun', 'STKaiti', serif;
+  font-weight: 500;
 }
 
 .message-pinyin {
   font-size: 12px;
   color: #666;
   font-style: italic;
+  margin-bottom: 2px;
 }
 
 .message-meaning {
@@ -258,7 +267,6 @@
   color: #666;
   font-style: italic;
 }
-
 
 .audio-btn {
   background: none;
@@ -268,6 +276,14 @@
   padding: 5px;
   border-radius: 50%;
   transition: background 0.2s;
+  min-width: 32px;
+  /* Đảm bảo kích thước tối thiểu */
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  /* Ngăn nút audio bị co lại */
 }
 
 .audio-btn:hover:not([disabled]) {
@@ -279,38 +295,226 @@
   cursor: not-allowed;
 }
 
+/* ========== RESPONSIVE DESIGN ========== */
 
+/* Tablet */
+@media (max-width: 1024px) {
+  .dialogue-exercise {
+    max-width: 90%;
+
+    .dialogue-card {
+      padding: 1.75rem;
+
+      .dialogue-content .chat-layout {
+        padding: 12px;
+      }
+
+      .message-content {
+        max-width: 75%;
+        /* Tăng max-width cho tablet */
+      }
+    }
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .dialogue-exercise {
+    max-width: 100%;
+    padding: 0 0.5rem;
+
     .dialogue-card {
-      padding: 1.5rem;
+      padding: 1.25rem;
+      border-radius: 12px;
 
-      .dialogue-content .dialogue-lines .dialogue-line .line-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
+      .dialogue-content .chat-layout {
+        padding: 10px;
+        border-radius: 8px;
+      }
 
-        .line-header {
-          min-width: auto;
-          flex-direction: row;
-          justify-content: space-between;
-          width: 100%;
-        }
+      .chat-messages {
+        gap: 8px;
+        /* Tăng khoảng cách giữa các message */
+      }
 
-        .audio-btn {
-          align-self: center;
-        }
+      .message-content {
+        max-width: 80%;
+        /* Tăng max-width cho mobile */
+        gap: 8px;
+        /* Tăng khoảng cách giữa bubble và audio button */
+      }
+
+      .message-bubble {
+        padding: 10px 14px;
+        /* Tăng padding cho dễ đọc */
+      }
+
+      .message-text {
+        font-size: 15px;
+        /* Điều chỉnh font size cho mobile */
+      }
+
+      .message-pinyin,
+      .message-meaning {
+        font-size: 11px;
+      }
+
+      .avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+      }
+
+      .audio-btn {
+        font-size: 14px;
+        min-width: 36px;
+        /* Tăng kích thước cho dễ touch */
+        min-height: 36px;
       }
 
       .dialogue-controls {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+        /* Full width trên mobile */
+        gap: 0.75rem;
 
         .btn {
           width: 100%;
-          max-width: 300px;
+          max-width: none;
+          padding: 1rem 1.5rem;
+          font-size: 1rem;
         }
       }
     }
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .dialogue-exercise {
+    padding: 0 0.25rem;
+
+    .dialogue-card {
+      padding: 1rem;
+      border-radius: 10px;
+
+      .dialogue-content .chat-layout {
+        padding: 8px;
+      }
+
+      .message-content {
+        max-width: 85%;
+        /* Tăng max-width thêm nữa */
+        gap: 6px;
+      }
+
+      .message-left,
+      .message-right {
+        gap: 8px;
+        /* Tăng khoảng cách giữa avatar và content */
+      }
+
+      .message-bubble {
+        padding: 8px 12px;
+        border-radius: 16px;
+      }
+
+      .message-text {
+        font-size: 14px;
+      }
+
+      .message-pinyin,
+      .message-meaning {
+        font-size: 10px;
+      }
+
+      .avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+      }
+
+      .audio-btn {
+        font-size: 13px;
+        min-width: 32px;
+        min-height: 32px;
+        padding: 4px;
+      }
+
+      .dialogue-controls .btn {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.95rem;
+        min-height: 46px;
+      }
+    }
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .dialogue-exercise {
+    .dialogue-card {
+      padding: 0.75rem;
+
+      .message-content {
+        max-width: 90%;
+        /* Gần như full width trên màn hình rất nhỏ */
+      }
+
+      .message-bubble {
+        padding: 6px 10px;
+      }
+
+      .message-text {
+        font-size: 13px;
+      }
+
+      .avatar {
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
+      }
+
+      .audio-btn {
+        min-width: 30px;
+        min-height: 30px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+/* Đảm bảo text không bị tràn trên mobile */
+.message-bubble {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Tối ưu cho các tin nhắn dài */
+.message-text {
+  line-height: 1.3;
+}
+
+.message-pinyin,
+.message-meaning {
+  line-height: 1.2;
+}
+
+/* Hiệu ứng loading cho audio */
+.audio-btn:disabled {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0.5;
   }
 }

@@ -63,32 +63,101 @@
       color: #7f8c8d;
       font-size: 0.95rem;
       line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
 }
 
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 1024px) {
   .home-page {
     margin-left: 0;
-    padding: 1rem;
+    padding: 1.5rem 0;
 
     .welcome-section {
+      margin-bottom: 2.5rem;
+
       h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+      }
+    }
+
+    .lessons-overview {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .home-page {
+    padding: 1rem 0;
+
+    .container {
+      padding: 0 0.75rem;
+    }
+
+    .welcome-section {
+      margin-bottom: 2rem;
+
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.75rem;
       }
 
       p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        line-height: 1.5;
       }
     }
 
     .lessons-overview {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
     .lesson-card {
-      padding: 1.5rem;
+      padding: 1.25rem;
+
+      h3 {
+        font-size: 1.2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .description {
+        font-size: 0.9rem;
+        -webkit-line-clamp: 2;
+      }
+    }
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .home-page {
+    .welcome-section {
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+
+    .lesson-card {
+      padding: 1rem;
+
+      h3 {
+        font-size: 1.1rem;
+      }
     }
   }
 }

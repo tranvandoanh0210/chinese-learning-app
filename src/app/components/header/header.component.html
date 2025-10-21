@@ -1,6 +1,9 @@
 <header class="main-header">
   <div class="container">
-    <div class="logo-section">
+    <button class="mobile-menu-btn" (click)="toggleMobileNav()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="logo-section" (click)="goToHome()" style="cursor: pointer">
       <div class="logo">
         <div class="logo-icon">中</div>
         <div class="logo-text">
@@ -17,14 +20,31 @@
         </div>
       </div>
       @if(user){
-      <div class="user-info">
+      <div class="user-info" (click)="toggleUserDropdown($event)">
         <div class="user-avatar">
           {{ getInitials(user.name) }}
         </div>
         <div class="user-details">
-          <div class="user-name" (click)="selectData()">{{ user.name }}</div>
+          <div class="user-name">{{ user.name }}</div>
           <div class="user-level">{{ user.level }}</div>
         </div>
+        @if(showDropdown){
+        <div class="user-dropdown">
+          <div class="dropdown-item" (click)="renameUser()">
+            <i class="fas fa-edit"></i>
+            <span>Đổi tên</span>
+          </div>
+          <div class="dropdown-item" (click)="goToDataManagement()">
+            <i class="fas fa-database"></i>
+            <span>Quản lý dữ liệu</span>
+          </div>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-item logout" (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Đăng xuất</span>
+          </div>
+        </div>
+        }
       </div>
       }
     </div>

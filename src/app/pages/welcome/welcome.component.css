@@ -140,7 +140,11 @@
 
 @media (max-width: 768px) {
   .welcome-page {
-    padding: 1rem;
+    padding: 0rem;
+
+    .welcome-card {
+      border-radius: 0;
+    }
 
     .welcome-header {
       padding: 2rem 1.5rem;

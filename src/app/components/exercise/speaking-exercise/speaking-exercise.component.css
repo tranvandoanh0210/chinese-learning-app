@@ -1,6 +1,8 @@
 .speaking-exercise {
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 1rem;
+  /* Thêm padding để tránh sát mép màn hình */
 
   .progress-header {
     display: flex;
@@ -44,6 +46,7 @@
       border-radius: 20px;
       font-weight: 600;
       font-size: 0.9rem;
+      white-space: nowrap;
     }
   }
 
@@ -74,6 +77,8 @@
         color: #2c3e50;
         margin-bottom: 0.5rem;
         font-weight: bold;
+        font-family: 'SimSun', 'STKaiti', serif;
+        line-height: 1.2;
       }
 
       .pinyin {
@@ -81,11 +86,13 @@
         color: #e74c3c;
         margin-bottom: 1rem;
         font-style: italic;
+        line-height: 1.3;
       }
 
       .meaning {
         font-size: 1.1rem;
         color: #7f8c8d;
+        line-height: 1.4;
       }
     }
 
@@ -102,6 +109,8 @@
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
+        min-height: 44px;
+        /* Tối ưu cho mobile touch */
 
         &:disabled {
           opacity: 0.6;
@@ -114,6 +123,7 @@
 
           &:hover:not(:disabled) {
             background: #2980b9;
+            transform: translateY(-2px);
           }
         }
 
@@ -123,6 +133,7 @@
 
           &:hover:not(:disabled) {
             background: #7f8c8d;
+            transform: translateY(-2px);
           }
         }
       }
@@ -142,6 +153,8 @@
           cursor: pointer;
           transition: all 0.3s ease;
           min-width: 200px;
+          min-height: 80px;
+          /* Tối ưu cho mobile touch */
 
           &:hover {
             background: #e9ecef;
@@ -175,6 +188,7 @@
           .record-text {
             font-weight: 600;
             color: #2c3e50;
+            font-size: 1rem;
           }
         }
       }
@@ -196,6 +210,7 @@
           color: #2c3e50;
           font-size: 1.1rem;
           font-weight: 500;
+          line-height: 1.3;
         }
       }
 
@@ -228,6 +243,7 @@
           border-radius: 6px;
           font-weight: 500;
           margin-bottom: 1rem;
+          line-height: 1.4;
 
           &.success {
             background: #d5f4e6;
@@ -254,6 +270,9 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            min-height: 44px;
+            /* Tối ưu cho mobile touch */
+            flex: 1;
 
             &.btn-outline {
               background: transparent;
@@ -288,6 +307,7 @@
         color: #27ae60;
         font-weight: 600;
         margin-bottom: 1.5rem;
+        line-height: 1.3;
       }
 
       .completed-actions {
@@ -303,6 +323,10 @@
           font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
+          min-height: 44px;
+          /* Tối ưu cho mobile touch */
+          flex: 1;
+          max-width: 200px;
 
           &.btn-outline {
             background: transparent;
@@ -355,6 +379,10 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
+      min-height: 44px;
+      /* Tối ưu cho mobile touch */
+      flex: 1;
+      max-width: 150px;
 
       &:hover:not(:disabled) {
         background: #3498db;
@@ -382,6 +410,9 @@
     .exercise-dots {
       display: flex;
       gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex: 2;
 
       .dot {
         width: 40px;
@@ -396,6 +427,7 @@
         border: 2px solid #bdc3c7;
         background: white;
         color: #7f8c8d;
+        flex-shrink: 0;
 
         &:hover {
           border-color: #3498db;
@@ -437,12 +469,14 @@
         color: #2c3e50;
         margin-bottom: 1rem;
         font-size: 2rem;
+        line-height: 1.2;
       }
 
       p {
         color: #7f8c8d;
         margin-bottom: 2rem;
         font-size: 1.1rem;
+        line-height: 1.4;
       }
 
       .completion-stats {
@@ -459,11 +493,13 @@
             font-weight: bold;
             color: #3498db;
             margin-bottom: 0.5rem;
+            line-height: 1;
           }
 
           .stat-label {
             color: #7f8c8d;
             font-size: 0.9rem;
+            line-height: 1.2;
           }
         }
       }
@@ -478,6 +514,7 @@
         cursor: pointer;
         transition: all 0.3s ease;
         font-size: 1.1rem;
+        min-height: 50px;
 
         &:hover {
           background: #2980b9;
@@ -502,52 +539,306 @@
   }
 }
 
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .speaking-exercise {
+    max-width: 95%;
+
+    .speaking-card {
+      padding: 1.75rem;
+
+      .question-header {
+        .question-text {
+          font-size: 2.2rem;
+        }
+
+        .pinyin {
+          font-size: 1.2rem;
+        }
+      }
+
+      .btn-record {
+        min-width: 180px;
+        min-height: 75px;
+      }
+    }
+
+    .completion-stats {
+      gap: 2rem;
+
+      .stat .stat-value {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .speaking-exercise {
+    max-width: 100%;
+    padding: 0 0.5rem;
+
     .progress-header {
       flex-direction: column;
       gap: 1rem;
       text-align: center;
+      padding: 1.25rem;
     }
 
     .speaking-card {
       padding: 1.5rem;
+      border-radius: 10px;
 
       .question-header {
+        margin-bottom: 1.5rem;
+
+        .question-title {
+          font-size: 1.3rem;
+        }
+
         .question-text {
           font-size: 2rem;
+          line-height: 1.1;
+        }
+
+        .pinyin {
+          font-size: 1.1rem;
+        }
+
+        .meaning {
+          font-size: 1rem;
         }
       }
 
       .audio-controls {
         flex-direction: column;
         align-items: center;
+        gap: 0.75rem;
+
+        .btn {
+          width: 100%;
+          max-width: 280px;
+        }
       }
 
-      .pronunciation-result .result-header {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
+      .recording-section {
+        .btn-record {
+          min-width: 160px;
+          min-height: 70px;
+          padding: 1.25rem 1.5rem;
+
+          .mic-icon {
+            font-size: 1.8rem;
+          }
+
+          .record-text {
+            font-size: 0.95rem;
+          }
+        }
+
+        .pronunciation-result {
+          padding: 1.25rem;
+
+          .result-header {
+            flex-direction: column;
+            gap: 0.5rem;
+            text-align: center;
+          }
+
+          .result-actions {
+            flex-direction: column;
+            gap: 0.75rem;
+
+            .btn {
+              width: 100%;
+            }
+          }
+        }
       }
 
-      .result-actions {
-        flex-direction: column;
-      }
+      .completed-state {
+        padding: 1.5rem;
 
-      .completed-state .completed-actions {
-        flex-direction: column;
+        .completed-actions {
+          flex-direction: column;
+          gap: 0.75rem;
+
+          .btn {
+            max-width: none;
+            width: 100%;
+          }
+        }
       }
     }
 
     .navigation-controls {
       flex-direction: column;
       gap: 1rem;
+      padding: 1.25rem;
 
       .exercise-dots {
         order: -1;
         flex-wrap: wrap;
         justify-content: center;
+
+        .dot {
+          width: 36px;
+          height: 36px;
+          font-size: 0.9rem;
+        }
+      }
+
+      .btn-nav {
+        max-width: none;
+        width: 100%;
       }
     }
+
+    .all-completed .completion-card {
+      padding: 2rem;
+
+      h3 {
+        font-size: 1.7rem;
+      }
+
+      .completion-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .stat .stat-value {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .speaking-exercise {
+    padding: 0 0.25rem;
+
+    .progress-header {
+      padding: 1rem;
+    }
+
+    .speaking-card {
+      padding: 1.25rem;
+
+      .question-header {
+        .question-text {
+          font-size: 1.8rem;
+        }
+
+        .pinyin {
+          font-size: 1rem;
+        }
+      }
+
+      .btn-record {
+        min-width: 140px;
+        min-height: 65px;
+        padding: 1rem 1.25rem;
+      }
+
+      .pronunciation-result {
+        padding: 1rem;
+      }
+    }
+
+    .navigation-controls {
+      padding: 1rem;
+
+      .exercise-dots .dot {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+      }
+    }
+
+    .all-completed .completion-card {
+      padding: 1.5rem;
+
+      .completion-icon {
+        font-size: 3rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .speaking-exercise {
+    .speaking-card {
+      padding: 1rem;
+
+      .question-header .question-text {
+        font-size: 1.6rem;
+      }
+
+      .btn-record {
+        min-width: 130px;
+        min-height: 60px;
+      }
+    }
+
+    .exercise-dots .dot {
+      width: 30px;
+      height: 30px;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .speaking-exercise {
+    .speaking-card .question-header .question-text {
+      font-size: 1.8rem;
+    }
+
+    .navigation-controls {
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .exercise-dots {
+        order: 0;
+        flex-basis: 100%;
+        margin: 0.5rem 0;
+      }
+    }
+  }
+}
+
+/* Đảm bảo text không bị tràn */
+.question-text,
+.speech-text,
+.feedback {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Hiệu ứng loading cho các button khi disabled */
+.btn:disabled,
+.btn-record.recording {
+  position: relative;
+}
+
+/* Tối ưu cho các ký tự Trung Quốc dài */
+@media (max-width: 480px) {
+  .speaking-exercise .speaking-card .question-header .question-text {
+    font-size: 1.6rem;
+    line-height: 1.1;
   }
 }

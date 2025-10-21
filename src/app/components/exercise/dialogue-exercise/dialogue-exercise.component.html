@@ -13,7 +13,7 @@
             <!-- Speaker A (left side) -->
             <div *ngIf="exercise.lines.indexOf(line) % 2 == 0" class="message-left">
               <div class="message-avatar">
-                <div class="avatar">{{ line.speaker }}</div>
+                <div class="avatar">{{ getInitials(line.speaker) }}</div>
               </div>
               <div class="message-content">
                 <div class="message-bubble left-bubble">
@@ -39,7 +39,7 @@
                 </button>
               </div>
               <div class="message-avatar">
-                <div class="avatar">{{ line.speaker }}</div>
+                <div class="avatar">{{ getInitials(line.speaker) }}</div>
               </div>
             </div>
           </div>

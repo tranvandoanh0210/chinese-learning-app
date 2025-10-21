@@ -1,9 +1,11 @@
 .review-exercise {
   text-align: center;
+  padding: 1rem;
+  /* Thêm padding để tránh sát mép màn hình */
 
   .flashcard-container {
     perspective: 1000px;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .flashcard {
@@ -12,7 +14,7 @@
     margin: 0 auto;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.6s;
+    transition: transform 0.6s ease;
     cursor: pointer;
 
     &.flipped {
@@ -41,6 +43,8 @@
       .chinese-character {
         font-size: 3rem;
         margin-bottom: 0.5rem;
+        font-family: 'SimSun', 'STKaiti', serif;
+        font-weight: 500;
       }
 
       .pinyin {
@@ -57,9 +61,22 @@
         border-radius: 25px;
         cursor: pointer;
         font-size: 1.2rem;
+        transition: all 0.3s ease;
+        min-width: 44px;
+        /* Tối ưu cho mobile touch */
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &:hover {
           background: rgba(255, 255, 255, 0.3);
+          transform: scale(1.05);
+        }
+
+        &.disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
         }
       }
     }
@@ -73,11 +90,13 @@
         font-size: 2rem;
         margin-bottom: 1rem;
         font-weight: bold;
+        font-family: 'SimSun', 'STKaiti', serif;
       }
 
       .description {
         font-size: 1rem;
         opacity: 0.9;
+        line-height: 1.4;
       }
     }
   }
@@ -92,38 +111,344 @@
       background: #3498db;
       color: white;
       border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      min-height: 44px;
+      /* Tối ưu cho mobile touch */
+      flex: 1;
+      max-width: 140px;
 
       &:hover:not(:disabled) {
         background: #2980b9;
+        transform: translateY(-2px);
       }
 
       &:disabled {
         background: #bdc3c7;
         cursor: not-allowed;
+        transform: none;
       }
     }
 
     span {
       font-weight: bold;
       color: #2c3e50;
+      font-size: 1.1rem;
+      min-width: 80px;
     }
   }
 }
 
-@media (max-width: 480px) {
-  .review-exercise .flashcard {
-    width: 250px;
-    height: 180px;
+/* ========== RESPONSIVE DESIGN ========== */
 
-    .front .chinese-character {
-      font-size: 2.5rem;
+/* Tablet */
+@media (max-width: 1024px) {
+  .review-exercise {
+    padding: 0.875rem;
+
+    .flashcard {
+      width: 280px;
+      height: 190px;
+
+      .front {
+        .chinese-character {
+          font-size: 2.8rem;
+        }
+
+        .pinyin {
+          font-size: 1.1rem;
+        }
+      }
+
+      .back {
+        .answer {
+          font-size: 1.8rem;
+        }
+
+        .description {
+          font-size: 0.95rem;
+        }
+      }
     }
 
+    .navigation {
+      gap: 0.875rem;
+
+      button {
+        padding: 0.7rem 1.1rem;
+        font-size: 0.95rem;
+        max-width: 130px;
+      }
+
+      span {
+        font-size: 1.05rem;
+      }
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .review-exercise {
+    padding: 0.75rem;
+
+    .flashcard-container {
+      margin-bottom: 1.25rem;
+    }
+
+    .flashcard {
+      width: 260px;
+      height: 180px;
+      border-radius: 10px;
+
+      .front,
+      .back {
+        padding: 1.25rem;
+        border-radius: 10px;
+      }
+
+      .front {
+        .chinese-character {
+          font-size: 2.5rem;
+          margin-bottom: 0.4rem;
+        }
+
+        .pinyin {
+          font-size: 1rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .audio-btn {
+          padding: 0.4rem 0.8rem;
+          font-size: 1.1rem;
+          min-width: 40px;
+          min-height: 40px;
+        }
+      }
+
+      .back {
+        .answer {
+          font-size: 1.6rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .description {
+          font-size: 0.9rem;
+          line-height: 1.3;
+        }
+      }
+    }
+
+    .navigation {
+      flex-direction: column;
+      /* Chuyển sang column layout trên mobile */
+      gap: 0.75rem;
+      align-items: stretch;
+
+      button {
+        max-width: none;
+        /* Full width trên mobile */
+        padding: 0.875rem 1rem;
+        font-size: 1rem;
+      }
+
+      span {
+        order: -1;
+        /* Đưa counter lên đầu */
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .review-exercise {
+    padding: 0.5rem;
+
+    .flashcard {
+      width: 240px;
+      height: 170px;
+
+      .front,
+      .back {
+        padding: 1rem;
+      }
+
+      .front {
+        .chinese-character {
+          font-size: 2.2rem;
+        }
+
+        .pinyin {
+          font-size: 0.95rem;
+        }
+
+        .audio-btn {
+          padding: 0.35rem 0.7rem;
+          font-size: 1rem;
+          min-width: 38px;
+          min-height: 38px;
+        }
+      }
+
+      .back {
+        .answer {
+          font-size: 1.4rem;
+        }
+
+        .description {
+          font-size: 0.85rem;
+        }
+      }
+    }
+
+    .navigation {
+      gap: 0.625rem;
+
+      button {
+        padding: 0.8rem 0.875rem;
+        font-size: 0.95rem;
+      }
+
+      span {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+      }
+    }
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .review-exercise {
+    padding: 0.25rem;
+
+    .flashcard {
+      width: 220px;
+      height: 160px;
+
+      .front {
+        .chinese-character {
+          font-size: 2rem;
+        }
+
+        .pinyin {
+          font-size: 0.9rem;
+        }
+
+        .audio-btn {
+          min-width: 36px;
+          min-height: 36px;
+          font-size: 0.9rem;
+        }
+      }
+
+      .back {
+        .answer {
+          font-size: 1.3rem;
+        }
+
+        .description {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .navigation {
+      button {
+        padding: 0.75rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      span {
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .review-exercise {
+    .flashcard {
+      width: 220px;
+      height: 150px;
+
+      .front {
+        .chinese-character {
+          font-size: 2rem;
+          margin-bottom: 0.25rem;
+        }
+
+        .pinyin {
+          font-size: 0.9rem;
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      .back {
+        .answer {
+          font-size: 1.4rem;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+
+    .navigation {
+      flex-direction: row;
+      /* Giữ row layout trong landscape */
+      gap: 0.5rem;
+
+      span {
+        order: 0;
+        /* Reset order */
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+/* Hiệu ứng loading cho audio */
+.audio-btn.disabled {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Đảm bảo text không bị tràn */
+.chinese-character,
+.answer {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+/* Tối ưu cho các ký tự Trung Quốc dài */
+@media (max-width: 480px) {
+  .review-exercise .flashcard {
+
+    .front .chinese-character,
     .back .answer {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
+      /* Giảm thêm cho các từ dài */
+      line-height: 1.1;
     }
   }
 }

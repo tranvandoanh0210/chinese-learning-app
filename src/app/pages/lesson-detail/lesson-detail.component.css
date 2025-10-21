@@ -194,27 +194,78 @@
   }
 }
 
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .lesson-detail {
+    margin-left: 280px;
+
+    .lesson-hero .hero-content {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .chinese-title {
+        font-size: 1.6rem;
+      }
+
+      .lesson-stats {
+        gap: 2.5rem;
+
+        .stat .stat-number {
+          font-size: 1.8rem;
+        }
+      }
+    }
+
+    .category-navigation .category-tabs .category-tab {
+      min-width: 180px;
+      padding: 0.5rem 0.8rem;
+    }
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .lesson-detail {
     margin-left: 0;
 
     .lesson-hero {
-      padding: 2rem 0;
+      padding: 1.5rem 0;
 
       .hero-content {
         h1 {
-          font-size: 2rem;
+          font-size: 1.8rem;
+          /* Giảm kích thước tiêu đề */
+          margin-bottom: 0.75rem;
         }
 
         .chinese-title {
-          font-size: 1.4rem;
+          font-size: 1.3rem;
+          /* Giảm kích thước tiếng Trung */
+          margin-bottom: 0.75rem;
+        }
+
+        .lesson-description {
+          font-size: 1rem;
+          /* Giảm kích thước mô tả */
+          margin-bottom: 1rem;
+          line-height: 1.5;
         }
 
         .lesson-stats {
           gap: 2rem;
+          /* Giảm khoảng cách giữa các stat */
 
           .stat .stat-number {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            /* Giảm kích thước số */
+          }
+
+          .stat .stat-label {
+            font-size: 0.85rem;
+            /* Giảm kích thước nhãn */
           }
         }
       }
@@ -223,17 +274,195 @@
     .category-navigation {
       top: 0;
       /* Reset top position on mobile */
+      position: relative;
+      /* Thay đổi từ sticky sang relative cho mobile */
 
       .category-tabs {
+        padding: 0.75rem 0;
+
         .category-tab {
-          min-width: 250px;
-          padding: 0.8rem 1.2rem;
+          min-width: 160px;
+          /* Giảm min-width cho mobile */
+          padding: 0.6rem 0.8rem;
 
           .category-icon {
-            width: 40px;
-            height: 40px;
-            margin-right: 0.8rem;
+            font-size: 1rem;
+            /* Giảm kích thước icon */
+            margin-right: 0.6rem;
           }
+
+          .category-info .category-name {
+            font-size: 0.9rem;
+            /* Giảm kích thước tên category */
+          }
+
+          .exercise-count {
+            font-size: 0.75rem;
+            /* Giảm kích thước số bài tập */
+            padding: 0.1rem 0.3rem;
+          }
+        }
+      }
+    }
+
+    .category-content {
+      padding: 0.75rem 0;
+
+      .content-header {
+        margin-bottom: 0.75rem;
+
+        h3 {
+          font-size: 1.6rem;
+          /* Giảm kích thước tiêu đề nội dung */
+          margin-bottom: 0.75rem;
+        }
+
+        p {
+          font-size: 1rem;
+          /* Giảm kích thước mô tả */
+          line-height: 1.5;
+        }
+      }
+    }
+
+    .no-category-selected {
+      padding: 2.5rem 0;
+      /* Giảm padding */
+
+      .no-category-content {
+        .no-category-icon {
+          font-size: 3rem;
+          /* Giảm kích thước icon */
+          margin-bottom: 1rem;
+        }
+
+        h3 {
+          font-size: 1.3rem;
+          /* Giảm kích thước tiêu đề */
+          margin-bottom: 0.75rem;
+        }
+
+        p {
+          font-size: 1rem;
+          /* Giảm kích thước văn bản */
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .lesson-detail {
+    .lesson-hero {
+      padding: 1.25rem 0;
+
+      .hero-content {
+        .lesson-badge {
+          padding: 0.4rem 1.2rem;
+          /* Điều chỉnh padding badge */
+          font-size: 0.9rem;
+        }
+
+        h1 {
+          font-size: 1.6rem;
+          /* Tiếp tục giảm kích thước tiêu đề */
+        }
+
+        .chinese-title {
+          font-size: 1.2rem;
+        }
+
+        .lesson-description {
+          font-size: 0.95rem;
+        }
+
+        .lesson-stats {
+          gap: 1.5rem;
+          /* Giảm khoảng cách giữa stats */
+          flex-wrap: wrap;
+          /* Cho phép wrap nếu cần */
+
+          .stat .stat-number {
+            font-size: 1.3rem;
+          }
+
+          .stat .stat-label {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    .category-navigation .category-tabs {
+      .category-tab {
+        min-width: 140px;
+        /* Tiếp tục giảm min-width */
+        padding: 0.5rem 0.6rem;
+
+        .category-icon {
+          font-size: 0.9rem;
+          margin-right: 0.5rem;
+        }
+
+        .category-info .category-name {
+          font-size: 0.85rem;
+        }
+
+        .exercise-count {
+          font-size: 0.7rem;
+        }
+      }
+    }
+
+    .category-content .content-header {
+      h3 {
+        font-size: 1.4rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+
+    .no-category-selected {
+      padding: 2rem 0;
+
+      .no-category-content {
+        .no-category-icon {
+          font-size: 2.5rem;
+        }
+
+        h3 {
+          font-size: 1.2rem;
+        }
+
+        p {
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .lesson-detail {
+    .lesson-hero .hero-content {
+      .lesson-stats {
+        gap: 1rem;
+        /* Khoảng cách nhỏ hơn cho màn hình rất nhỏ */
+      }
+    }
+
+    .category-navigation .category-tabs {
+      .category-tab {
+        min-width: 130px;
+        padding: 0.4rem 0.5rem;
+
+        .category-info .category-name {
+          font-size: 0.8rem;
         }
       }
     }

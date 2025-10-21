@@ -280,3 +280,183 @@
     }
   }
 }
+
+/* Mobile Responsive Improvements */
+@media (max-width: 480px) {
+  .writing-exercise {
+    padding: 0 1rem;
+
+    .writing-card {
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 12px;
+
+      .character-info {
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+
+        .main-character {
+          font-size: 3rem;
+        }
+
+        .character-details {
+          .pinyin {
+            font-size: 1.2rem;
+          }
+
+          .meaning {
+            font-size: 1rem;
+          }
+
+          .stroke-count,
+          .radical {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    .practice-section {
+      .canvas-container {
+        width: 100%;
+        height: 280px;
+        margin-bottom: 1.5rem;
+
+        .character-template {
+          font-size: 5rem;
+        }
+      }
+
+      .drawing-controls {
+        gap: 0.8rem;
+
+        .btn {
+          padding: 0.7rem 1.2rem;
+          font-size: 0.9rem;
+          width: 100%;
+          max-width: 180px;
+
+          /* Icon sizing for mobile */
+          &::before {
+            font-size: 1.1rem;
+            margin-right: 0.3rem;
+          }
+        }
+      }
+
+      .writing-progress {
+        margin-bottom: 1rem;
+
+        .progress-info {
+          flex-direction: column;
+          gap: 0.3rem;
+          text-align: center;
+
+          span {
+            font-size: 0.9rem;
+          }
+        }
+      }
+
+      .completion-message {
+        padding: 1.5rem 1rem;
+
+        .success-icon {
+          font-size: 2.5rem;
+        }
+
+        h3 {
+          font-size: 1.3rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .writing-exercise {
+    .writing-card {
+      .character-info {
+        .main-character {
+          font-size: 2.5rem;
+        }
+      }
+
+      .practice-section {
+        .canvas-container {
+          height: 250px;
+
+          .character-template {
+            font-size: 4rem;
+          }
+        }
+
+        .drawing-controls {
+          .btn {
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+            max-width: 160px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .writing-exercise {
+    .writing-card {
+      .practice-section {
+        .canvas-container {
+          .writing-canvas {
+            cursor: default;
+          }
+        }
+
+        .drawing-controls {
+          .btn {
+            /* Larger touch targets */
+            min-height: 44px;
+            padding: 0.8rem 1.5rem;
+
+            &:active {
+              transform: scale(0.98);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Landscape mode for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .writing-exercise {
+    .writing-card {
+      .character-info {
+        flex-direction: row;
+        gap: 1.5rem;
+
+        .main-character {
+          font-size: 2.5rem;
+        }
+      }
+
+      .practice-section {
+        .canvas-container {
+          height: 200px;
+
+          .character-template {
+            font-size: 3.5rem;
+          }
+        }
+      }
+    }
+  }
+}

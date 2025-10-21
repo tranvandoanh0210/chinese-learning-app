@@ -14,6 +14,7 @@ import { UserService } from './services/user.service';
 export class App implements OnInit {
   hasUser = false;
   title = 'Chinese Learning App';
+  isMobileNavOpen = false;
   // protected readonly title = signal('chinese-learning-website');
   constructor(private userService: UserService, private router: Router) {}
   ngOnInit() {
@@ -24,5 +25,8 @@ export class App implements OnInit {
         this.router.navigate(['/welcome']);
       }
     });
+  }
+  onMobileMenuToggle() {
+    this.isMobileNavOpen = !this.isMobileNavOpen;
   }
 }

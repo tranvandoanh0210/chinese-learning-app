@@ -1,6 +1,8 @@
 .data-management {
   padding: 20px;
   max-width: 800px;
+  margin-left: 320px;
+  /* Thêm margin để tránh sidebar */
 }
 
 .github-status {
@@ -113,6 +115,8 @@
   cursor: pointer;
   font-size: 14px;
   transition: background 0.3s;
+  min-height: 44px;
+  /* Tối ưu cho mobile touch */
 }
 
 .btn-primary {
@@ -127,6 +131,11 @@
 
 .btn-warning {
   background: #f39c12;
+  color: white;
+}
+
+.btn-secondary {
+  background: #6c757d;
   color: white;
 }
 
@@ -182,6 +191,11 @@
   font-size: 24px;
   cursor: pointer;
   color: #999;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-close:hover {
@@ -205,10 +219,14 @@
 
 .form-control {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
+  /* Tăng padding cho mobile */
   border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 16px;
+  /* Tối ưu cho mobile */
+  min-height: 48px;
+  /* Tối ưu cho mobile touch */
 }
 
 .form-control:focus {
@@ -262,18 +280,196 @@
   margin-top: 20px;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .data-management {
+    margin-left: 280px;
+    padding: 1.5rem;
+    max-width: none;
+  }
+
+  .action-buttons {
+    gap: 12px;
+  }
+
+  .btn {
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .data-management {
+    margin-left: 0 !important;
+    /* Quan trọng: xóa margin khi sidebar ẩn */
+    padding: 1rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    /* Chuyển sang column trên mobile */
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .action-buttons .btn {
+    width: 100%;
+    /* Full width buttons trên mobile */
+    text-align: center;
+    justify-content: center;
+  }
+
+  .import-results {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .deployment-status {
+    padding: 12px;
+    margin-top: 15px;
+  }
+
+  .github-status {
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  /* Tối ưu dialog cho mobile */
   .dialog-container {
     width: 95%;
-    margin: 20px;
+    margin: 10px;
+  }
+
+  .dialog-header {
+    padding: 15px;
+  }
+
+  .dialog-body {
+    padding: 15px;
   }
 
   .dialog-actions {
     flex-direction: column;
+    /* Chuyển actions sang column trên mobile */
+    gap: 8px;
   }
 
   .dialog-actions .btn {
     width: 100%;
+    margin: 0;
   }
+
+  .token-help {
+    padding: 12px;
+    margin: 15px 0;
+  }
+
+  .token-help ol {
+    padding-left: 15px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .data-management {
+    padding: 0.75rem;
+  }
+
+  .action-buttons {
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 14px 16px;
+    /* Tăng padding cho dễ touch */
+    font-size: 16px;
+    /* Tăng font size cho mobile */
+  }
+
+  .import-results {
+    padding: 12px;
+  }
+
+  .errors {
+    padding: 12px;
+  }
+
+  .errors ul {
+    padding-left: 15px;
+  }
+
+  .dialog-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .form-control {
+    padding: 14px;
+    font-size: 16px;
+    /* Ngăn zoom trên iOS */
+  }
+
+  .token-help {
+    padding: 10px;
+  }
+
+  .token-help h5 {
+    font-size: 0.9rem;
+  }
+
+  .token-help ol {
+    font-size: 0.85rem;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .data-management {
+    padding: 0.5rem;
+  }
+
+  .dialog-container {
+    width: 98%;
+    margin: 5px;
+  }
+
+  .dialog-header,
+  .dialog-body {
+    padding: 12px;
+  }
+
+  .token-help ol {
+    padding-left: 12px;
+  }
+}
+
+/* Đảm bảo các link trong token-help dễ click trên mobile */
+.token-help a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.token-help a:hover {
+  text-decoration: underline;
+}
+
+/* Tối ưu cho các danh sách lỗi */
+.errors li {
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+/* Tối ưu cho import results */
+.import-results h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.import-results p {
+  margin: 8px 0;
+  line-height: 1.4;
 }

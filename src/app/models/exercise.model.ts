@@ -4,7 +4,6 @@ export interface BaseExercise {
   categoryId: string;
   type: string;
   question?: string;
-  description?: string;
   answer?: string;
   explanation?: string;
 }
@@ -44,12 +43,12 @@ export interface SpeakingExercise extends BaseExercise {
 export interface FlashcardExercise extends BaseExercise {
   type: 'flashcard';
   pinyin: string;
+  description?: string;
 }
 export interface WritingExercise extends BaseExercise {
   type: 'writing';
-  character: string;
   pinyin: string;
-  meaning: string;
+  strokeGif?: string;
 }
 export interface DialogueLine {
   speaker: string;

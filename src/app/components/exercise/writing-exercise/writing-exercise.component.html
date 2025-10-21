@@ -3,10 +3,10 @@
     <div class="writing-card">
       <!-- Character Info -->
       <div class="character-info">
-        <div class="main-character">{{ exercise.character }}</div>
+        <div class="main-character">{{ exercise.question }}</div>
         <div class="character-details">
           <div class="pinyin">{{ exercise.pinyin }}</div>
-          <div class="meaning">{{ exercise.meaning }}</div>
+          <div class="meaning">{{ exercise.answer }}</div>
         </div>
       </div>
 
@@ -32,7 +32,7 @@
           </canvas>
 
           <!-- Character Template (background) -->
-          <div class="character-template" aria-hidden="true">{{ exercise.character }}</div>
+          <div class="character-template" aria-hidden="true">{{ exercise.question }}</div>
         </div>
 
         <!-- Drawing Controls -->

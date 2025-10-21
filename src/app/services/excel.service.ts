@@ -104,8 +104,7 @@ export class ExcelService {
       }
     }
 
-    // Set column width ~300 (đơn vị là character width)
-    const colWidth = 40; // ~300 pixels tương đương với 40 character width
+    const colWidth = 40;
     if (!worksheet['!cols']) {
       worksheet['!cols'] = [];
     }
@@ -181,9 +180,9 @@ export class ExcelService {
         let exercises: Exercise[] = [];
         if (categoryType === 'dialogue') {
           // Xử lý dialogue với context
-          exercises = this.parseDialogueSheet(data, sheetName, errors);
+          exercises = this.parseDialogueSheet(data, sheetName, category.id, errors);
         } else {
-          exercises = this.parseExercises(data, categoryType, errors, sheetName);
+          exercises = this.parseExercises(data, categoryType, category.id, errors, sheetName);
         }
         category.exercises.push(...exercises);
       } catch (error) {
@@ -261,6 +260,7 @@ export class ExcelService {
   private parseExercises(
     data: any[],
     categoryType: string,
+    categoryId: string,
     errors: string[],
     sheetName: string
   ): Exercise[] {
@@ -270,10 +270,9 @@ export class ExcelService {
       try {
         const baseExercise = {
           id: this.generateId('ex'),
-          categoryId: '', // Sẽ được set sau
+          categoryId: categoryId, // Sẽ được set sau
           type: categoryType,
           question: row.question || '',
-          description: row.description || '',
           answer: row.answer || '',
           explanation: row.explanation || '',
         };
@@ -309,6 +308,7 @@ export class ExcelService {
               ...baseExercise,
               type: 'flashcard',
               pinyin: row.pinyin || '',
+              description: row.description || '',
             } as FlashcardExercise;
             break;
 
@@ -324,9 +324,7 @@ export class ExcelService {
             exercise = {
               ...baseExercise,
               type: 'writing',
-              character: row.character || '',
               pinyin: row.pinyin || '',
-              meaning: row.meaning || '',
             } as WritingExercise;
             break;
 
@@ -403,7 +401,12 @@ export class ExcelService {
   }
 
   // Xử lý đặc biệt cho Dialogue (cần group theo context)
-  private parseDialogueSheet(data: any[], sheetName: string, errors: string[]): Exercise[] {
+  private parseDialogueSheet(
+    data: any[],
+    sheetName: string,
+    categoryId: string,
+    errors: string[]
+  ): Exercise[] {
     const dialogues = new Map<string, DialogueExercise>();
 
     data.forEach((row, index) => {
@@ -417,7 +420,7 @@ export class ExcelService {
         if (!dialogues.has(context)) {
           dialogues.set(context, {
             id: this.generateId('dialogue'),
-            categoryId: '', // Sẽ set sau
+            categoryId: categoryId, // Sẽ set sau
             type: 'dialogue',
             context: context,
             lines: [],
@@ -452,7 +455,6 @@ export class ExcelService {
       .map((exercise) => {
         const baseData = {
           question: exercise.question,
-          description: exercise.description,
           answer: exercise.answer,
         };
 
@@ -476,6 +478,7 @@ export class ExcelService {
             const review = exercise as FlashcardExercise;
             return {
               ...baseData,
+              description: review.description,
               pinyin: review.pinyin,
             };
 
@@ -490,9 +493,7 @@ export class ExcelService {
             const writing = exercise as WritingExercise;
             return {
               ...baseData,
-              character: writing.character,
               pinyin: writing.pinyin,
-              meaning: writing.meaning,
             };
 
           case 'dialogue':

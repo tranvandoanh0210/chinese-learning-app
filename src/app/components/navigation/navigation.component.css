@@ -136,7 +136,7 @@
   padding-right: 3rem;
 }
 
-@media (min-width: 769px) {
+/* @media (min-width: 769px) {
   .close-mobile-nav {
     display: none;
   }
@@ -145,7 +145,7 @@
     transform: translateX(0);
     position: relative;
   }
-}
+} */
 
 /* Thêm vào navigation component CSS */
 .sidebar-navigation {

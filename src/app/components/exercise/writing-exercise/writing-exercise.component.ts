@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  HostListener,
   Input,
   Output,
   QueryList,
@@ -39,10 +40,14 @@ export class WritingExerciseComponent {
   @Output() completed = new EventEmitter<any>();
   @ViewChildren('writingCanvas') canvasRefs!: QueryList<ElementRef<HTMLCanvasElement>>;
   private canvasStates: CanvasState[] = [];
+  private resizeObserver: ResizeObserver | null = null;
   ngAfterViewInit() {
     this.initializeCanvases();
+    this.setupResizeObserver();
   }
-
+  ngOnDestroy() {
+    this.resizeObserver?.disconnect();
+  }
   private initializeCanvases(): void {
     this.canvasRefs.forEach((canvasRef, index) => {
       const canvas = canvasRef.nativeElement;
@@ -60,12 +65,58 @@ export class WritingExerciseComponent {
       };
     });
   }
+  private setupCanvasSize(canvas: HTMLCanvasElement): void {
+    const container = canvas.parentElement;
+    if (!container) return;
 
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+
+    // Set CSS dimensions
+    canvas.style.width = containerWidth + 'px';
+    canvas.style.height = containerHeight + 'px';
+
+    // Set internal dimensions với device pixel ratio
+    const scale = window.devicePixelRatio || 1;
+    canvas.width = containerWidth * scale;
+    canvas.height = containerHeight * scale;
+
+    // Scale context để bù cho DPR
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      ctx.scale(scale, scale);
+    }
+  }
+
+  private setupResizeObserver(): void {
+    this.resizeObserver = new ResizeObserver((entries) => {
+      entries.forEach((entry) => {
+        const canvas = entry.target as HTMLCanvasElement;
+        const index = this.getCanvasIndex(canvas);
+        if (index !== -1) {
+          this.setupCanvasSize(canvas);
+          this.redrawCanvas(index);
+        }
+      });
+    });
+
+    // Observe all canvas containers
+    this.canvasRefs.forEach((canvasRef) => {
+      const container = canvasRef.nativeElement.parentElement;
+      if (container) {
+        this.resizeObserver?.observe(container);
+      }
+    });
+  }
+  private getCanvasIndex(canvas: HTMLCanvasElement): number {
+    return this.canvasStates.findIndex((state) => state.canvas === canvas);
+  }
   private initializeCanvasContext(ctx: CanvasRenderingContext2D): void {
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
     ctx.lineWidth = 4;
     ctx.strokeStyle = '#2c3e50';
+    ctx.fillStyle = '#2c3e50';
   }
 
   getWritingExercises(): WritingExercise[] {
@@ -78,30 +129,37 @@ export class WritingExerciseComponent {
 
   // Các phương thức xử lý sự kiện với index
   onMouseDown(event: MouseEvent, index: number): void {
-    this.startDrawing(this.getMousePos(event, index), index);
+    event.preventDefault();
+    const pos = this.getCanvasCoordinates(event, index);
+    this.startDrawing(pos, index);
   }
 
   onMouseMove(event: MouseEvent, index: number): void {
+    event.preventDefault();
     if (this.canvasStates[index]?.isDrawing) {
-      this.draw(this.getMousePos(event, index), index);
+      const pos = this.getCanvasCoordinates(event, index);
+      this.draw(pos, index);
     }
   }
 
   onMouseUp(index: number): void {
     this.stopDrawing(index);
   }
+  onMouseLeave(index: number): void {
+    this.stopDrawing(index);
+  }
 
   onTouchStart(event: TouchEvent, index: number): void {
     event.preventDefault();
-    const touch = event.touches[0];
-    this.startDrawing(this.getTouchPos(touch, index), index);
+    const pos = this.getTouchCoordinates(event, index);
+    this.startDrawing(pos, index);
   }
 
   onTouchMove(event: TouchEvent, index: number): void {
     event.preventDefault();
     if (this.canvasStates[index]?.isDrawing) {
-      const touch = event.touches[0];
-      this.draw(this.getTouchPos(touch, index), index);
+      const pos = this.getTouchCoordinates(event, index);
+      this.draw(pos, index);
     }
   }
 
@@ -118,15 +176,32 @@ export class WritingExerciseComponent {
     };
   }
 
-  private getTouchPos(touch: Touch, index: number): Point {
-    const canvas = this.canvasStates[index].canvas;
-    const rect = canvas.getBoundingClientRect();
+  private getCanvasCoordinates(event: MouseEvent, index: number): Point {
+    const state = this.canvasStates[index];
+    if (!state) return { x: 0, y: 0 };
+
+    const rect = state.canvas.getBoundingClientRect();
+    const scaleX = state.canvas.width / (rect.width * window.devicePixelRatio);
+    const scaleY = state.canvas.height / (rect.height * window.devicePixelRatio);
+
     return {
-      x: touch.clientX - rect.left,
-      y: touch.clientY - rect.top,
+      x: (event.clientX - rect.left) * scaleX,
+      y: (event.clientY - rect.top) * scaleY,
     };
   }
+  private getTouchCoordinates(event: TouchEvent, index: number): Point {
+    const state = this.canvasStates[index];
+    if (!state || event.touches.length === 0) return { x: 0, y: 0 };
 
+    const rect = state.canvas.getBoundingClientRect();
+    const scaleX = state.canvas.width / (rect.width * window.devicePixelRatio);
+    const scaleY = state.canvas.height / (rect.height * window.devicePixelRatio);
+
+    return {
+      x: (event.touches[0].clientX - rect.left) * scaleX,
+      y: (event.touches[0].clientY - rect.top) * scaleY,
+    };
+  }
   private startDrawing(pos: Point, index: number): void {
     const state = this.canvasStates[index];
     if (!state) return;
@@ -246,5 +321,15 @@ export class WritingExerciseComponent {
       type: 'writing',
       status: 'completed',
     });
+  }
+  @HostListener('window:resize')
+  onWindowResize(): void {
+    // ResizeObserver should handle this, but this is a fallback
+    setTimeout(() => {
+      this.canvasRefs.forEach((canvasRef, index) => {
+        this.setupCanvasSize(canvasRef.nativeElement);
+        this.redrawCanvas(index);
+      });
+    }, 100);
   }
 }

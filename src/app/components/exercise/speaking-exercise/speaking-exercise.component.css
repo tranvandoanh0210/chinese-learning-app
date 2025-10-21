@@ -16,6 +16,7 @@
 
     .progress-info {
       flex: 1;
+      width: 100%;
 
       .progress-text {
         font-weight: 600;

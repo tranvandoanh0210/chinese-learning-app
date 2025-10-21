@@ -2,22 +2,22 @@ import { Lesson } from '../app/models/lesson.model';
 
 export const SAMPLE_DATA: Lesson[] = [
   {
-    "id": "lesson_1761013850883_qndvtnh8c",
+    "id": "lesson_1761014758923_k6yzplm0y",
     "name_zh": "",
     "name_vi": "Chào hỏi",
     "description": "Bài học Chào hỏi",
     "order": 1,
     "categories": [
       {
-        "id": "category_1761013850883_ce10wcg45",
-        "lessonId": "lesson_1761013850883_qndvtnh8c",
+        "id": "category_1761014758923_zxz8j7lcx",
+        "lessonId": "lesson_1761014758923_k6yzplm0y",
         "type": "vocabulary",
         "name": "Từ vựng",
         "description": "Bài tập Từ vựng",
         "order": 1,
         "exercises": [
           {
-            "id": "ex_1761013850883_pmaglqg9w",
+            "id": "ex_1761014758924_hk4ptaugh",
             "categoryId": "",
             "type": "vocabulary",
             "question": "你好",
@@ -27,7 +27,7 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "nǐ hǎo"
           },
           {
-            "id": "ex_1761013850884_bo9o2dxld",
+            "id": "ex_1761014758924_02vvx5tyz",
             "categoryId": "",
             "type": "vocabulary",
             "question": "谢谢",
@@ -39,15 +39,15 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761013850884_9fed1edh2",
-        "lessonId": "lesson_1761013850883_qndvtnh8c",
+        "id": "category_1761014758924_2eul1alq6",
+        "lessonId": "lesson_1761014758923_k6yzplm0y",
         "type": "grammar",
         "name": "Ngữ pháp",
         "description": "Bài tập Ngữ pháp",
         "order": 2,
         "exercises": [
           {
-            "id": "ex_1761013850884_zqifbeqxy",
+            "id": "ex_1761014758924_sbuy4ktgx",
             "categoryId": "",
             "type": "grammar",
             "question": "Câu có động từ \"是\" (shì)",
@@ -65,15 +65,15 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761013850884_7dbz5gemc",
-        "lessonId": "lesson_1761013850883_qndvtnh8c",
+        "id": "category_1761014758924_ail2pbuya",
+        "lessonId": "lesson_1761014758923_k6yzplm0y",
         "type": "test",
         "name": "Kiểm tra",
         "description": "Bài tập Kiểm tra",
         "order": 3,
         "exercises": [
           {
-            "id": "ex_1761013850884_nz1qm84t0",
+            "id": "ex_1761014758924_1pmhzojlj",
             "categoryId": "",
             "type": "multiple_choice",
             "question": "你好 nghĩa là gì?",
@@ -88,7 +88,7 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761013850884_hflgr6cop",
+            "id": "ex_1761014758924_hpfj74dy2",
             "categoryId": "",
             "type": "input",
             "question": "Viết pinyin của từ \"Cảm ơn\"",
@@ -98,7 +98,7 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập pinyin..."
           },
           {
-            "id": "ex_1761013850884_6gqq04856",
+            "id": "ex_1761014758924_otrx7hug5",
             "categoryId": "",
             "type": "multiple_choice",
             "question": "Từ nào dùng để chào hỏi?",
@@ -115,15 +115,15 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761013850884_r4bdtrspa",
-        "lessonId": "lesson_1761013850883_qndvtnh8c",
+        "id": "category_1761014758924_3q4jmgyzc",
+        "lessonId": "lesson_1761014758923_k6yzplm0y",
         "type": "review",
         "name": "Ôn tập",
         "description": "Bài tập Ôn tập",
         "order": 4,
         "exercises": [
           {
-            "id": "ex_1761013850884_djyxl99w5",
+            "id": "ex_1761014758924_ou0ctj326",
             "categoryId": "",
             "type": "flashcard",
             "question": "你好",
@@ -133,7 +133,7 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "nǐ hǎo"
           },
           {
-            "id": "ex_1761013850884_f4cy2bufo",
+            "id": "ex_1761014758924_vzw30c9d7",
             "categoryId": "",
             "type": "flashcard",
             "question": "谢谢",
@@ -145,15 +145,15 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761013850884_jw14jqqea",
-        "lessonId": "lesson_1761013850883_qndvtnh8c",
+        "id": "category_1761014758924_48s4l2bvm",
+        "lessonId": "lesson_1761014758923_k6yzplm0y",
         "type": "writing",
         "name": "Luyện viết",
         "description": "Bài tập Luyện viết",
         "order": 5,
         "exercises": [
           {
-            "id": "ex_1761013850884_irlif1jum",
+            "id": "ex_1761014758924_ihyt5t4d0",
             "categoryId": "",
             "type": "writing",
             "question": "Luyện viết chữ \"你好\"",
@@ -167,15 +167,15 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761013850884_tt0kmo2kv",
-        "lessonId": "lesson_1761013850883_qndvtnh8c",
+        "id": "category_1761014758924_141b1jdo8",
+        "lessonId": "lesson_1761014758923_k6yzplm0y",
         "type": "speaking",
         "name": "Luyện nói",
         "description": "Bài tập Luyện nói",
         "order": 6,
         "exercises": [
           {
-            "id": "ex_1761013850884_lkwadhma1",
+            "id": "ex_1761014758924_15xde8fti",
             "categoryId": "",
             "type": "speaking",
             "question": "你好",
@@ -185,7 +185,7 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "nǐ hǎo"
           },
           {
-            "id": "ex_1761013850884_cymv40j53",
+            "id": "ex_1761014758924_2cdukl0cj",
             "categoryId": "",
             "type": "speaking",
             "question": "谢谢",
@@ -197,15 +197,15 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761013850884_0elcoqn20",
-        "lessonId": "lesson_1761013850883_qndvtnh8c",
+        "id": "category_1761014758924_vf0xt496b",
+        "lessonId": "lesson_1761014758923_k6yzplm0y",
         "type": "dialogue",
         "name": "Hội thoại",
         "description": "Bài tập Hội thoại",
         "order": 7,
         "exercises": [
           {
-            "id": "dialogue_1761013850884_c04yh673h",
+            "id": "dialogue_1761014758924_d2kg5oan1",
             "categoryId": "",
             "type": "dialogue",
             "context": "Bài khóa 1",

@@ -4,7 +4,7 @@ export const environment = {
     owner: 'tranvandoanh0210',
     repo: 'chinese-learning-app',
     branch: 'main',
-    token: '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',
+    token: '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',
     dataPath: 'src/util/data.ts',
   },
 };

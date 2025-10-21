@@ -26,15 +26,6 @@
     @if(importResult.success){
     <div>
       <p>Đã import {{ importResult.lessons.length }} bài học</p>
-      <div class="token-display-section">
-        <h4>🔑 GitHub Token</h4>
-        <div class="token-container d-flex">
-          <p class="token-text">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</p>
-          <button class="btn-copy" (click)="copyToken('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')">
-            <i class="fa-solid fa-copy"></i>
-          </button>
-        </div>
-      </div>
       <button class="btn btn-success" (click)="openDeployDialog()">💾 Lưu và Deploy</button>
     </div>
     } @if(importResult.errors.length > 0){

@@ -4,7 +4,7 @@ import { DataService } from '../../services/data.service';
 import { ExcelImportResult, ExcelService } from '../../services/excel.service';
 import { DeploymentResult, GithubService } from '../../services/github.service';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -16,30 +16,29 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
   providers: [HttpClient],
 })
-export class DataManagementComponent implements OnInit {
+export class DataManagementComponent {
   importResult: ExcelImportResult | null = null;
   importedLessons: Lesson[] = [];
   deploymentStatus: DeploymentResult | null = null;
   isDeploying = false;
-  githubConnected = false;
+
+  showTokenDialog = false;
+  tokenForm: FormGroup;
+  isSubmittingToken = false;
+
   private excelService = inject(ExcelService);
   private dataService = inject(DataService);
   private githubService = inject(GithubService);
-  private router = inject(Router);
-  private route = inject(ActivatedRoute);
-  constructor() {
-    console.log('DataManagementComponent constructor called');
+  constructor(private fb: FormBuilder) {
+    this.tokenForm = this.fb.group({
+      githubToken: ['', [Validators.required, Validators.minLength(10)]],
+    });
   }
-
-  async ngOnInit() {
-    console.log('DataManagementComponent ngOnInit called');
-    // Kiểm tra kết nối GitHub
+  async copyToken(tokenToCopy: string) {
     try {
-      this.githubConnected = await this.githubService.testConnection();
-      console.log('GitHub connection:', this.githubConnected);
+      await navigator.clipboard.writeText(tokenToCopy);
     } catch (error) {
-      console.error('GitHub connection error:', error);
-      this.githubConnected = false;
+      console.error('Failed to copy token:', error);
     }
   }
   async exportData() {
@@ -66,8 +65,20 @@ export class DataManagementComponent implements OnInit {
       console.error('Import error:', error);
     }
   }
-
+  openDeployDialog() {
+    if (!this.importedLessons.length) return;
+    this.showTokenDialog = true;
+    this.tokenForm.reset();
+  }
+  closeTokenDialog() {
+    this.showTokenDialog = false;
+    this.tokenForm.reset();
+    this.isSubmittingToken = false;
+  }
   async saveAndDeploy() {
+    if (this.tokenForm.invalid) return;
+    this.isSubmittingToken = true;
+    const token = this.tokenForm.value.githubToken;
     if (!this.importedLessons.length) return;
 
     this.isDeploying = true;
@@ -86,11 +97,13 @@ export class DataManagementComponent implements OnInit {
       // 3. Deploy lên GitHub
       this.deploymentStatus = await this.githubService.commitAndDeploy(
         this.importedLessons,
-        commitMessage
+        commitMessage,
+        token
       );
 
       // 4. Reset form nếu thành công
       if (this.deploymentStatus.success) {
+        this.closeTokenDialog();
         setTimeout(() => {
           this.importResult = null;
           this.importedLessons = [];

@@ -7,7 +7,6 @@ export interface GitHubConfig {
   owner: string;
   repo: string;
   branch: string;
-  token: string;
   dataPath: string;
 }
 
@@ -28,17 +27,21 @@ export class GithubService {
     this.config = environment.github;
   }
 
-  async commitAndDeploy(lessons: Lesson[], commitMessage: string): Promise<DeploymentResult> {
+  async commitAndDeploy(
+    lessons: Lesson[],
+    commitMessage: string,
+    token: String
+  ): Promise<DeploymentResult> {
     try {
       // 1. Get current file SHA
-      const fileSha = await this.getFileSha();
+      const fileSha = await this.getFileSha(token);
 
       // 2. Convert data to TypeScript file content
       const fileContent = this.generateDataFileContent(lessons);
       const content = btoa(unescape(encodeURIComponent(fileContent)));
 
       // 3. Create commit
-      const commit = await this.createCommit(content, fileSha, commitMessage);
+      const commit = await this.createCommit(content, fileSha, commitMessage, token);
       return {
         success: true,
         message: 'Deploy thành công! Ứng dụng sẽ được update trong vài phút.',
@@ -70,19 +73,24 @@ export const SAMPLE_DATA: Lesson[] = ${JSON.stringify(lessons, null, 2)};
 `;
   }
 
-  private async getFileSha(): Promise<string> {
+  private async getFileSha(token: String): Promise<string> {
     const url = `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/${this.config.dataPath}?ref=${this.config.branch}`;
 
     const response = await this.http
       .get<any>(url, {
-        headers: this.getHeaders(),
+        headers: this.getHeaders(token),
       })
       .toPromise();
 
     return response.sha;
   }
 
-  private async createCommit(content: string, sha: string, message: string): Promise<any> {
+  private async createCommit(
+    content: string,
+    sha: string,
+    message: string,
+    token: String
+  ): Promise<any> {
     const url = `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/${this.config.dataPath}`;
 
     const body = {
@@ -94,27 +102,16 @@ export const SAMPLE_DATA: Lesson[] = ${JSON.stringify(lessons, null, 2)};
 
     return this.http
       .put(url, body, {
-        headers: this.getHeaders(),
+        headers: this.getHeaders(token),
       })
       .toPromise();
   }
 
-  private getHeaders() {
+  private getHeaders(token: String) {
     return new HttpHeaders({
-      Authorization: `token ${this.config.token}`,
+      Authorization: `token ${token}`,
       Accept: 'application/vnd.github.v3+json',
       'Content-Type': 'application/json',
     });
-  }
-
-  // Kiểm tra kết nối GitHub
-  async testConnection(): Promise<boolean> {
-    try {
-      const url = `https://api.github.com/repos/${this.config.owner}/${this.config.repo}`;
-      await this.http.get(url, { headers: this.getHeaders() }).toPromise();
-      return true;
-    } catch (error) {
-      return false;
-    }
   }
 }

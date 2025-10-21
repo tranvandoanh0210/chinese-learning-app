@@ -1,25 +1,5 @@
 <div class="app-outlet data-management">
   <h3>Quản lý dữ liệu</h3>
-  <div class="github-status" [class]="githubConnected ? 'connected' : 'disconnected'">
-    <h4>Trạng thái GitHub:</h4>
-    <p>
-      <span class="status-indicator">{{
-        githubConnected ? '✅ Đã kết nối' : '❌ Chưa kết nối'
-      }}</span>
-    </p>
-    <div *ngIf="!githubConnected" class="setup-guide">
-      <h5>Hướng dẫn cấu hình GitHub Token:</h5>
-      <ol>
-        <li>
-          Truy cập:
-          <a href="https://github.com/settings/tokens" target="_blank">GitHub Settings → Tokens</a>
-        </li>
-        <li>Tạo Personal Access Token với quyền <code>repo</code></li>
-        <li>Copy token và cập nhật vào file <code>environment.ts</code></li>
-        <li>Reload ứng dụng</li>
-      </ol>
-    </div>
-  </div>
   <div class="action-buttons">
     <button class="btn btn-primary" (click)="exportData()">📥 Export to Excel</button>
 
@@ -46,7 +26,16 @@
     @if(importResult.success){
     <div>
       <p>Đã import {{ importResult.lessons.length }} bài học</p>
-      <button class="btn btn-success" (click)="saveAndDeploy()">💾 Lưu và Deploy</button>
+      <div class="token-display-section">
+        <h4>🔑 GitHub Token</h4>
+        <div class="token-container d-flex">
+          <p class="token-text">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</p>
+          <button class="btn-copy" (click)="copyToken('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')">
+            <i class="fa-solid fa-copy"></i>
+          </button>
+        </div>
+      </div>
+      <button class="btn btn-success" (click)="openDeployDialog()">💾 Lưu và Deploy</button>
     </div>
     } @if(importResult.errors.length > 0){
     <div class="errors">
@@ -70,4 +59,70 @@
     </div>
   </div>
   }
+  <div *ngIf="showTokenDialog" class="dialog-overlay">
+    <div class="dialog-container">
+      <div class="dialog-header">
+        <h3>🔑 Nhập GitHub Token</h3>
+        <button (click)="closeTokenDialog()" class="btn-close">×</button>
+      </div>
+
+      <div class="dialog-body">
+        <form [formGroup]="tokenForm" (ngSubmit)="saveAndDeploy()">
+          <div class="form-group">
+            <label for="githubToken">GitHub Personal Access Token:</label>
+            <input
+              type="password"
+              id="githubToken"
+              formControlName="githubToken"
+              placeholder="Nhập token bắt đầu bằng ghp_..."
+              class="form-control"
+            />
+            <div
+              *ngIf="tokenForm.get('githubToken')?.invalid && tokenForm.get('githubToken')?.touched"
+              class="error-text"
+            >
+              <div *ngIf="tokenForm.get('githubToken')?.errors?.['required']">
+                Token là bắt buộc
+              </div>
+              <div *ngIf="tokenForm.get('githubToken')?.errors?.['minlength']">
+                Token phải có ít nhất 10 ký tự
+              </div>
+            </div>
+          </div>
+
+          <div class="token-help">
+            <h5>🔧 Cách lấy token:</h5>
+            <ol>
+              <li>
+                Truy cập
+                <a href="https://github.com/settings/tokens" target="_blank">GitHub Tokens</a>
+              </li>
+              <li>Tạo token mới với quyền <code>public_repo</code></li>
+              <li>Copy token (bắt đầu bằng <code>ghp_</code>)</li>
+              <li>Dán token vào ô trên</li>
+            </ol>
+            <p class="note">⚠️ Token chỉ được sử dụng cho lần deploy này và không được lưu trữ</p>
+          </div>
+
+          <div class="dialog-actions">
+            <button
+              type="button"
+              (click)="closeTokenDialog()"
+              class="btn btn-secondary"
+              [disabled]="isSubmittingToken"
+            >
+              Hủy
+            </button>
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="tokenForm.invalid || isSubmittingToken"
+            >
+              {{ isSubmittingToken ? '🔄 Đang xử lý...' : '🚀 Deploy' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

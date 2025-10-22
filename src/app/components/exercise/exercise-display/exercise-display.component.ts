@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { SpeakingExerciseComponent } from '../speaking-exercise/speaking-exercise.component';
 import { WritingExerciseComponent } from '../writing-exercise/writing-exercise.component';
 import { DialogueExerciseComponent } from '../dialogue-exercise/dialogue-exercise.component';
+import { ProgressService } from '../../../services/progress.service';
 
 @Component({
   selector: 'app-exercise-display',
@@ -28,8 +29,21 @@ import { DialogueExerciseComponent } from '../dialogue-exercise/dialogue-exercis
 export class ExerciseDisplayComponent {
   @Input() category!: Category;
   @Output() exerciseCompleted = new EventEmitter<any>();
-
+  constructor(private progressService: ProgressService) {}
   onCompleted(result: any) {
-    this.exerciseCompleted.emit(result);
+    const completedEvent = {
+      ...result,
+      lessonId: this.category.lessonId,
+      categoryId: this.category.id,
+    };
+    this.progressService.markExerciseCompleted(completedEvent);
+    // this.exerciseCompleted.emit(completedEvent);
+  }
+  isExerciseCompleted(exerciseId: string): boolean {
+    return this.progressService.isExerciseCompleted(
+      this.category.lessonId,
+      this.category.id,
+      exerciseId
+    );
   }
 }

@@ -22,7 +22,7 @@ export class VocabularyExerciseComponent implements OnDestroy {
     return this.exercises.filter((ex) => isVocabularyExercise(ex)) as VocabularyExercise[];
   }
 
-  async playChineseAudio(text: string | undefined): Promise<void> {
+  async playChineseAudio(text: string | undefined, exercise: VocabularyExercise): Promise<void> {
     if (this.isSpeaking) {
       this.stopAudio();
       return;
@@ -31,6 +31,7 @@ export class VocabularyExerciseComponent implements OnDestroy {
     this.isSpeaking = true;
     try {
       if (text) await this.speechService.speakChinese(text);
+      this.completeVocabulary(exercise);
     } catch (error) {
     } finally {
       this.isSpeaking = false;
@@ -52,5 +53,17 @@ export class VocabularyExerciseComponent implements OnDestroy {
   stopAudio(): void {
     this.speechService.stop();
     this.isSpeaking = false;
+  }
+
+  completeVocabulary(exercise: VocabularyExercise): void {
+    this.completed.emit({
+      exerciseId: exercise.id,
+      type: exercise.type,
+      completed: true,
+      data: {
+        playedAll: true,
+        completedAt: new Date(),
+      },
+    });
   }
 }

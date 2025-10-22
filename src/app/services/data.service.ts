@@ -37,7 +37,18 @@ export class DataService {
   getLessonById(id: string): Lesson | undefined {
     return this.lessons.find((lesson) => lesson.id === id);
   }
+  getTotalExercisesInCategory(lessonId: string, categoryId: string): number {
+    const lesson = this.getLessonById(lessonId);
+    if (!lesson) return 0;
 
+    const category = lesson.categories.find((c) => c.id === categoryId);
+    return category ? category.exercises.length : 0;
+  }
+
+  getTotalCategoriesInLesson(lessonId: string): number {
+    const lesson = this.getLessonById(lessonId);
+    return lesson ? lesson.categories.length : 0;
+  }
   getCategoryById(lessonId: string, categoryId: string): Category | undefined {
     const lesson = this.getLessonById(lessonId);
     return lesson?.categories.find((cat) => cat.id === categoryId);

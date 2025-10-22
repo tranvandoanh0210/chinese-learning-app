@@ -7,14 +7,29 @@
         <h1>{{ lesson?.name_vi }}</h1>
         <h2 class="chinese-title">{{ lesson?.name_zh }}</h2>
         <p class="lesson-description">{{ lesson?.description }}</p>
-        <div class="lesson-stats">
-          <div class="stat">
-            <div class="stat-number">{{ getTotalExercises() }}</div>
-            <div class="stat-label">Bài tập</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">{{ lesson?.categories?.length }}</div>
-            <div class="stat-label">Chuyên mục</div>
+        <div class="lesson-progress-overview" *ngIf="lesson">
+          <div class="progress-card">
+            <div class="progress-header">
+              <h4>📊 Tiến độ bài học</h4>
+              <span class="progress-percentage">{{ getLessonProgressPercentage() }}%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="getLessonProgressPercentage()"></div>
+            </div>
+            <div class="progress-stats">
+              <div class="progress-stat">
+                <span class="stat-value"
+                  >{{ getCompletedCategoriesCount() }}/{{ lesson.categories.length }}</span
+                >
+                <span class="stat-label">Chuyên mục</span>
+              </div>
+              <div class="progress-stat">
+                <span class="stat-value"
+                  >{{ getCompletedExercisesCount() }}/{{ getTotalExercises() }}</span
+                >
+                <span class="stat-label">Bài tập</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -29,15 +44,32 @@
         <div
           class="category-tab"
           [class.active]="selectedCategory?.id === category.id"
+          [class.completed]="isCategoryCompleted(category.id)"
           (click)="selectCategory(category)"
         >
           <div class="category-icon">
             <i [class]="getCategoryIcon(category.type)"></i>
+            <div class="completion-badge" *ngIf="isCategoryCompleted(category.id)">✓</div>
           </div>
           <div class="category-info">
             <div class="category-name">{{ category.name }}</div>
+            <div class="category-progress">
+              <div class="progress-bar mini">
+                <div
+                  class="progress-fill"
+                  [style.width.%]="getCategoryProgressPercentage(category.id)"
+                ></div>
+              </div>
+              <span class="progress-text">{{ getCategoryProgressPercentage(category.id) }}%</span>
+            </div>
           </div>
-          <div class="exercise-count">{{ category.exercises.length }} bài</div>
+          <div class="exercise-count">
+            {{ category.exercises.length }} bài
+            <span class="completed-count" *ngIf="getCategoryProgressPercentage(category.id) > 0">
+              ({{ (getCategoryProgressPercentage(category.id) / 100) * category.exercises.length }}
+              đã hoàn thành)
+            </span>
+          </div>
         </div>
         }
       </div>
@@ -48,6 +80,22 @@
   <div class="category-content">
     <div class="container">
       <div class="content-header">
+        <div class="header-top">
+          <button class="btn-back" (click)="selectedCategory = undefined">
+            ← Quay lại danh sách chuyên mục
+          </button>
+          <div class="category-progress-indicator">
+            <span class="progress-text"
+              >Tiến độ: {{ getCategoryProgressPercentage(selectedCategory.id) }}%</span
+            >
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                [style.width.%]="getCategoryProgressPercentage(selectedCategory.id)"
+              ></div>
+            </div>
+          </div>
+        </div>
         <h3>{{ selectedCategory.name }}</h3>
         <p>{{ selectedCategory.description }}</p>
       </div>
@@ -65,6 +113,9 @@
         <div class="no-category-icon">📚</div>
         <h3>Chọn một chuyên mục để bắt đầu học</h3>
         <p>Hãy chọn một trong các chuyên mục ở trên để xem nội dung bài học</p>
+        <div class="completion-hint" *ngIf="getLessonProgressPercentage() > 0">
+          🎉 Bạn đã hoàn thành {{ getLessonProgressPercentage() }}% bài học này!
+        </div>
       </div>
     </div>
   </div>

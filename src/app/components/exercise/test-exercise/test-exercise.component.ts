@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Exercise, InputExercise, MultipleChoiceExercise } from '../../../models/exercise.model';
 import { CommonModule } from '@angular/common';
 import { isInputExercise, isMultipleChoiceExercise } from '../../../models/exercise.model';

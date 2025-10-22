@@ -1,40 +1,47 @@
 <div class="grammar-exercise">
-  <div *ngFor="let exercise of getGrammarExercises()" class="grammar-lesson">
+  @for (exercise of getGrammarExercises(); track $index) {
+  <div class="grammar-lesson">
     <!-- Lesson Header -->
     <div class="lesson-header">
       <h2 class="lesson-title">{{ exercise.question }}</h2>
-      <div *ngIf="exercise.answer" class="lesson-subtitle">
+      @if (exercise.answer) {
+      <div class="lesson-subtitle">
         {{ exercise.answer }}
       </div>
+      }
     </div>
 
     <!-- Main Content -->
     <div class="lesson-content">
       <!-- Main Explanation -->
-      <div *ngIf="exercise.content" class="content-block main-explanation">
+      @if (exercise.content) {
+      <div class="content-block main-explanation">
         <div class="content-text" [innerHTML]="formatContent(exercise.content)"></div>
       </div>
+      }
 
       <!-- Examples -->
-      <div
-        *ngIf="exercise.examples && exercise.examples.length"
-        class="content-block examples-block"
-      >
+      @if (exercise.examples && exercise.examples.length) {
+      <div class="content-block examples-block">
         <h3 class="block-title">
           <span class="icon">📚</span>
           Ví dụ minh họa
         </h3>
         <div class="examples-list">
-          <div *ngFor="let example of exercise.examples" class="example-item">
+          @for (example of exercise.examples; track $index) {
+          <div class="example-item">
             <div class="example-chinese">{{ getChineseExample(example) }}</div>
             <div class="example-pinyin">{{ getPinyinExample(example) }}</div>
             <div class="example-vietnamese">{{ getVietnameseExample(example) }}</div>
           </div>
+          }
         </div>
       </div>
+      }
 
       <!-- Final Explanation -->
-      <div *ngIf="exercise.explanation" class="content-block explanation-block">
+      @if (exercise.explanation) {
+      <div class="content-block explanation-block">
         <h3 class="block-title">
           <span class="icon">🎯</span>
           Ghi nhớ
@@ -43,6 +50,8 @@
           {{ exercise.explanation }}
         </div>
       </div>
+      }
     </div>
   </div>
+  }
 </div>

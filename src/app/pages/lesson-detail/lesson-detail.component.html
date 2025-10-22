@@ -44,7 +44,8 @@
     </div>
   </div>
 
-  <div class="category-content" *ngIf="selectedCategory">
+  @if (selectedCategory) {
+  <div class="category-content">
     <div class="container">
       <div class="content-header">
         <h3>{{ selectedCategory.name }}</h3>
@@ -57,7 +58,8 @@
       </app-exercise-display>
     </div>
   </div>
-  <div *ngIf="!selectedCategory && lesson" class="no-category-selected">
+  } @if (!selectedCategory && lesson) {
+  <div class="no-category-selected">
     <div class="container">
       <div class="no-category-content">
         <div class="no-category-icon">📚</div>
@@ -66,4 +68,5 @@
       </div>
     </div>
   </div>
+  }
 </div>

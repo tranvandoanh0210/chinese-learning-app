@@ -1,35 +1,38 @@
 <div class="exercise-container">
-  <div *ngIf="category.type === 'vocabulary'">
+  @if (category.type === 'vocabulary') {
+  <div>
     <app-vocabulary-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
     </app-vocabulary-exercise>
   </div>
-
-  <div *ngIf="category.type === 'grammar'">
+  } @if (category.type === 'grammar') {
+  <div>
     <app-grammar-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
     </app-grammar-exercise>
   </div>
-
-  <div *ngIf="category.type === 'test'">
+  } @if (category.type === 'test') {
+  <div>
     <app-test-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
     </app-test-exercise>
   </div>
-
-  <div *ngIf="category.type === 'review'">
+  } @if (category.type === 'review') {
+  <div>
     <app-review-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
     </app-review-exercise>
   </div>
-
-  <div *ngIf="category.type === 'speaking'">
+  } @if (category.type === 'speaking') {
+  <div>
     <app-speaking-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
     </app-speaking-exercise>
   </div>
-  <div *ngIf="category.type === 'writing'">
+  } @if (category.type === 'writing') {
+  <div>
     <app-writing-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
     </app-writing-exercise>
   </div>
-
-  <div *ngIf="category.type === 'dialogue'">
+  } @if (category.type === 'dialogue') {
+  <div>
     <app-dialogue-exercise [exercises]="category.exercises" (completed)="onCompleted($event)">
     </app-dialogue-exercise>
   </div>
+  }
 </div>

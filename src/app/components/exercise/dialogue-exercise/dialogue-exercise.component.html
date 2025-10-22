@@ -1,17 +1,19 @@
 <div class="dialogue-exercise">
-  <div *ngFor="let exercise of getDialogueExercises()" class="exercise-item">
+  @for (exercise of getDialogueExercises(); track $index) {
+  <div class="exercise-item">
     <div class="dialogue-card">
       <!-- Dialogue Content - Chat Layout -->
       <div class="dialogue-content chat-layout">
         <div class="chat-messages">
+          @for (line of exercise.lines; track $index) {
           <div
-            *ngFor="let line of exercise.lines"
             class="message"
             [class.left]="exercise.lines.indexOf(line) % 2 == 0"
             [class.right]="exercise.lines.indexOf(line) % 2 == 1"
           >
             <!-- Speaker A (left side) -->
-            <div *ngIf="exercise.lines.indexOf(line) % 2 == 0" class="message-left">
+            @if (exercise.lines.indexOf(line) % 2 == 0) {
+            <div class="message-left">
               <div class="message-avatar">
                 <div class="avatar">{{ getInitials(line.speaker) }}</div>
               </div>
@@ -26,9 +28,11 @@
                 </button>
               </div>
             </div>
+            }
 
             <!-- Speaker B (right side) -->
-            <div *ngIf="exercise.lines.indexOf(line) % 2 == 1" class="message-right">
+            @if (exercise.lines.indexOf(line) % 2 == 1) {
+            <div class="message-right">
               <div class="message-content">
                 <div class="message-bubble right-bubble">
                   <div class="message-text">{{ line.text }}</div>
@@ -42,7 +46,9 @@
                 <div class="avatar">{{ getInitials(line.speaker) }}</div>
               </div>
             </div>
+            }
           </div>
+          }
         </div>
       </div>
 
@@ -58,4 +64,5 @@
       </div>
     </div>
   </div>
+  }
 </div>

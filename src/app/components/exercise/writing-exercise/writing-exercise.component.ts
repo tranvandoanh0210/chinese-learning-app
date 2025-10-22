@@ -9,7 +9,6 @@ import {
   AfterViewInit,
   OnDestroy,
   HostListener,
-  ChangeDetectorRef,
 } from '@angular/core';
 import { Exercise, WritingExercise, isWritingExercise } from '../../../models/exercise.model';
 import { CommonModule } from '@angular/common';

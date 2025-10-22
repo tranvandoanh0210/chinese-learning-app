@@ -1,6 +1,7 @@
 <div class="test-exercise">
   <!-- Start Screen -->
-  <div *ngIf="!testStarted && !showResults" class="start-screen">
+  @if (!testStarted && !showResults) {
+  <div class="start-screen">
     <div class="start-card">
       <div class="start-icon">📝</div>
       <h2>Bài Kiểm Tra</h2>
@@ -21,9 +22,11 @@
       <button class="btn-start" (click)="startTest()">🚀 Bắt đầu làm bài</button>
     </div>
   </div>
+  }
 
   <!-- Test Interface -->
-  <div *ngIf="testStarted && !showResults" class="test-interface">
+  @if (testStarted && !showResults) {
+  <div class="test-interface">
     <!-- Test Header -->
     <div class="test-header">
       <div class="progress-info">
@@ -41,19 +44,23 @@
     </div>
 
     <!-- Current Question -->
-    <div class="question-container" *ngIf="currentExercise">
+    @if (currentExercise) {
+    <div class="question-container">
       <div class="question-card">
         <div class="question-header">
           <h3 class="question-title">{{ currentExercise.question }}</h3>
-          <div *ngIf="currentExercise.explanation" class="question-description">
+          @if (currentExercise.explanation) {
+          <div class="question-description">
             {{ currentExercise.explanation }}
           </div>
+          }
         </div>
 
         <!-- Multiple Choice -->
-        <div *ngIf="isMultipleChoiceExercise(currentExercise)" class="options-container">
+        @if (isMultipleChoiceExercise(currentExercise)) {
+        <div class="options-container">
+          @for (option of getMultipleChoiceOptions(currentExercise); let i = $index; track i) {
           <div
-            *ngFor="let option of getMultipleChoiceOptions(currentExercise); let i = index"
             class="option-card"
             [class.selected]="getUserAnswer(currentIndex) === option"
             [class.correct]="showResults && option === currentExercise.answer"
@@ -66,14 +73,17 @@
           >
             <div class="option-letter">{{ getOptionLetter(i) }}</div>
             <div class="option-text">{{ option }}</div>
-            <div *ngIf="showResults && option === currentExercise.answer" class="correct-indicator">
-              ✓
-            </div>
+            @if (showResults && option === currentExercise.answer) {
+            <div class="correct-indicator">✓</div>
+            }
           </div>
+          }
         </div>
+        }
 
         <!-- Input Answer -->
-        <div *ngIf="isInputExercise(currentExercise)" class="input-container">
+        @if (isInputExercise(currentExercise)) {
+        <div class="input-container">
           <input
             type="text"
             [placeholder]="getInputPlaceholder(currentExercise)"
@@ -84,8 +94,10 @@
             [class.incorrect]="showResults && !isAnswerCorrect(currentIndex)"
           />
         </div>
+        }
       </div>
     </div>
+    }
 
     <!-- Navigation Buttons -->
     <div class="navigation-buttons">
@@ -97,18 +109,17 @@
         ← Câu trước
       </button>
 
-      <button *ngIf="!isLastQuestion" class="btn btn-primary" (click)="nextQuestion()">
-        Câu tiếp theo →
-      </button>
-
-      <button *ngIf="isLastQuestion" class="btn btn-success" (click)="submitTest()">
-        🎯 Nộp bài
-      </button>
+      @if (!isLastQuestion) {
+      <button class="btn btn-primary" (click)="nextQuestion()">Câu tiếp theo →</button>
+      } @if (isLastQuestion) {
+      <button class="btn btn-success" (click)="submitTest()">🎯 Nộp bài</button>
+      }
     </div>
   </div>
 
   <!-- Results Summary -->
-  <div *ngIf="showResults" class="results-summary">
+  @if (showResults) {
+  <div class="results-summary">
     <div class="results-card">
       <div class="results-header">
         <h3>🎉 Kết quả bài kiểm tra</h3>
@@ -152,8 +163,8 @@
 
       <div class="answers-review">
         <h4>Chi tiết bài làm:</h4>
+        @for (exercise of exercises; let i = $index; track i) {
         <div
-          *ngFor="let exercise of exercises; let i = index"
           class="answer-item"
           [class.correct]="userAnswers[i]?.isCorrect"
           [class.incorrect]="userAnswers[i] && !userAnswers[i]!.isCorrect"
@@ -162,11 +173,13 @@
           <div class="answer-header">
             <div class="question-number">Câu {{ i + 1 }}</div>
             <div class="answer-status">
-              <span *ngIf="userAnswers[i]?.isCorrect" class="status-correct">✓ Đúng</span>
-              <span *ngIf="userAnswers[i] && !userAnswers[i]!.isCorrect" class="status-incorrect"
-                >✗ Sai</span
-              >
-              <span *ngIf="!userAnswers[i]" class="status-unanswered">⏸️ Chưa làm</span>
+              @if (userAnswers[i]?.isCorrect) {
+              <span class="status-correct">✓ Đúng</span>
+              } @if (userAnswers[i] && !userAnswers[i]!.isCorrect) {
+              <span class="status-incorrect">✗ Sai</span>
+              } @if (!userAnswers[i]) {
+              <span class="status-unanswered">⏸️ Chưa làm</span>
+              }
             </div>
           </div>
           <div class="answer-question">
@@ -181,12 +194,15 @@
               <span class="detail-label">Đáp án đúng:</span>
               <span class="detail-value correct-answer">{{ exercise.answer }}</span>
             </div>
-            <div *ngIf="exercise.explanation" class="detail-item explanation">
+            @if (exercise.explanation) {
+            <div class="detail-item explanation">
               <span class="detail-label">Giải thích:</span>
               <span class="detail-value">{{ exercise.explanation }}</span>
             </div>
+            }
           </div>
         </div>
+        }
       </div>
 
       <div class="results-actions">
@@ -194,4 +210,5 @@
       </div>
     </div>
   </div>
+  } }
 </div>

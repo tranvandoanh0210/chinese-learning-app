@@ -1,11 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Lesson } from '../../models/lesson.model';
 import { DataService } from '../../services/data.service';
 import { ExcelImportResult, ExcelService } from '../../services/excel.service';
 import { DeploymentResult, GithubService } from '../../services/github.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({

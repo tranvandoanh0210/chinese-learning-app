@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Category } from '../../../models/lesson.model';
 import { VocabularyExerciseComponent } from '../vocabulary-exercise/vocabulary-exercise.component';
 import { TestExerciseComponent } from '../test-exercise/test-exercise.component';

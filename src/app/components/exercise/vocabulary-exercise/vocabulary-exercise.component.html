@@ -1,5 +1,6 @@
 <div class="vocabulary-exercise">
-  <div *ngFor="let exercise of getVocabularyExercises(); let i = index" class="exercise-item">
+  @for (exercise of getVocabularyExercises(); let i = $index; track i) {
+  <div class="exercise-item">
     <div class="vocabulary-card">
       <div class="chinese-character">{{ exercise.question }}</div>
       <div class="pinyin">{{ exercise.pinyin }}</div>
@@ -15,4 +16,5 @@
       </div>
     </div>
   </div>
+  }
 </div>

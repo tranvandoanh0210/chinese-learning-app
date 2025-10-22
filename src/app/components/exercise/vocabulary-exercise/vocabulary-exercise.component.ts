@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Exercise, VocabularyExercise, isVocabularyExercise } from '../../../models/exercise.model';
 import { SpeechService } from '../../../services/speech.service';

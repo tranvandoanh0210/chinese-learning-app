@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Lesson, Category } from '../models/lesson.model';
 import { SAMPLE_DATA } from '../../util/data';
 import { Exercise } from '../models/exercise.model';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

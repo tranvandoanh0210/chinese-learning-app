@@ -18,7 +18,8 @@
   </div>
 
   <!-- Current Exercise -->
-  <div class="current-exercise" *ngIf="currentExercise">
+  @if (currentExercise) {
+  <div class="current-exercise">
     <div class="speaking-card">
       <!-- Question Header -->
       <div class="question-header">
@@ -48,7 +49,8 @@
       </div>
 
       <!-- Recording Section -->
-      <div class="recording-section" *ngIf="!getCurrentState().isCompleted">
+      @if (!getCurrentState().isCompleted) {
+      <div class="recording-section">
         <div class="recording-controls">
           <button
             class="btn-record"
@@ -58,8 +60,11 @@
             (click)="toggleRecording(currentExercise.question)"
           >
             <div class="mic-icon">
-              <span *ngIf="!getCurrentState().isRecording">🎤</span>
-              <span *ngIf="getCurrentState().isRecording" class="pulse">🔴</span>
+              @if (!getCurrentState().isRecording) {
+              <span>🎤</span>
+              } @if (getCurrentState().isRecording) {
+              <span class="pulse">🔴</span>
+              }
             </div>
             <div class="record-text">
               {{ getRecordButtonText() }}
@@ -68,13 +73,16 @@
         </div>
 
         <!-- User Speech Display -->
-        <div *ngIf="getCurrentState().userSpeech" class="user-speech">
+        @if (getCurrentState().userSpeech) {
+        <div class="user-speech">
           <div class="speech-label">Bạn nói:</div>
           <div class="speech-text">{{ getCurrentState().userSpeech }}</div>
         </div>
+        }
 
         <!-- Pronunciation Result -->
-        <div *ngIf="getCurrentState().result" class="pronunciation-result">
+        @if (getCurrentState().result) {
+        <div class="pronunciation-result">
           <div class="result-header">
             <div class="accuracy-score">
               Độ chính xác: {{ getCurrentState().result?.accuracy }}%
@@ -97,23 +105,29 @@
             </button>
           </div>
         </div>
+        }
       </div>
+      }
 
       <!-- Completed State -->
-      <div *ngIf="getCurrentState().isCompleted" class="completed-state">
+      @if (getCurrentState().isCompleted) {
+      <div class="completed-state">
         <div class="success-message">✅ Đã hoàn thành bài luyện nói!</div>
         <div class="completed-actions">
           <button class="btn btn-outline" (click)="tryAgain()">🔄 Luyện tập lại</button>
-          <button *ngIf="!isLastExercise" class="btn btn-primary" (click)="nextExercise()">
-            Câu tiếp theo →
-          </button>
-          <button *ngIf="isLastExercise" class="btn btn-success" (click)="finishAllExercises()">
+          @if (!isLastExercise) {
+          <button class="btn btn-primary" (click)="nextExercise()">Câu tiếp theo →</button>
+          } @if (isLastExercise) {
+          <button class="btn btn-success" (click)="finishAllExercises()">
             🎉 Hoàn thành tất cả
           </button>
+          }
         </div>
       </div>
+      }
     </div>
   </div>
+  }
 
   <!-- Navigation -->
   <div class="navigation-controls">
@@ -122,8 +136,8 @@
     </button>
 
     <div class="exercise-dots">
+      @for (exercise of getSpeakingExercises(); let i = $index; track i) {
       <span
-        *ngFor="let exercise of getSpeakingExercises(); let i = index"
         class="dot"
         [class.active]="i === currentIndex"
         [class.completed]="getSpeakingState(i).isCompleted"
@@ -131,6 +145,7 @@
       >
         {{ i + 1 }}
       </span>
+      }
     </div>
 
     <button class="btn-nav next" (click)="nextExercise()" [disabled]="isLastExercise">
@@ -139,7 +154,8 @@
   </div>
 
   <!-- All Completed -->
-  <div *ngIf="allExercisesCompleted" class="all-completed">
+  @if (allExercisesCompleted) {
+  <div class="all-completed">
     <div class="completion-card">
       <div class="completion-icon">🎉</div>
       <h3>Chúc mừng!</h3>
@@ -157,4 +173,5 @@
       <button class="btn btn-primary" (click)="restartAll()">🔄 Làm lại tất cả</button>
     </div>
   </div>
+  }
 </div>

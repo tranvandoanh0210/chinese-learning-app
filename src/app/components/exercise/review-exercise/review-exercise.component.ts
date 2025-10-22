@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Exercise, FlashcardExercise, isFlashcardExercise } from '../../../models/exercise.model';
 import { SpeechService } from '../../../services/speech.service';
 

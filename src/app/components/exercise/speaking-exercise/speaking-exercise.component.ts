@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Exercise, SpeakingExercise, isSpeakingExercise } from '../../../models/exercise.model';
 import { PronunciationResult, PronunciationService } from '../../../services/pronunciation.service';
 import { SpeechRecognitionService } from '../../../services/speech-recognition.service';

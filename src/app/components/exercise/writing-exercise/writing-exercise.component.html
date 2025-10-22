@@ -1,5 +1,6 @@
 <div class="writing-exercise">
-  <div *ngFor="let exercise of getWritingExercises(); let i = index" class="exercise-item">
+  @for (exercise of getWritingExercises(); let i = $index; track i) {
+  <div class="exercise-item">
     <div class="writing-card">
       <!-- Character Info -->
       <div class="character-info">
@@ -49,4 +50,5 @@
       </div>
     </div>
   </div>
+  }
 </div>

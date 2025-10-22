@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -13,9 +13,7 @@ import { UserService } from './services/user.service';
 })
 export class App implements OnInit {
   hasUser = false;
-  title = 'Chinese Learning App';
   isMobileNavOpen = false;
-  // protected readonly title = signal('chinese-learning-website');
   constructor(private userService: UserService, private router: Router) {}
   ngOnInit() {
     this.userService.user$.subscribe((user) => {

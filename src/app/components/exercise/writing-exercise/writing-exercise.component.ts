@@ -1,15 +1,18 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
   Input,
   Output,
-  QueryList,
+  EventEmitter,
   ViewChildren,
+  QueryList,
+  ElementRef,
+  AfterViewInit,
+  OnDestroy,
+  HostListener,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { Exercise, WritingExercise, isWritingExercise } from '../../../models/exercise.model';
+import { CommonModule } from '@angular/common';
 
 interface Point {
   x: number;
@@ -20,6 +23,7 @@ interface Stroke {
   points: Point[];
   isCompleted: boolean;
 }
+
 interface CanvasState {
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
@@ -28,6 +32,7 @@ interface CanvasState {
   strokeHistory: Stroke[][];
   redoHistory: Stroke[][];
 }
+
 @Component({
   selector: 'app-writing-exercise',
   templateUrl: './writing-exercise.component.html',
@@ -35,12 +40,13 @@ interface CanvasState {
   imports: [CommonModule],
   styleUrls: ['./writing-exercise.component.css'],
 })
-export class WritingExerciseComponent {
+export class WritingExerciseComponent implements AfterViewInit, OnDestroy {
   @Input() exercises: Exercise[] = [];
   @Output() completed = new EventEmitter<any>();
   @ViewChildren('writingCanvas') canvasRefs!: QueryList<ElementRef<HTMLCanvasElement>>;
   private canvasStates: CanvasState[] = [];
   private resizeObserver: ResizeObserver | null = null;
+
   ngAfterViewInit() {
     this.initializeCanvases();
     this.setupResizeObserver();
@@ -48,9 +54,11 @@ export class WritingExerciseComponent {
   ngOnDestroy() {
     this.resizeObserver?.disconnect();
   }
+  // Canvas Methods (giữ nguyên từ code trước)
   private initializeCanvases(): void {
     this.canvasRefs.forEach((canvasRef, index) => {
       const canvas = canvasRef.nativeElement;
+      this.setupCanvasSize(canvas);
       const ctx = canvas.getContext('2d')!;
 
       this.initializeCanvasContext(ctx);
@@ -72,16 +80,13 @@ export class WritingExerciseComponent {
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
 
-    // Set CSS dimensions
     canvas.style.width = containerWidth + 'px';
     canvas.style.height = containerHeight + 'px';
 
-    // Set internal dimensions với device pixel ratio
     const scale = window.devicePixelRatio || 1;
     canvas.width = containerWidth * scale;
     canvas.height = containerHeight * scale;
 
-    // Scale context để bù cho DPR
     const ctx = canvas.getContext('2d');
     if (ctx) {
       ctx.scale(scale, scale);
@@ -100,7 +105,6 @@ export class WritingExerciseComponent {
       });
     });
 
-    // Observe all canvas containers
     this.canvasRefs.forEach((canvasRef) => {
       const container = canvasRef.nativeElement.parentElement;
       if (container) {
@@ -114,20 +118,12 @@ export class WritingExerciseComponent {
   private initializeCanvasContext(ctx: CanvasRenderingContext2D): void {
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    ctx.lineWidth = 4;
+    ctx.lineWidth = 3;
     ctx.strokeStyle = '#2c3e50';
     ctx.fillStyle = '#2c3e50';
   }
 
-  getWritingExercises(): WritingExercise[] {
-    return this.exercises.filter((ex) => isWritingExercise(ex)) as WritingExercise[];
-  }
-
-  getStrokeGif(character: string): string {
-    return `assets/writing-guides/${character}.gif`;
-  }
-
-  // Các phương thức xử lý sự kiện với index
+  // Drawing Methods (giữ nguyên)
   onMouseDown(event: MouseEvent, index: number): void {
     event.preventDefault();
     const pos = this.getCanvasCoordinates(event, index);
@@ -165,15 +161,6 @@ export class WritingExerciseComponent {
 
   onTouchEnd(index: number): void {
     this.stopDrawing(index);
-  }
-
-  private getMousePos(event: MouseEvent, index: number): Point {
-    const canvas = this.canvasStates[index].canvas;
-    const rect = canvas.getBoundingClientRect();
-    return {
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top,
-    };
   }
 
   private getCanvasCoordinates(event: MouseEvent, index: number): Point {
@@ -287,10 +274,8 @@ export class WritingExerciseComponent {
     const state = this.canvasStates[index];
     if (!state) return;
 
-    // Clear canvas
     state.ctx.clearRect(0, 0, state.canvas.width, state.canvas.height);
 
-    // Redraw all strokes
     state.currentStrokes.forEach((stroke) => {
       if (stroke.points.length > 0) {
         state.ctx.beginPath();
@@ -303,6 +288,15 @@ export class WritingExerciseComponent {
         state.ctx.stroke();
       }
     });
+  }
+
+  // Public Methods
+  getWritingExercises(): WritingExercise[] {
+    return this.exercises.filter((ex) => this.isWritingExercise(ex)) as WritingExercise[];
+  }
+
+  private isWritingExercise(exercise: Exercise): exercise is WritingExercise {
+    return exercise.type === 'writing';
   }
 
   canUndo(index: number): boolean {
@@ -324,7 +318,6 @@ export class WritingExerciseComponent {
   }
   @HostListener('window:resize')
   onWindowResize(): void {
-    // ResizeObserver should handle this, but this is a fallback
     setTimeout(() => {
       this.canvasRefs.forEach((canvasRef, index) => {
         this.setupCanvasSize(canvasRef.nativeElement);

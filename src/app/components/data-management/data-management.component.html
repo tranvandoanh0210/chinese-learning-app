@@ -49,8 +49,8 @@
       {{ deploymentStatus.message }}
     </div>
   </div>
-  }
-  <div *ngIf="showTokenDialog" class="dialog-overlay">
+  } @if(showTokenDialog){
+  <div class="dialog - overlay">
     <div class="dialog-container">
       <div class="dialog-header">
         <h3>🔑 Nhập GitHub Token</h3>
@@ -68,17 +68,15 @@
               placeholder="Nhập token bắt đầu bằng ghp_..."
               class="form-control"
             />
-            <div
-              *ngIf="tokenForm.get('githubToken')?.invalid && tokenForm.get('githubToken')?.touched"
-              class="error-text"
-            >
-              <div *ngIf="tokenForm.get('githubToken')?.errors?.['required']">
-                Token là bắt buộc
-              </div>
-              <div *ngIf="tokenForm.get('githubToken')?.errors?.['minlength']">
-                Token phải có ít nhất 10 ký tự
-              </div>
+            @if(tokenForm.get('githubToken')?.invalid && tokenForm.get('githubToken')?.touched) {
+            <div class="error-text">
+              @if(tokenForm.get('githubToken')?.errors?.['required']) {
+              <div>Token là bắt buộc</div>
+              } @if(tokenForm.get('githubToken')?.errors?.['minlength']) {
+              <div>Token phải có ít nhất 10 ký tự</div>
+              }
             </div>
+            }
           </div>
 
           <div class="token-help">
@@ -116,4 +114,5 @@
       </div>
     </div>
   </div>
+  }
 </div>

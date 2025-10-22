@@ -48,7 +48,6 @@ export interface FlashcardExercise extends BaseExercise {
 export interface WritingExercise extends BaseExercise {
   type: 'writing';
   pinyin: string;
-  strokeGif?: string;
 }
 export interface DialogueLine {
   speaker: string;

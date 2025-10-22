@@ -57,16 +57,24 @@
               <div class="progress-bar mini">
                 <div
                   class="progress-fill"
-                  [style.width.%]="getCategoryProgressPercentage(category.id)"
+                  [style.width.%]="getCategoryProgressPercentage(category.id, true)"
                 ></div>
               </div>
-              <span class="progress-text">{{ getCategoryProgressPercentage(category.id) }}%</span>
+              <span class="progress-text"
+                >{{ getCategoryProgressPercentage(category.id, true) }}%</span
+              >
             </div>
           </div>
           <div class="exercise-count">
             {{ category.exercises.length }} bài
-            <span class="completed-count" *ngIf="getCategoryProgressPercentage(category.id) > 0">
-              ({{ (getCategoryProgressPercentage(category.id) / 100) * category.exercises.length }}
+            <span
+              class="completed-count"
+              *ngIf="getCategoryProgressPercentage(category.id, false) > 0"
+            >
+              ({{
+                (getCategoryProgressPercentage(category.id, false) / 100) *
+                  category.exercises.length
+              }}
               đã hoàn thành)
             </span>
           </div>
@@ -86,12 +94,12 @@
           </button>
           <div class="category-progress-indicator">
             <span class="progress-text"
-              >Tiến độ: {{ getCategoryProgressPercentage(selectedCategory.id) }}%</span
+              >Tiến độ: {{ getCategoryProgressPercentage(selectedCategory.id, true) }}%</span
             >
             <div class="progress-bar">
               <div
                 class="progress-fill"
-                [style.width.%]="getCategoryProgressPercentage(selectedCategory.id)"
+                [style.width.%]="getCategoryProgressPercentage(selectedCategory.id, true)"
               ></div>
             </div>
           </div>

@@ -66,4 +66,12 @@ export class VocabularyExerciseComponent implements OnDestroy {
       },
     });
   }
+  isExerciseCompleted(exerciseId: string): boolean {
+    return false;
+    // return this.progressService.isExerciseCompleted(
+    //   this.category.lessonId,
+    //   this.category.id,
+    //   exerciseId
+    // );
+  }
 }

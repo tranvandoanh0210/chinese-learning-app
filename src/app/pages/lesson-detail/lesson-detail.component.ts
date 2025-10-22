@@ -121,9 +121,12 @@ export class LessonDetailComponent implements OnInit, OnDestroy {
     return Math.round((completedCategories / this.lesson.categories.length) * 100);
   }
 
-  getCategoryProgressPercentage(categoryId: string): number {
+  getCategoryProgressPercentage(categoryId: string, isRound: boolean): number {
     const progress = this.progressService.getCategoryProgress(this.lesson?.id || '', categoryId);
-    return progress ? Math.round(progress.progressPercentage) : 0;
+    if (isRound) {
+      return progress ? Math.round(progress.progressPercentage) : 0;
+    }
+    return progress ? progress.progressPercentage : 0;
   }
 
   isCategoryCompleted(categoryId: string): boolean {

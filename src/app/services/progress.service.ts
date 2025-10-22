@@ -119,7 +119,7 @@ export class ProgressService {
     const totalExercises = this.getTotalExercisesInCategory(lessonId, categoryId);
     const completedExercises = categoryProgress.exercises.filter((e) => e.completed).length;
     categoryProgress.progressPercentage =
-      totalExercises > 0 ? Math.round((completedExercises / totalExercises) * 100) : 0;
+      totalExercises > 0 ? (completedExercises / totalExercises) * 100 : 0;
 
     // Chỉ đánh dấu hoàn thành khi hoàn thành TẤT CẢ exercises
     categoryProgress.completed = completedExercises === totalExercises && totalExercises > 0;

@@ -149,8 +149,10 @@ export class TestExerciseComponent {
     const exercise = this.exercises[index];
     const userAnswer = this.userAnswers[index];
 
-    if (userAnswer && exercise) {
-      userAnswer.isCorrect = userAnswer.userAnswer === exercise.answer;
+    if (userAnswer && exercise && exercise.answer) {
+      const validAnswers = exercise.answer.split('|').map((ans: string) => ans.trim());
+      const userAns = (userAnswer.userAnswer || '').trim();
+      userAnswer.isCorrect = validAnswers.includes(userAns);
     }
   }
 
@@ -171,15 +173,15 @@ export class TestExerciseComponent {
   }
 
   submitTest(): void {
+    this.stopTimer();
     // Check all answers before showing results
     this.exercises.forEach((_, index) => {
       this.checkAnswer(index);
     });
-
-    this.stopTimer();
+    console.log('Before setting showResults = true');
     this.showResults = true;
     this.testStarted = false;
-
+    console.log('Submit called - showResults:', this.showResults);
     this.completed.emit({
       total: this.exercises.length,
       correct: this.correctCount,
@@ -198,5 +200,8 @@ export class TestExerciseComponent {
 
   getPercentage(): number {
     return Math.round((this.correctCount / this.exercises.length) * 100);
+  }
+  getPoint(): number {
+    return (this.correctCount / this.exercises.length) * 10;
   }
 }

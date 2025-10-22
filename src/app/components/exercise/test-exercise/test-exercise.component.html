@@ -116,7 +116,7 @@
       }
     </div>
   </div>
-
+  }
   <!-- Results Summary -->
   @if (showResults) {
   <div class="results-summary">
@@ -153,11 +153,21 @@
       </div>
 
       <div class="progress-circle">
-        <div class="circle-background"></div>
+        <div
+          class="circle-background"
+          [style.background]="
+            'conic-gradient(#27ae60 0%, #27ae60 ' +
+            getPercentage() +
+            '%, #e74c3c ' +
+            getPercentage() +
+            '%, #e74c3c 100%)'
+          "
+        ></div>
         <div class="circle-progress"></div>
         <div class="circle-text">
-          <span class="percentage">{{ getPercentage() }}%</span>
           <span class="label">Điểm số</span>
+
+          <span class="percentage">{{ getPoint() }}</span>
         </div>
       </div>
 
@@ -210,5 +220,5 @@
       </div>
     </div>
   </div>
-  } }
+  }
 </div>

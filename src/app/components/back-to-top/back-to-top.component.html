@@ -1,0 +1,12 @@
+<button
+  *ngIf="isVisible"
+  (click)="scrollToTop()"
+  class="back-to-top-btn"
+  [class.visible]="isVisible"
+  aria-label="Back to top"
+  title="Back to top"
+>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <path d="M18 15l-6-6-6 6" />
+  </svg>
+</button>

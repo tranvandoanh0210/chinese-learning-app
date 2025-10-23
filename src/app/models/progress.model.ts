@@ -18,13 +18,14 @@ export interface CategoryProgress {
   completionDate?: Date;
   exercises: ExerciseProgress[];
   progressPercentage: number;
+  attempts?: number; // Number of attempts
+  data?: any; // Additional data like drawing data for writing, etc.
 }
 
 export interface ExerciseProgress {
   exerciseId: string;
   completed: boolean;
   completionDate?: Date;
-  score?: number; // For test exercises
   attempts?: number; // Number of attempts
   data?: any; // Additional data like drawing data for writing, etc.
 }
@@ -35,6 +36,12 @@ export interface ExerciseCompletionEvent {
   exerciseId: string;
   exerciseType: string;
   completed: boolean;
-  score?: number;
+  data?: any;
+}
+export interface CategoryCompletionEvent {
+  lessonId: string;
+  categoryId: string;
+  type: string;
+  completed: boolean;
   data?: any;
 }

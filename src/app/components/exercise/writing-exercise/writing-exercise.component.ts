@@ -27,6 +27,7 @@ interface CanvasState {
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
   isDrawing: boolean;
+  isCompleted: boolean;
   currentStrokes: Stroke[];
   strokeHistory: Stroke[][];
   redoHistory: Stroke[][];
@@ -45,7 +46,8 @@ export class WritingExerciseComponent implements AfterViewInit, OnDestroy {
   @ViewChildren('writingCanvas') canvasRefs!: QueryList<ElementRef<HTMLCanvasElement>>;
   private canvasStates: CanvasState[] = [];
   private resizeObserver: ResizeObserver | null = null;
-
+  private readonly SIMILARITY_THRESHOLD = 0.7;
+  isCompleted: boolean = false;
   ngAfterViewInit() {
     this.initializeCanvases();
     this.setupResizeObserver();
@@ -66,6 +68,7 @@ export class WritingExerciseComponent implements AfterViewInit, OnDestroy {
         canvas,
         ctx,
         isDrawing: false,
+        isCompleted: false,
         currentStrokes: [],
         strokeHistory: [],
         redoHistory: [],
@@ -223,6 +226,9 @@ export class WritingExerciseComponent implements AfterViewInit, OnDestroy {
 
     this.saveToHistory(index);
     state.redoHistory = [];
+    setTimeout(() => {
+      state.isCompleted = true;
+    }, 500);
   }
 
   private saveToHistory(index: number): void {
@@ -246,7 +252,7 @@ export class WritingExerciseComponent implements AfterViewInit, OnDestroy {
     } else {
       state.currentStrokes = [];
     }
-
+    state.isCompleted = false;
     this.redrawCanvas(index);
   }
 
@@ -256,6 +262,7 @@ export class WritingExerciseComponent implements AfterViewInit, OnDestroy {
 
     state.currentStrokes = state.redoHistory.pop()!;
     this.saveToHistory(index);
+    state.isCompleted = false;
     this.redrawCanvas(index);
   }
 
@@ -307,12 +314,19 @@ export class WritingExerciseComponent implements AfterViewInit, OnDestroy {
     const state = this.canvasStates[index];
     return state ? state.redoHistory.length > 0 : false;
   }
-
-  completeWriting(exercise: WritingExercise): void {
+  isAllCharacterCompleted(): boolean {
+    return this.canvasStates.every((state) => state?.isCompleted);
+  }
+  completeWriting(): void {
+    this.isCompleted = true;
     this.completed.emit({
-      exerciseId: exercise.id,
       type: 'writing',
-      status: 'completed',
+      completed: true,
+      data: [
+        {
+          completionDate: new Date(),
+        },
+      ],
     });
   }
   @HostListener('window:resize')

@@ -8,6 +8,7 @@ import {
   CategoryProgress,
   LessonProgress,
   ExerciseProgress,
+  CategoryCompletionEvent,
 } from '../models/progress.model';
 import { Lesson } from '../models/lesson.model';
 
@@ -89,7 +90,6 @@ export class ProgressService {
         exerciseId: event.exerciseId,
         completed: event.completed,
         completionDate: event.completed ? new Date() : undefined,
-        score: event.score,
         attempts: 1,
         data: event.data,
       };
@@ -97,7 +97,6 @@ export class ProgressService {
     } else {
       exerciseProgress.completed = event.completed;
       exerciseProgress.completionDate = event.completed ? new Date() : undefined;
-      exerciseProgress.score = event.score;
       exerciseProgress.attempts = (exerciseProgress.attempts || 0) + 1;
       exerciseProgress.data = event.data;
     }
@@ -110,7 +109,57 @@ export class ProgressService {
 
     this.saveProgress(progress);
   }
+  // Mark category as completed
+  markCategoryCompleted(event: CategoryCompletionEvent): void {
+    const progress = this.loadProgress();
 
+    // Find or create lesson progress
+    let lessonProgress = progress.lessons.find((l) => l.lessonId === event.lessonId);
+    if (!lessonProgress) {
+      lessonProgress = {
+        lessonId: event.lessonId,
+        categories: [],
+        completed: false,
+      };
+      progress.lessons.push(lessonProgress);
+    }
+
+    // Find or create category progress
+    let categoryProgress = lessonProgress.categories.find((c) => c.categoryId === event.categoryId);
+    if (!categoryProgress) {
+      categoryProgress = {
+        categoryId: event.categoryId,
+        type: event.type as any,
+        completed: event.completed,
+        exercises: [],
+        progressPercentage: 100,
+        attempts: 1,
+        completionDate: event.completed ? new Date() : undefined,
+      };
+      lessonProgress.categories.push(categoryProgress);
+    } else {
+      categoryProgress.completed = event.completed;
+      categoryProgress.completionDate = event.completed ? new Date() : undefined;
+      categoryProgress.attempts = (categoryProgress.attempts || 0) + 1;
+    }
+    if (!categoryProgress.data) {
+      categoryProgress.data = Array.isArray(event.data) ? [] : {};
+    }
+    if (Array.isArray(categoryProgress.data) && Array.isArray(event.data)) {
+      categoryProgress.data.push(...event.data);
+    } else if (
+      typeof categoryProgress.data === 'object' &&
+      typeof event.data === 'object' &&
+      !Array.isArray(categoryProgress.data)
+    ) {
+      Object.assign(categoryProgress.data, event.data);
+    }
+
+    // Update lesson completion status
+    this.updateLessonCompletion(lessonProgress, event.lessonId);
+
+    this.saveProgress(progress);
+  }
   private updateCategoryProgress(
     categoryProgress: CategoryProgress,
     categoryId: string,

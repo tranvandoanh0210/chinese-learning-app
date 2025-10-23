@@ -171,15 +171,6 @@
               background: #7f8c8d;
             }
           }
-
-          &.btn-success {
-            background: #27ae60;
-            color: white;
-
-            &:hover:not(:disabled) {
-              background: #219a52;
-            }
-          }
         }
       }
 

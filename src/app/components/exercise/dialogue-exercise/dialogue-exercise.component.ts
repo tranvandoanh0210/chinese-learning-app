@@ -7,6 +7,7 @@ import {
   DialogueLine,
 } from '../../../models/exercise.model';
 import { SpeechService } from '../../../services/speech.service';
+import { ProgressService } from '../../../services/progress.service';
 
 @Component({
   selector: 'app-dialogue-exercise',
@@ -17,11 +18,12 @@ import { SpeechService } from '../../../services/speech.service';
 })
 export class DialogueExerciseComponent {
   @Input() exercises: Exercise[] = [];
+  @Input() lessonId!: string;
   @Output() completed = new EventEmitter<any>();
 
   isPlaying = false;
 
-  constructor(private speechService: SpeechService) {}
+  constructor(private speechService: SpeechService, private progressService: ProgressService) {}
 
   getDialogueExercises(): DialogueExercise[] {
     return this.exercises.filter((ex) => isDialogueExercise(ex)) as DialogueExercise[];
@@ -54,18 +56,29 @@ export class DialogueExerciseComponent {
     }
   }
 
-  completeDialogue(exercise: DialogueExercise): void {
-    this.completed.emit({
-      exerciseId: exercise.id,
-      type: 'dialogue',
-      status: 'completed',
-    });
-  }
   getInitials(name: string): string {
     return name
       .split(' ')
       .map((n) => n[0])
       .join('')
       .toUpperCase();
+  }
+  markAsCompleted(exercise: DialogueExercise): void {
+    this.completed.emit({
+      exerciseId: exercise.id,
+      type: exercise.type,
+      completed: true,
+      data: {
+        playedAll: true,
+        completedAt: new Date(),
+      },
+    });
+  }
+  isExerciseCompleted(exercise: DialogueExercise): boolean {
+    return this.progressService.isExerciseCompleted(
+      this.lessonId,
+      exercise.categoryId,
+      exercise.id
+    );
   }
 }

@@ -2,7 +2,12 @@
   @if(currentFlashcardExercise){
 
   <div class="flashcard-container">
-    <div class="flashcard" [class.flipped]="isFlipped" (click)="flipCard()">
+    <div
+      class="flashcard"
+      [class.flipped]="isFlipped"
+      (click)="flipCard()"
+      [class.completed]="isExerciseCompleted(currentFlashcardExercise)"
+    >
       <div class="front">
         <div class="chinese-character">{{ currentFlashcardExercise.question }}</div>
         <div class="pinyin">{{ currentFlashcardExercise.pinyin }}</div>
@@ -17,6 +22,11 @@
       <div class="back">
         <div class="answer">{{ currentFlashcardExercise.answer }}</div>
         <div class="description">{{ currentFlashcardExercise.description }}</div>
+      </div>
+      <div class="status-icon">
+        @if (isExerciseCompleted(currentFlashcardExercise)) {
+        <span class="checkmark">✓</span>
+        }
       </div>
     </div>
   </div>

@@ -1,9 +1,9 @@
 <div class="vocabulary-exercise">
   @for (exercise of getVocabularyExercises(); let i = $index; track i) {
   <div class="exercise-item">
-    <div class="vocabulary-card" [class.completed]="isExerciseCompleted(exercise.id)">
+    <div class="vocabulary-card" [class.completed]="isExerciseCompleted(exercise)">
       <div class="status-icon">
-        @if (isExerciseCompleted(exercise.id)) {
+        @if (isExerciseCompleted(exercise)) {
         <span class="checkmark">✓</span>
         }
       </div>

@@ -25,7 +25,7 @@
     padding: 16px;
     transition: all 0.3s ease;
 
-    .vocabulary-card.completed {
+    .completed {
       border-color: #4CAF50;
       background-color: #f8fff8;
     }

@@ -1,29 +1,15 @@
 <div class="speaking-exercise">
-  <!-- Progress Header -->
-  <div class="progress-header">
-    <div class="progress-info">
-      <div class="progress-text">
-        Câu {{ currentIndex + 1 }} / {{ getSpeakingExercises().length }}
-      </div>
-      <div class="progress-bar">
-        <div
-          class="progress-fill"
-          [style.width.%]="(currentIndex / getSpeakingExercises().length) * 100"
-        ></div>
-      </div>
-    </div>
-    <div class="completed-count">
-      Đã hoàn thành: {{ getCompletedCount() }}/{{ getSpeakingExercises().length }}
-    </div>
-  </div>
-
   <!-- Current Exercise -->
   @if (currentExercise) {
   <div class="current-exercise">
-    <div class="speaking-card">
+    <div class="speaking-card" [class.completed]="isExerciseCompleted(currentExercise)">
+      <div class="status-icon">
+        @if (isExerciseCompleted(currentExercise)) {
+        <span class="checkmark">✓</span>
+        }
+      </div>
       <!-- Question Header -->
       <div class="question-header">
-        <h3 class="question-title">Luyện phát âm</h3>
         <div class="question-text">{{ currentExercise.question }}</div>
         <div class="pinyin">{{ currentExercise.pinyin }}</div>
         <div class="meaning">Nghĩa: {{ currentExercise.answer }}</div>
@@ -57,7 +43,7 @@
             [class.recording]="getCurrentState().isRecording"
             [class.success]="getCurrentState().result?.matches"
             [class.error]="getCurrentState().result && !getCurrentState().result?.matches"
-            (click)="toggleRecording(currentExercise.question)"
+            (click)="toggleRecording(currentExercise.pinyin)"
           >
             <div class="mic-icon">
               @if (!getCurrentState().isRecording) {
@@ -87,7 +73,6 @@
             <div class="accuracy-score">
               Độ chính xác: {{ getCurrentState().result?.accuracy }}%
             </div>
-            <div class="confidence">Độ tin cậy: {{ getConfidencePercentage() }}%</div>
           </div>
 
           <div
@@ -98,12 +83,9 @@
             {{ getCurrentState().result?.feedback }}
           </div>
 
-          <div class="result-actions">
+          <!-- <div class="result-actions">
             <button class="btn btn-outline" (click)="tryAgain()">🔄 Thử lại</button>
-            <button class="btn btn-success" (click)="completeCurrentExercise()">
-              ✅ Hoàn thành
-            </button>
-          </div>
+          </div> -->
         </div>
         }
       </div>
@@ -114,14 +96,15 @@
       <div class="completed-state">
         <div class="success-message">✅ Đã hoàn thành bài luyện nói!</div>
         <div class="completed-actions">
-          <button class="btn btn-outline" (click)="tryAgain()">🔄 Luyện tập lại</button>
+          <!-- <button class="btn btn-outline" (click)="tryAgain()">🔄 Luyện tập lại</button> -->
           @if (!isLastExercise) {
           <button class="btn btn-primary" (click)="nextExercise()">Câu tiếp theo →</button>
-          } @if (isLastExercise) {
+          }
+          <!-- @if (isLastExercise) {
           <button class="btn btn-success" (click)="finishAllExercises()">
             🎉 Hoàn thành tất cả
           </button>
-          }
+          } -->
         </div>
       </div>
       }
@@ -143,6 +126,10 @@
         [class.completed]="getSpeakingState(i).isCompleted"
         (click)="goToExercise(i)"
       >
+        <div class="completion-badge" *ngIf="currentExercise && isExerciseCompleted(exercise)">
+          ✓
+        </div>
+
         {{ i + 1 }}
       </span>
       }
@@ -152,26 +139,13 @@
       Câu tiếp theo →
     </button>
   </div>
-
-  <!-- All Completed -->
-  @if (allExercisesCompleted) {
-  <div class="all-completed">
-    <div class="completion-card">
-      <div class="completion-icon">🎉</div>
-      <h3>Chúc mừng!</h3>
-      <p>Bạn đã hoàn thành tất cả {{ getSpeakingExercises().length }} bài luyện nói</p>
-      <div class="completion-stats">
-        <div class="stat">
-          <div class="stat-value">{{ getCompletedCount() }}</div>
-          <div class="stat-label">Câu đã hoàn thành</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">{{ getSuccessRate() }}%</div>
-          <div class="stat-label">Tỷ lệ thành công</div>
-        </div>
-      </div>
-      <button class="btn btn-primary" (click)="restartAll()">🔄 Làm lại tất cả</button>
-    </div>
-  </div>
-  }
 </div>
+@if (showErrorDialog) {
+<div class="error-dialog-backdrop">
+  <div class="error-dialog">
+    <h3>⚠️ Lỗi ghi âm</h3>
+    <p class="message">{{ errorMessage }}</p>
+    <button class="btn btn-primary" (click)="closeErrorDialog()">Đóng</button>
+  </div>
+</div>
+}

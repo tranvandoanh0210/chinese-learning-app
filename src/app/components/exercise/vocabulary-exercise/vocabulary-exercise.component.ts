@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { Exercise, VocabularyExercise, isVocabularyExercise } from '../../../models/exercise.model';
 import { SpeechService } from '../../../services/speech.service';
+import { ProgressService } from '../../../services/progress.service';
 
 @Component({
   selector: 'app-vocabulary-exercise',
@@ -12,9 +13,10 @@ import { SpeechService } from '../../../services/speech.service';
 })
 export class VocabularyExerciseComponent implements OnDestroy {
   @Input() exercises: Exercise[] = [];
+  @Input() lessonId!: string;
   @Output() completed = new EventEmitter<any>();
   isSpeaking = false;
-  constructor(private speechService: SpeechService) {}
+  constructor(private speechService: SpeechService, private progressService: ProgressService) {}
   ngOnDestroy() {
     this.speechService.stop();
   }
@@ -56,22 +58,23 @@ export class VocabularyExerciseComponent implements OnDestroy {
   }
 
   completeVocabulary(exercise: VocabularyExercise): void {
-    this.completed.emit({
-      exerciseId: exercise.id,
-      type: exercise.type,
-      completed: true,
-      data: {
-        playedAll: true,
-        completedAt: new Date(),
-      },
-    });
+    if (!this.isExerciseCompleted(exercise)) {
+      this.completed.emit({
+        exerciseId: exercise.id,
+        type: exercise.type,
+        completed: true,
+        data: {
+          playedAll: true,
+          completedAt: new Date(),
+        },
+      });
+    }
   }
-  isExerciseCompleted(exerciseId: string): boolean {
-    return false;
-    // return this.progressService.isExerciseCompleted(
-    //   this.category.lessonId,
-    //   this.category.id,
-    //   exerciseId
-    // );
+  isExerciseCompleted(exercise: VocabularyExercise): boolean {
+    return this.progressService.isExerciseCompleted(
+      this.lessonId,
+      exercise.categoryId,
+      exercise.id
+    );
   }
 }

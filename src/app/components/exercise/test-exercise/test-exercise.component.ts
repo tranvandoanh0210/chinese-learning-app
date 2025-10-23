@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Exercise, InputExercise, MultipleChoiceExercise } from '../../../models/exercise.model';
 import { CommonModule } from '@angular/common';
 import { isInputExercise, isMultipleChoiceExercise } from '../../../models/exercise.model';
+import { ProgressService } from '../../../services/progress.service';
 
 @Component({
   selector: 'app-test-exercise',
@@ -178,16 +179,21 @@ export class TestExerciseComponent {
     this.exercises.forEach((_, index) => {
       this.checkAnswer(index);
     });
-    console.log('Before setting showResults = true');
     this.showResults = true;
     this.testStarted = false;
-    console.log('Submit called - showResults:', this.showResults);
     this.completed.emit({
-      total: this.exercises.length,
-      correct: this.correctCount,
-      percentage: this.getPercentage(),
-      timeSpent: this.elapsedTime.totalSeconds,
-      answers: this.userAnswers,
+      type: 'test',
+      completed: true,
+      data: [
+        {
+          total: this.exercises.length,
+          correct: this.correctCount,
+          incorrect: this.incorrectCount,
+          timeSpent: this.formatTime(this.elapsedTime),
+          score: this.getPoint(),
+          completionDate: new Date(),
+        },
+      ],
     });
   }
   restartTest(): void {

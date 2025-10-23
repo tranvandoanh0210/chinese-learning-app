@@ -1,7 +1,12 @@
 <div class="dialogue-exercise">
   @for (exercise of getDialogueExercises(); track $index) {
   <div class="exercise-item">
-    <div class="dialogue-card">
+    <div class="dialogue-card" [class.completed]="isExerciseCompleted(exercise)">
+      <div class="status-icon">
+        @if (isExerciseCompleted(exercise)) {
+        <span class="checkmark">✓</span>
+        }
+      </div>
       <!-- Dialogue Content - Chat Layout -->
       <div class="dialogue-content chat-layout">
         <div class="chat-messages">
@@ -61,6 +66,12 @@
         >
           {{ isPlaying ? '🔊 Đang phát...' : '🎭 Nghe toàn bộ hội thoại' }}
         </button>
+        @if(!isExerciseCompleted(exercise)){
+
+        <button class="btn-complete" (click)="markAsCompleted(exercise)">
+          <span>Đánh dấu đã học</span>
+        </button>
+        }
       </div>
     </div>
   </div>

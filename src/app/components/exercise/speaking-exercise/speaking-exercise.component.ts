@@ -5,6 +5,7 @@ import { SpeechRecognitionService } from '../../../services/speech-recognition.s
 import { SpeechService } from '../../../services/speech.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ProgressService } from '../../../services/progress.service';
 interface SpeakingState {
   isPlaying: boolean;
   isRecording: boolean;
@@ -22,14 +23,16 @@ interface SpeakingState {
 })
 export class SpeakingExerciseComponent implements OnDestroy {
   @Input() exercises: Exercise[] = [];
+  @Input() lessonId!: string;
   @Output() completed = new EventEmitter<any>();
 
   currentIndex = 0;
   speakingStates: SpeakingState[] = [];
-  allExercisesCompleted = false;
   private recognitionSubscription: any;
-
+  errorMessage: string | null = null;
+  showErrorDialog = false;
   constructor(
+    private progressService: ProgressService,
     private speechService: SpeechService,
     private speechRecognitionService: SpeechRecognitionService,
     private pronunciationService: PronunciationService
@@ -97,20 +100,12 @@ export class SpeakingExerciseComponent implements OnDestroy {
     if (state.result && !state.result.matches) return 'Thử lại';
     return 'Nhấn để nói';
   }
-
-  getConfidencePercentage(): string {
-    const confidence = this.getCurrentState().result?.confidence || 0;
-    return Math.round(confidence * 100).toString();
-  }
-
-  getCompletedCount(): number {
-    return this.speakingStates.filter((state) => state.isCompleted).length;
-  }
-
-  getSuccessRate(): number {
-    const completed = this.getCompletedCount();
-    const total = this.getSpeakingExercises().length;
-    return total > 0 ? Math.round((completed / total) * 100) : 0;
+  getCategoryProgressPercentage(): number {
+    const progress = this.progressService.getCategoryProgress(
+      this.lessonId || '',
+      this.currentExercise?.categoryId || ''
+    );
+    return progress?.exercises.filter((exercise) => exercise.completed).length ?? 0;
   }
 
   async playSampleAudio(text: string | undefined): Promise<void> {
@@ -164,6 +159,9 @@ export class SpeakingExerciseComponent implements OnDestroy {
       },
       error: (error: any) => {
         console.error('Speech recognition error:', error);
+        this.errorMessage =
+          'Không thể khởi động ghi âm. Vui lòng kiểm tra micro hoặc quyền truy cập.\n' + error;
+        this.showErrorDialog = true;
         this.updateCurrentState({ isRecording: false });
       },
       complete: () => {
@@ -186,6 +184,7 @@ export class SpeakingExerciseComponent implements OnDestroy {
 
     if (result.matches) {
       this.updateCurrentState({ isCompleted: true });
+      this.speakingExerciseComplete();
     }
   }
 
@@ -197,10 +196,6 @@ export class SpeakingExerciseComponent implements OnDestroy {
       result: undefined,
       isCompleted: false,
     });
-  }
-
-  completeCurrentExercise(): void {
-    this.updateCurrentState({ isCompleted: true });
   }
 
   nextExercise(): void {
@@ -223,19 +218,24 @@ export class SpeakingExerciseComponent implements OnDestroy {
       this.stopRecording();
     }
   }
-
-  finishAllExercises(): void {
-    this.allExercisesCompleted = true;
-    this.completed.emit({
-      total: this.getSpeakingExercises().length,
-      completed: this.getCompletedCount(),
-      successRate: this.getSuccessRate(),
-    });
+  closeErrorDialog(): void {
+    this.showErrorDialog = false;
+    this.errorMessage = null;
   }
-
-  restartAll(): void {
-    this.currentIndex = 0;
-    this.allExercisesCompleted = false;
-    this.initializeStates();
+  speakingExerciseComplete(): void {
+    if (this.currentExercise) {
+      this.completed.emit({
+        exerciseId: this.currentExercise.id,
+        type: this.currentExercise.type,
+        completed: true,
+      });
+    }
+  }
+  isExerciseCompleted(exercise: SpeakingExercise): boolean {
+    return this.progressService.isExerciseCompleted(
+      this.lessonId,
+      exercise.categoryId,
+      exercise.id
+    );
   }
 }

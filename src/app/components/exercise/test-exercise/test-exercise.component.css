@@ -283,16 +283,6 @@
             transform: translateY(-1px);
           }
         }
-
-        &.btn-success {
-          background: #27ae60;
-          color: white;
-
-          &:hover:not(:disabled) {
-            background: #219a52;
-            transform: translateY(-1px);
-          }
-        }
       }
     }
   }
@@ -391,6 +381,7 @@
         height: 120px;
         border-radius: 50%;
         background: #f0f0f0;
+        margin: 0rem auto;
       }
 
       .circle-background {
@@ -754,7 +745,6 @@
         .progress-circle {
           width: 100px;
           height: 100px;
-          margin: 1.5rem auto;
 
           .circle-background,
           .circle-progress {

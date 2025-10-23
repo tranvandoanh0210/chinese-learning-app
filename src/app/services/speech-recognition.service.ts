@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 
 export interface SpeechRecognitionResult {
   transcript: string;
-  confidence: number;
   isFinal: boolean;
 }
 
@@ -38,18 +37,12 @@ export class SpeechRecognitionService {
       const handleResult = (event: any) => {
         const result = event.results[event.resultIndex];
         const transcript = result[0].transcript;
-        const confidence = result[0].confidence;
         const isFinal = result.isFinal;
 
         observer.next({
           transcript,
-          confidence,
           isFinal,
         });
-
-        if (isFinal) {
-          // Don't complete here, let onend handle it
-        }
       };
 
       const handleError = (event: any) => {

@@ -67,7 +67,7 @@
           </div>
           <div class="exercise-count">
             {{ category.exercises.length }} bài
-            <span
+            <!-- <span
               class="completed-count"
               *ngIf="getCategoryProgressPercentage(category.id, false) > 0"
             >
@@ -76,7 +76,7 @@
                   category.exercises.length
               }}
               đã hoàn thành)
-            </span>
+            </span> -->
           </div>
         </div>
         }
@@ -107,11 +107,7 @@
         <h3>{{ selectedCategory.name }}</h3>
         <p>{{ selectedCategory.description }}</p>
       </div>
-      <app-exercise-display
-        [category]="selectedCategory"
-        (exerciseCompleted)="onExerciseCompleted($event)"
-      >
-      </app-exercise-display>
+      <app-exercise-display [category]="selectedCategory"> </app-exercise-display>
     </div>
   </div>
   } @if (!selectedCategory && lesson) {

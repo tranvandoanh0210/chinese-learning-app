@@ -28,7 +28,6 @@ import { ProgressService } from '../../../services/progress.service';
 })
 export class ExerciseDisplayComponent {
   @Input() category!: Category;
-  @Output() exerciseCompleted = new EventEmitter<any>();
   constructor(private progressService: ProgressService) {}
   onCompleted(result: any) {
     const completedEvent = {
@@ -37,7 +36,14 @@ export class ExerciseDisplayComponent {
       categoryId: this.category.id,
     };
     this.progressService.markExerciseCompleted(completedEvent);
-    // this.exerciseCompleted.emit(completedEvent);
+  }
+  onCategoryCompleted(result: any) {
+    const completedEvent = {
+      ...result,
+      lessonId: this.category.lessonId,
+      categoryId: this.category.id,
+    };
+    this.progressService.markCategoryCompleted(completedEvent);
   }
   isExerciseCompleted(exerciseId: string): boolean {
     return this.progressService.isExerciseCompleted(

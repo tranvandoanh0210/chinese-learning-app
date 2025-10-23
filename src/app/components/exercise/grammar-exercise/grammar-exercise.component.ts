@@ -1,6 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Exercise, GrammarExercise, isGrammarExercise } from '../../../models/exercise.model';
+import { ProgressService } from '../../../services/progress.service';
 
 @Component({
   selector: 'app-grammar-exercise',
@@ -11,8 +20,10 @@ import { Exercise, GrammarExercise, isGrammarExercise } from '../../../models/ex
 })
 export class GrammarExerciseComponent {
   @Input() exercises: Exercise[] = [];
+  @Input() lessonId!: string;
   @Output() completed = new EventEmitter<any>();
 
+  constructor(private progressService: ProgressService) {}
   getGrammarExercises(): GrammarExercise[] {
     return this.exercises.filter((ex) => isGrammarExercise(ex)) as GrammarExercise[];
   }
@@ -34,62 +45,6 @@ export class GrammarExerciseComponent {
     return formatted;
   }
 
-  getStructure(exercise: GrammarExercise): string {
-    // Extract structure from content or use default
-    const structureMatch = exercise.content?.match(/Cấu trúc.*?:?\s*\*\*(.*?)\*\*/);
-    return structureMatch ? structureMatch[1] : '';
-  }
-
-  getStructureExplanation(exercise: GrammarExercise): string {
-    // Extract structure explanation
-    const content = exercise.content || '';
-    if (content.includes('Cấu trúc cơ bản:')) {
-      const parts = content.split('Cấu trúc cơ bản:');
-      return parts[1]?.split('\n\n')[0] || '';
-    }
-    return '';
-  }
-
-  getUsageNotes(exercise: GrammarExercise): string | null {
-    // Extract usage notes from content
-    const content = exercise.content || '';
-    if (content.includes('Cách sử dụng:')) {
-      const parts = content.split('Cách sử dụng:');
-      return parts[1]?.split('\n\n')[0] || null;
-    }
-    return null;
-  }
-
-  getNegativeForm(exercise: GrammarExercise): string | null {
-    // Extract negative form from content
-    const content = exercise.content || '';
-    if (content.includes('Dạng phủ định')) {
-      const parts = content.split('Dạng phủ định');
-      return 'Dạng phủ định' + (parts[1]?.split('\n\n')[0] || '');
-    }
-    return null;
-  }
-
-  getStructureAnalysis(exercise: GrammarExercise): string | null {
-    // Extract structure analysis from content
-    const content = exercise.content || '';
-    if (content.includes('Phân tích cấu trúc:')) {
-      const parts = content.split('Phân tích cấu trúc:');
-      return parts[1]?.split('\n\n')[0] || null;
-    }
-    return null;
-  }
-
-  getKeyPoints(exercise: GrammarExercise): string | null {
-    // Extract key points from content
-    const content = exercise.content || '';
-    if (content.includes('Điểm quan trọng:')) {
-      const parts = content.split('Điểm quan trọng:');
-      return parts[1]?.split('\n\n')[0] || null;
-    }
-    return null;
-  }
-
   getChineseExample(example: string): string {
     // Extract Chinese text from example
     const chineseMatch = example.match(/^(.*?)\s*[\(（]/);
@@ -108,14 +63,21 @@ export class GrammarExerciseComponent {
     return parts.length > 1 ? parts[1].trim() : '';
   }
   markAsCompleted(exercise: GrammarExercise): void {
-    // In a real app, you would save this to a service
-    console.log('Marked as completed:', exercise.id);
-
-    // Emit completion event
     this.completed.emit({
       exerciseId: exercise.id,
-      type: 'grammar',
-      status: 'completed',
+      type: exercise.type,
+      completed: true,
+      data: {
+        playedAll: true,
+        completedAt: new Date(),
+      },
     });
+  }
+  isExerciseCompleted(exercise: GrammarExercise): boolean {
+    return this.progressService.isExerciseCompleted(
+      this.lessonId,
+      exercise.categoryId,
+      exercise.id
+    );
   }
 }

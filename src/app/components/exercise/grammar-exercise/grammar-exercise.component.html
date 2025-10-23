@@ -2,13 +2,18 @@
   @for (exercise of getGrammarExercises(); track $index) {
   <div class="grammar-lesson">
     <!-- Lesson Header -->
-    <div class="lesson-header">
+    <div class="lesson-header" [class.completed]="isExerciseCompleted(exercise)">
       <h2 class="lesson-title">{{ exercise.question }}</h2>
       @if (exercise.answer) {
       <div class="lesson-subtitle">
         {{ exercise.answer }}
       </div>
       }
+      <div class="status-icon">
+        @if (isExerciseCompleted(exercise)) {
+        <span class="checkmark">✓</span>
+        }
+      </div>
     </div>
 
     <!-- Main Content -->
@@ -52,6 +57,13 @@
       </div>
       }
     </div>
+    @if(!isExerciseCompleted(exercise)){
+    <div class="lesson-footer">
+      <button class="btn-complete" (click)="markAsCompleted(exercise)">
+        <span>Đánh dấu đã học</span>
+      </button>
+    </div>
+    }
   </div>
   }
 </div>

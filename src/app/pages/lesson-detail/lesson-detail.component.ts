@@ -77,22 +77,6 @@ export class LessonDetailComponent implements OnInit, OnDestroy {
     this.selectedCategory = category;
   }
 
-  onExerciseCompleted(result: any) {
-    console.log('Exercise completed:', result);
-    if (this.lesson && this.selectedCategory) {
-      const completionEvent: ExerciseCompletionEvent = {
-        lessonId: this.lesson.id,
-        categoryId: this.selectedCategory.id,
-        exerciseId: result.exerciseId,
-        exerciseType: result.type,
-        completed: true,
-        score: result.score,
-        data: result.data,
-      };
-
-      this.progressService.markExerciseCompleted(completionEvent);
-    }
-  }
   getTotalExercises(): number {
     return (
       this.lesson?.categories.reduce((total, category) => total + category.exercises.length, 0) || 0

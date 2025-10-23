@@ -45,10 +45,13 @@
             ↪️ Redo
           </button>
           <button class="btn btn-secondary" (click)="clearCanvas(i)">🗑️ Xóa hết</button>
-          <!-- <button class="btn btn-success" (click)="completeWriting(exercise)">✅ Hoàn thành</button> -->
         </div>
       </div>
     </div>
+  </div>
+  } @if(isAllCharacterCompleted()&&!isCompleted){
+  <div class="text-center">
+    <button class="btn btn-success" (click)="completeWriting()">🎯 Nộp bài</button>
   </div>
   }
 </div>

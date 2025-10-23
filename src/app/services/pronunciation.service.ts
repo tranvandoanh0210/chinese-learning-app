@@ -4,7 +4,6 @@ export interface PronunciationResult {
   accuracy: number;
   feedback: string;
   matches: boolean;
-  confidence: number;
 }
 
 @Injectable({
@@ -28,13 +27,11 @@ export class PronunciationService {
     }
 
     const accuracy = (matches / expectedWords.length) * 100;
-    const confidence = Math.random() * 0.3 + 0.7; // Mock confidence
 
     return {
       accuracy: Math.round(accuracy),
       feedback: this.generateFeedback(accuracy),
-      matches: accuracy >= 70,
-      confidence,
+      matches: accuracy >= 90,
     };
   }
 
@@ -79,14 +76,16 @@ export class PronunciationService {
   private generateFeedback(accuracy: number): string {
     if (accuracy >= 90) {
       return '🎉 Phát âm xuất sắc! Rất chính xác!';
-    } else if (accuracy >= 80) {
-      return '👍 Phát âm tốt! Có thể cải thiện thêm một chút.';
-    } else if (accuracy >= 70) {
-      return '👌 Phát âm khá tốt! Hãy luyện tập thêm.';
-    } else if (accuracy >= 60) {
-      return '💡 Cần cải thiện! Hãy nghe kỹ và thử lại.';
-    } else {
-      return '🔍 Cần luyện tập nhiều hơn! Hãy nghe mẫu và thử lại.';
+    }
+    // else if (accuracy >= 80) {
+    //   return '👍 Phát âm tốt! Có thể cải thiện thêm một chút.';
+    // } else if (accuracy >= 70) {
+    //   return '👌 Phát âm khá tốt! Hãy luyện tập thêm.';
+    // } else if (accuracy >= 60) {
+    //   return '💡 Cần cải thiện! Hãy nghe kỹ và thử lại.';
+    // }
+    else {
+      return 'Hãy nghe mẫu và thử lại.';
     }
   }
 }

@@ -17,6 +17,30 @@
       color: white;
       padding: 2.5rem;
       text-align: center;
+      position: relative;
+
+      .completed {
+        border-color: #4CAF50;
+        background-color: #f8fff8;
+      }
+
+      .status-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      .checkmark {
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
 
       .lesson-title {
         font-size: 2rem;
@@ -244,32 +268,29 @@
     }
 
     .lesson-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 2rem;
+      text-align: center;
+      padding: 1rem 2rem;
       background: #f8f9fa;
       border-top: 1px solid #e9ecef;
 
-      .completion-status {
-        .btn-complete {
-          background: #27ae60;
-          color: white;
-          border: none;
-          padding: 0.8rem 1.5rem;
-          border-radius: 8px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          min-height: 44px;
-          /* Tối ưu cho mobile touch */
+      .btn-complete {
+        background: #27ae60;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        /* Tối ưu cho mobile touch */
 
-          &:hover {
-            background: #219a52;
-            transform: translateY(-1px);
-          }
+        &:hover {
+          background: #219a52;
+          transform: translateY(-1px);
         }
       }
+
     }
   }
 }

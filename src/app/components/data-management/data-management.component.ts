@@ -45,7 +45,6 @@ export class DataManagementComponent {
     try {
       const lessons = this.dataService.getAllLessons();
       await this.excelService.exportToExcel(lessons);
-      console.log('Export successful');
     } catch (error) {
       console.error('Export error:', error);
     }
@@ -56,11 +55,8 @@ export class DataManagementComponent {
     if (!file) return;
     try {
       this.importResult = await this.excelService.importFromExcel(file);
-      console.log(this.importResult);
-
       this.importedLessons = this.importResult.lessons;
       this.deploymentStatus = null;
-      console.log('Import result:', this.importResult);
     } catch (error) {
       console.error('Import error:', error);
     }

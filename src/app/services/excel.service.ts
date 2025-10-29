@@ -157,12 +157,12 @@ export class ExcelService {
   private parseWorkbook(workbook: XLSX.WorkBook, errors: string[], warnings: string[]): Lesson[] {
     const lessonsMap = new Map<string, Lesson>();
     const sheetNames = workbook.SheetNames;
-
+    let lessonCounter = 0;
     sheetNames.forEach((sheetName: string) => {
       try {
         const worksheet = workbook.Sheets[sheetName];
         const data = XLSX.utils.sheet_to_json(worksheet);
-        let lessonCounter = 0;
+
         // Parse sheet name để lấy lesson name và category type
         const { lessonName, categoryType } = this.parseSheetName(sheetName);
 
@@ -198,7 +198,7 @@ export class ExcelService {
 
   private parseSheetName(sheetName: string): { lessonName: string; categoryType: string } {
     // Sheet name format: "Lesson Name - Category Type"
-    const parts = sheetName.split(' - ');
+    const parts = sheetName.split('-');
     if (parts.length !== 2) {
       return { lessonName: '', categoryType: '' };
     }

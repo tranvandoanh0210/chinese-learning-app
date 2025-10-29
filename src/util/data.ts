@@ -2,23 +2,23 @@ import { Lesson } from '../app/models/lesson.model';
 
 export const SAMPLE_DATA: Lesson[] = [
   {
-    "id": "lesson_1761708494556_fp4w4ndg6",
+    "id": "lesson_1761709241381_46ax24wgs",
     "name_zh": "",
     "name_vi": "我叫大卫",
     "description": "Bài học 我叫大卫",
     "order": 1,
     "categories": [
       {
-        "id": "category_1761708494556_q4g5j4iz5",
-        "lessonId": "lesson_1761708494556_fp4w4ndg6",
+        "id": "category_1761709241381_riluejiht",
+        "lessonId": "lesson_1761709241381_46ax24wgs",
         "type": "vocabulary",
         "name": "Từ vựng",
         "description": "Bài tập Từ vựng",
         "order": 1,
         "exercises": [
           {
-            "id": "ex_1761708494556_gu0qd368t",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_g8ge1takl",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "你",
             "answer": "Bạn, anh, chị (ngôi thứ 2 số ít)",
@@ -26,8 +26,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "nǐ"
           },
           {
-            "id": "ex_1761708494556_yd6dv1zka",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_hjj332gsn",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "好",
             "answer": "Tốt, khỏe",
@@ -35,8 +35,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "hǎo"
           },
           {
-            "id": "ex_1761708494556_wb397a7sg",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_7rca5yb93",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "我",
             "answer": "Tôi, tớ (ngôi thứ 1 số ít)",
@@ -44,8 +44,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "wǒ"
           },
           {
-            "id": "ex_1761708494556_07yh1lrr6",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_71l2rncs9",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "叫",
             "answer": "Kêu, gọi, tên là",
@@ -53,8 +53,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "jiào"
           },
           {
-            "id": "ex_1761708494556_mcqxti075",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_6oryl06zn",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "是",
             "answer": "Là",
@@ -62,8 +62,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "shì"
           },
           {
-            "id": "ex_1761708494556_wh1uj3i14",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_h1xhvme7e",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "人",
             "answer": "Người",
@@ -71,8 +71,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "rén"
           },
           {
-            "id": "ex_1761708494556_fy2m58tys",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_wlwpvh3sd",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "吗",
             "answer": "Trợ từ nghi vấn (đặt cuối câu)",
@@ -80,8 +80,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "ma"
           },
           {
-            "id": "ex_1761708494556_jpf3staht",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_f3wu1kqmv",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "他",
             "answer": "Anh ấy, ông ấy, nó (ngôi thứ 3 số ít, giống đực)",
@@ -89,8 +89,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "tā"
           },
           {
-            "id": "ex_1761708494556_fpngqsf8p",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_ojq2e2wn0",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "不",
             "answer": "Không",
@@ -98,8 +98,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "bù"
           },
           {
-            "id": "ex_1761708494556_hdml7s9cw",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_039xcbobe",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "日本",
             "answer": "Nhật Bản",
@@ -107,8 +107,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "Rìběn"
           },
           {
-            "id": "ex_1761708494556_0l2a796ix",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_5d83jr6rt",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "法国",
             "answer": "Pháp (nước Pháp)",
@@ -116,8 +116,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "Fǎguó"
           },
           {
-            "id": "ex_1761708494556_5dchhnp95",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_g93tbyx3k",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "加拿大",
             "answer": "Canada",
@@ -125,8 +125,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "Jiānádà"
           },
           {
-            "id": "ex_1761708494556_b9fd42dnm",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_psgb4fwux",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "们",
             "answer": "Hậu tố số nhiều (kết hợp với đại từ nhân xưng)",
@@ -134,8 +134,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "men"
           },
           {
-            "id": "ex_1761708494556_8yga70yl7",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_6icyr5jgk",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "我们",
             "answer": "Chúng tôi, chúng ta",
@@ -143,8 +143,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "wǒmen"
           },
           {
-            "id": "ex_1761708494556_g0a7sl8le",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_wy635ar4i",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "你们",
             "answer": "Các bạn, các anh/chị",
@@ -152,8 +152,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "nǐmen"
           },
           {
-            "id": "ex_1761708494556_zq0njp0if",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_8w4gxiegt",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "他们",
             "answer": "Bọn họ (cả nam nữ)",
@@ -161,8 +161,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "tāmen"
           },
           {
-            "id": "ex_1761708494556_y7qld4rxz",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_lrpk8enze",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "她们",
             "answer": "Bọn họ (các cô ấy)",
@@ -170,8 +170,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "tāmen"
           },
           {
-            "id": "ex_1761708494556_z83ymiryf",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_fh5gkao44",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "老师",
             "answer": "Giáo viên, thầy/cô giáo",
@@ -179,8 +179,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "lǎoshī"
           },
           {
-            "id": "ex_1761708494556_0txjyniye",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_aaoxsthqd",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "您",
             "answer": "Ngài, ông, bà (ngôi thứ 2 lịch sự)",
@@ -188,8 +188,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "nín"
           },
           {
-            "id": "ex_1761708494556_g7u94jchj",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_g4gz5pmv7",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "学生",
             "answer": "Học sinh, sinh viên",
@@ -197,8 +197,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "xuésheng"
           },
           {
-            "id": "ex_1761708494556_hvrumo20u",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_zirbjxlw5",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "她",
             "answer": "Cô ấy, chị ấy, bà ấy (ngôi thứ 3 số ít,",
@@ -206,8 +206,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "tā"
           },
           {
-            "id": "ex_1761708494556_kqbg8l8oj",
-            "categoryId": "category_1761708494556_q4g5j4iz5",
+            "id": "ex_1761709241381_i5rdfjoxp",
+            "categoryId": "category_1761709241381_riluejiht",
             "type": "vocabulary",
             "question": "也",
             "answer": "Cũng, cũng vậy",
@@ -217,16 +217,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494556_nz0x5wdk4",
-        "lessonId": "lesson_1761708494556_fp4w4ndg6",
+        "id": "category_1761709241381_3usgcr11z",
+        "lessonId": "lesson_1761709241381_46ax24wgs",
         "type": "grammar",
         "name": "Ngữ pháp",
         "description": "Bài tập Ngữ pháp",
         "order": 2,
         "exercises": [
           {
-            "id": "ex_1761708494556_303mg548a",
-            "categoryId": "category_1761708494556_nz0x5wdk4",
+            "id": "ex_1761709241381_xjw13izr7",
+            "categoryId": "category_1761709241381_3usgcr11z",
             "type": "grammar",
             "question": "Cách dùng từ “也” (yě)",
             "answer": "Chủ ngữ + 也 + Động từ/Tính từ",
@@ -240,8 +240,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494556_on3xxbr2p",
-            "categoryId": "category_1761708494556_nz0x5wdk4",
+            "id": "ex_1761709241381_57sdnpppr",
+            "categoryId": "category_1761709241381_3usgcr11z",
             "type": "grammar",
             "question": "Câu khẳng định với “是”",
             "answer": "Chủ ngữ + 是 + Danh từ",
@@ -257,8 +257,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494556_5kmd6dh7o",
-            "categoryId": "category_1761708494556_nz0x5wdk4",
+            "id": "ex_1761709241381_h0x3gllfh",
+            "categoryId": "category_1761709241381_3usgcr11z",
             "type": "grammar",
             "question": "Câu phủ định với “是”",
             "answer": "Chủ ngữ + 不是 + Danh từ",
@@ -272,8 +272,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494556_qhhrznbdz",
-            "categoryId": "category_1761708494556_nz0x5wdk4",
+            "id": "ex_1761709241381_4i58wrc6f",
+            "categoryId": "category_1761709241381_3usgcr11z",
             "type": "grammar",
             "question": "Câu hỏi với “吗”",
             "answer": "Chủ ngữ + 是 + Danh từ + 吗？",
@@ -287,8 +287,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494556_mp6vk1yv9",
-            "categoryId": "category_1761708494556_nz0x5wdk4",
+            "id": "ex_1761709241381_5rdg7nwc2",
+            "categoryId": "category_1761709241381_3usgcr11z",
             "type": "grammar",
             "question": "Lưu ý: Không dùng “是” với tính từ",
             "answer": "Chủ ngữ + 很 + Tính từ",
@@ -302,16 +302,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494556_5zpp5pigr",
-        "lessonId": "lesson_1761708494556_fp4w4ndg6",
+        "id": "category_1761709241381_teqgr4ex2",
+        "lessonId": "lesson_1761709241381_46ax24wgs",
         "type": "test",
         "name": "Kiểm tra",
         "description": "Bài tập Kiểm tra",
         "order": 3,
         "exercises": [
           {
-            "id": "ex_1761708494556_57j6uxf9a",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_tqghco3qp",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“你” nghĩa là gì?",
             "answer": "Bạn, anh, chị",
@@ -324,8 +324,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_7j3aph5hp",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_td92kvbzk",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“好” nghĩa là gì?",
             "answer": "Tốt, khỏe",
@@ -338,8 +338,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_to194mwa8",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_mv5iyav9g",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“我” có nghĩa là gì?",
             "answer": "Tôi, tớ",
@@ -352,8 +352,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_c7oe104vv",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_spg0yqkmn",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“是” có nghĩa là gì?",
             "answer": "Là",
@@ -366,8 +366,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_a0ebyfoyd",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_a1de9dps3",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "Từ nào có nghĩa là \"Người\"?",
             "answer": "人",
@@ -380,8 +380,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_2ql13sh74",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_puu42seab",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "Từ nào dùng để hỏi (trợ từ nghi vấn)?",
             "answer": "吗",
@@ -394,8 +394,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_gn8rcvhj1",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_3uac4etq9",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“他” có nghĩa là gì?",
             "answer": "Anh ấy, ông ấy, nó",
@@ -408,8 +408,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_p7nap8nza",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_7yewdi028",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“不” có nghĩa là gì?",
             "answer": "Không",
@@ -422,8 +422,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_4y77uz9li",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_mh860ltwm",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“日本” có nghĩa là gì?",
             "answer": "Nhật Bản",
@@ -436,8 +436,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_gq0id0a8n",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_6ptizcuy3",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“法国” có nghĩa là gì?",
             "answer": "Pháp (nước Pháp)",
@@ -450,8 +450,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_vcuo6m37q",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_7s8ebwhnb",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "Từ nào có nghĩa là \"Canada\"?",
             "answer": "加拿大",
@@ -464,8 +464,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_q4jz1sbo7",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_ptituhmj0",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "Hậu tố số nhiều (kết hợp với đại từ nhân xưng) là từ nào?",
             "answer": "们",
@@ -478,8 +478,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_riyx22hgr",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_28ki2z1gk",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“我们” có nghĩa là gì?",
             "answer": "Chúng tôi, chúng ta",
@@ -492,8 +492,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_q2q443qlb",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_5g1zi4i32",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“你们” có nghĩa là gì?",
             "answer": "Các bạn, các anh/chị",
@@ -506,8 +506,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_czne7gnoy",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_lb44gn1ds",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“他们” có nghĩa là gì?",
             "answer": "Bọn họ (cả nam nữ)",
@@ -520,8 +520,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_5i84i4yep",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_1urur2jyn",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“她们” dùng để chỉ ai?",
             "answer": "Bọn họ (các cô ấy)",
@@ -534,8 +534,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_4d8miptzz",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_3p64cxhqi",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "Từ nào có nghĩa là \"Giáo viên, thầy/cô giáo\"?",
             "answer": "老师",
@@ -548,8 +548,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_5tszhp9pd",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_1svjnifxh",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“您” có nghĩa là gì?",
             "answer": "Ngài, ông, bà",
@@ -562,8 +562,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_czfhc6yzl",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_5cp843s4v",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“学生” có nghĩa là gì?",
             "answer": "Học sinh, sinh viên",
@@ -576,8 +576,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_daw3n6bmk",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_6znxabkp4",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“她” có nghĩa là gì?",
             "answer": "Cô ấy, chị ấy, bà ấy",
@@ -590,8 +590,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_zzschj9i3",
-            "categoryId": "category_1761708494556_5zpp5pigr",
+            "id": "ex_1761709241381_6n3c4s4aw",
+            "categoryId": "category_1761709241381_teqgr4ex2",
             "type": "multiple_choice",
             "question": "“也” có nghĩa là gì?",
             "answer": "Cũng, cũng vậy",
@@ -606,16 +606,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494557_cnr7zkmz5",
-        "lessonId": "lesson_1761708494556_fp4w4ndg6",
+        "id": "category_1761709241382_0iran4ccx",
+        "lessonId": "lesson_1761709241381_46ax24wgs",
         "type": "review",
         "name": "Ôn tập",
         "description": "Bài tập Ôn tập",
         "order": 4,
         "exercises": [
           {
-            "id": "ex_1761708494557_v86tcts1p",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_udgg4sxja",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "你",
             "answer": "Bạn, anh, chị (ngôi thứ 2 số ít)",
@@ -624,8 +624,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_gf4fulgjf",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_zwhu3zrdk",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "好",
             "answer": "Tốt, khỏe",
@@ -634,8 +634,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_jsmvwqu7b",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_mrveqkljm",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "我",
             "answer": "Tôi, tớ (ngôi thứ 1 số ít)",
@@ -644,8 +644,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_16g418us5",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_3rtcdm82g",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "叫",
             "answer": "Kêu, gọi, tên là",
@@ -654,8 +654,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_d8ssblopx",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_7ursugwst",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "是",
             "answer": "Là",
@@ -664,8 +664,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_fjlcm86xl",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_bd1ptc3ga",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "人",
             "answer": "Người",
@@ -674,8 +674,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_vwa6ubpqy",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_hqk1m6qd8",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "吗",
             "answer": "Trợ từ nghi vấn (đặt cuối câu)",
@@ -684,8 +684,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_rpegsd54n",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_nyoyq69y0",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "他",
             "answer": "Anh ấy, ông ấy, nó (ngôi thứ 3 số ít, giống đực)",
@@ -694,8 +694,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_5y02tnh13",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_8732py153",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "不",
             "answer": "Không",
@@ -704,8 +704,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_llln4uezn",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_658e4njot",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "日本",
             "answer": "Nhật Bản",
@@ -714,8 +714,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_wau27sm9k",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_p5wkwx5wo",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "法国",
             "answer": "Pháp (nước Pháp)",
@@ -724,8 +724,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_4yns8w8yq",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_2w7kgbe3u",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "加拿大",
             "answer": "Canada",
@@ -734,8 +734,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_zwrz6cc3h",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_ng4w147ry",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "们",
             "answer": "Hậu tố số nhiều (kết hợp với đại từ nhân xưng)",
@@ -744,8 +744,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_v2ezmds3w",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_6zzamohsg",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "我们",
             "answer": "Chúng tôi, chúng ta",
@@ -754,8 +754,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_x79kbdkgd",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_z56xgcl63",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "你们",
             "answer": "Các bạn, các anh/chị",
@@ -764,8 +764,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_3dwnfd5u1",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_vljvmgs3u",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "他们",
             "answer": "Bọn họ (cả nam nữ)",
@@ -774,8 +774,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_8c0ahq0xj",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_98u4l46ou",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "她们",
             "answer": "Bọn họ (các cô ấy)",
@@ -784,8 +784,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_u0qwcn4cm",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_303ok1yj4",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "老师",
             "answer": "Giáo viên, thầy/cô giáo",
@@ -794,8 +794,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_4gxjtsvng",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_k4zmb4ybd",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "您",
             "answer": "Ngài, ông, bà (ngôi thứ 2 lịch sự)",
@@ -804,8 +804,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_0ciqghzag",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_i3txtkwa5",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "学生",
             "answer": "Học sinh, sinh viên",
@@ -814,8 +814,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_8phq9kxr1",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_wa0ixl3ap",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "她",
             "answer": "Cô ấy, chị ấy, bà ấy (ngôi thứ 3 số ít,",
@@ -824,8 +824,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_7snwntgjg",
-            "categoryId": "category_1761708494557_cnr7zkmz5",
+            "id": "ex_1761709241382_bn7n7uioh",
+            "categoryId": "category_1761709241382_0iran4ccx",
             "type": "flashcard",
             "question": "也",
             "answer": "Cũng, cũng vậy",
@@ -836,16 +836,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494557_51phfu8k3",
-        "lessonId": "lesson_1761708494556_fp4w4ndg6",
+        "id": "category_1761709241382_gbfcermeb",
+        "lessonId": "lesson_1761709241381_46ax24wgs",
         "type": "dialogue",
         "name": "Hội thoại",
         "description": "Bài tập Hội thoại",
         "order": 5,
         "exercises": [
           {
-            "id": "dialogue_1761708494557_x61w6hc3d",
-            "categoryId": "category_1761708494557_51phfu8k3",
+            "id": "dialogue_1761709241382_b41mfu3vu",
+            "categoryId": "category_1761709241382_gbfcermeb",
             "type": "dialogue",
             "context": "Bài khóa 1",
             "lines": [
@@ -880,23 +880,23 @@ export const SAMPLE_DATA: Lesson[] = [
     ]
   },
   {
-    "id": "lesson_1761708494557_qd2szfi63",
+    "id": "lesson_1761709241382_p30ho1nus",
     "name_zh": "",
     "name_vi": "这是安妮的地图",
     "description": "Bài học 这是安妮的地图",
     "order": 1,
     "categories": [
       {
-        "id": "category_1761708494557_8fhhapcc4",
-        "lessonId": "lesson_1761708494557_qd2szfi63",
+        "id": "category_1761709241382_lir8k8htt",
+        "lessonId": "lesson_1761709241382_p30ho1nus",
         "type": "vocabulary",
         "name": "Từ vựng",
         "description": "Bài tập Từ vựng",
         "order": 1,
         "exercises": [
           {
-            "id": "ex_1761708494557_n89wu4lkw",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_sv5z5p1sn",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "这",
             "answer": "cái này, đây",
@@ -904,8 +904,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "zhè"
           },
           {
-            "id": "ex_1761708494557_0xzv7nd5x",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_x32iyxlel",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "的",
             "answer": "trợ từ (biểu thị sở hữu hoặc liên kết)",
@@ -913,8 +913,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "de"
           },
           {
-            "id": "ex_1761708494557_de3l3glo4",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_o6hebk19b",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "书",
             "answer": "sách",
@@ -922,8 +922,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "shū"
           },
           {
-            "id": "ex_1761708494557_o90qwt7il",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_kdrq4vhc9",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "词典",
             "answer": "từ điển",
@@ -931,8 +931,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "cídiǎn"
           },
           {
-            "id": "ex_1761708494557_xnt8d13uj",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_jytw2sm2m",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "地图",
             "answer": "bản đồ",
@@ -940,8 +940,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "dìtú"
           },
           {
-            "id": "ex_1761708494557_7uv1cxadz",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_32y0s0wmg",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "本子",
             "answer": "quyển vở",
@@ -949,8 +949,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "běnzi"
           },
           {
-            "id": "ex_1761708494557_grtcr1uke",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_cal53reh4",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "笔",
             "answer": "bút",
@@ -958,8 +958,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "bǐ"
           },
           {
-            "id": "ex_1761708494557_3garrdlee",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_1pi7d6dmf",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "有",
             "answer": "có",
@@ -967,8 +967,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "yǒu"
           },
           {
-            "id": "ex_1761708494557_cj3s1acww",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_ja6fgqi2q",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "没有",
             "answer": "không có",
@@ -976,8 +976,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "méiyǒu"
           },
           {
-            "id": "ex_1761708494557_5u4k11yip",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_htbwnbpdy",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "支",
             "answer": "cây (lượng từ cho bút, bút chì, v.v.)",
@@ -985,8 +985,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "zhī"
           },
           {
-            "id": "ex_1761708494557_jgk7854ic",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_vr4c5dezu",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "个",
             "answer": "cái (lượng từ chung)",
@@ -994,8 +994,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "gè"
           },
           {
-            "id": "ex_1761708494557_mnh57gds9",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_cfmkgpx7q",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "两",
             "answer": "hai",
@@ -1003,8 +1003,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "liǎng"
           },
           {
-            "id": "ex_1761708494557_hqdm02qot",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_2bwckhlqh",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "本",
             "answer": "quyển, cuốn (lượng từ cho sách, vở)",
@@ -1012,8 +1012,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "běn"
           },
           {
-            "id": "ex_1761708494557_lnvyu6h86",
-            "categoryId": "category_1761708494557_8fhhapcc4",
+            "id": "ex_1761709241382_9gsrkbx0y",
+            "categoryId": "category_1761709241382_lir8k8htt",
             "type": "vocabulary",
             "question": "张",
             "answer": "tờ, tấm (lượng từ cho giấy, ảnh, bàn...)",
@@ -1023,16 +1023,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494557_4dculxjvx",
-        "lessonId": "lesson_1761708494557_qd2szfi63",
+        "id": "category_1761709241382_5xx9zskjj",
+        "lessonId": "lesson_1761709241382_p30ho1nus",
         "type": "grammar",
         "name": "Ngữ pháp",
         "description": "Bài tập Ngữ pháp",
         "order": 2,
         "exercises": [
           {
-            "id": "ex_1761708494557_z56xv6564",
-            "categoryId": "category_1761708494557_4dculxjvx",
+            "id": "ex_1761709241382_px7buqdi8",
+            "categoryId": "category_1761709241382_5xx9zskjj",
             "type": "grammar",
             "question": "1. Kết cấu trợ từ “的” dùng khi nào?",
             "answer": "Dùng sau định ngữ để biểu thị quan hệ sở hữu. ",
@@ -1043,8 +1043,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_711616cef",
-            "categoryId": "category_1761708494557_4dculxjvx",
+            "id": "ex_1761709241382_qngl3w6bo",
+            "categoryId": "category_1761709241382_5xx9zskjj",
             "type": "grammar",
             "question": "2. Câu có động từ “有” dùng để làm gì?",
             "answer": "Dùng để biểu đạt ý “có”, “sở hữu”. Công thức: Chủ ngữ+有+danh từ",
@@ -1055,8 +1055,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_fmzhnv85g",
-            "categoryId": "category_1761708494557_4dculxjvx",
+            "id": "ex_1761709241382_opr7ppvj7",
+            "categoryId": "category_1761709241382_5xx9zskjj",
             "type": "grammar",
             "question": "3. Hình thức phủ định của câu “有” là gì?",
             "answer": "Là “没有”, không dùng “不有”.",
@@ -1067,8 +1067,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_ss9317yow",
-            "categoryId": "category_1761708494557_4dculxjvx",
+            "id": "ex_1761709241382_2ywyhjd8d",
+            "categoryId": "category_1761709241382_5xx9zskjj",
             "type": "grammar",
             "question": "4. Trong câu phủ định có dùng lượng từ không?",
             "answer": "Không dùng lượng từ trong câu phủ định với “没有”.",
@@ -1079,8 +1079,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_z2aiss28k",
-            "categoryId": "category_1761708494557_4dculxjvx",
+            "id": "ex_1761709241382_h6iafw84y",
+            "categoryId": "category_1761709241382_5xx9zskjj",
             "type": "grammar",
             "question": "5. Khi nào dùng lượng từ (量词)?",
             "answer": "Dùng giữa số từ và danh từ.",
@@ -1091,8 +1091,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_d6eixi0ip",
-            "categoryId": "category_1761708494557_4dculxjvx",
+            "id": "ex_1761709241382_ufr91ireg",
+            "categoryId": "category_1761709241382_5xx9zskjj",
             "type": "grammar",
             "question": "6. Các lượng từ cơ bản là gì?",
             "answer": "本、张、支、个",
@@ -1103,8 +1103,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_zx3r1e3da",
-            "categoryId": "category_1761708494557_4dculxjvx",
+            "id": "ex_1761709241382_wdr49n734",
+            "categoryId": "category_1761709241382_5xx9zskjj",
             "type": "grammar",
             "question": "7. Khi nào dùng “两” và “二”?",
             "answer": "Dùng “两” trước lượng từ, không dùng “二”.",
@@ -1117,16 +1117,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494557_5hfc34078",
-        "lessonId": "lesson_1761708494557_qd2szfi63",
+        "id": "category_1761709241382_w6a59iu9t",
+        "lessonId": "lesson_1761709241382_p30ho1nus",
         "type": "dialogue",
         "name": "Hội thoại",
         "description": "Bài tập Hội thoại",
         "order": 3,
         "exercises": [
           {
-            "id": "dialogue_1761708494557_ee50bts8c",
-            "categoryId": "category_1761708494557_5hfc34078",
+            "id": "dialogue_1761709241382_9pwkx6yqi",
+            "categoryId": "category_1761709241382_w6a59iu9t",
             "type": "dialogue",
             "context": "Bài khoá 1",
             "lines": [
@@ -1175,8 +1175,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "dialogue_1761708494557_q5bo5l0ai",
-            "categoryId": "category_1761708494557_5hfc34078",
+            "id": "dialogue_1761709241382_vmowibp5g",
+            "categoryId": "category_1761709241382_w6a59iu9t",
             "type": "dialogue",
             "context": "Bài khoá 2",
             "lines": [
@@ -1219,8 +1219,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "dialogue_1761708494557_xd8c43upa",
-            "categoryId": "category_1761708494557_5hfc34078",
+            "id": "dialogue_1761709241382_oneora5wc",
+            "categoryId": "category_1761709241382_w6a59iu9t",
             "type": "dialogue",
             "context": "Bài khoá 3",
             "lines": [
@@ -1235,16 +1235,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494557_2ir5pndbm",
-        "lessonId": "lesson_1761708494557_qd2szfi63",
+        "id": "category_1761709241382_45m1k1k3i",
+        "lessonId": "lesson_1761709241382_p30ho1nus",
         "type": "review",
         "name": "Ôn tập",
         "description": "Bài tập Ôn tập",
         "order": 4,
         "exercises": [
           {
-            "id": "ex_1761708494557_fwek7kyi5",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_5zc1a1y3s",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "这",
             "answer": "cái này, đây",
@@ -1253,8 +1253,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_7v2582nix",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_7z6h6w04u",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "的",
             "answer": "trợ từ (biểu thị sở hữu hoặc liên kết)",
@@ -1263,8 +1263,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_f5kk418tz",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_2y4dq5ep8",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "书",
             "answer": "sách",
@@ -1273,8 +1273,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_xmo8td3an",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_pa7zf6fe1",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "词典",
             "answer": "từ điển",
@@ -1283,8 +1283,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_67jqhy92t",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_10ypygrpp",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "地图",
             "answer": "bản đồ",
@@ -1293,8 +1293,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_c85cp0q8b",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_emkeo4cop",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "本子",
             "answer": "quyển vở",
@@ -1303,8 +1303,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_liey5t7bo",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_fqz25ufrh",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "笔",
             "answer": "bút",
@@ -1313,8 +1313,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_guskwvckv",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_13joludzd",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "有",
             "answer": "có",
@@ -1323,8 +1323,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_xrn4d2htp",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_51pcnt8s0",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "没有",
             "answer": "không có",
@@ -1333,8 +1333,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_ayiqftn84",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_8gshc9lc7",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "支",
             "answer": "cây (lượng từ cho bút, bút chì, v.v.)",
@@ -1343,8 +1343,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_st1v6cp7e",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_un5c9aisy",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "个",
             "answer": "cái (lượng từ chung)",
@@ -1353,8 +1353,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_ev2spx200",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_9937tbfpg",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "两",
             "answer": "hai",
@@ -1363,8 +1363,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_116ho9s81",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_usxg073du",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "本",
             "answer": "quyển, cuốn (lượng từ cho sách, vở)",
@@ -1373,8 +1373,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_x5sbhun34",
-            "categoryId": "category_1761708494557_2ir5pndbm",
+            "id": "ex_1761709241382_vxq12t50n",
+            "categoryId": "category_1761709241382_45m1k1k3i",
             "type": "flashcard",
             "question": "张",
             "answer": "tờ, tấm (lượng từ cho giấy, ảnh, bàn...)",
@@ -1385,16 +1385,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494557_ka1gf20n7",
-        "lessonId": "lesson_1761708494557_qd2szfi63",
+        "id": "category_1761709241382_l4k7gxbda",
+        "lessonId": "lesson_1761709241382_p30ho1nus",
         "type": "writing",
         "name": "Luyện viết",
         "description": "Bài tập Luyện viết",
         "order": 5,
         "exercises": [
           {
-            "id": "ex_1761708494557_wttpme9km",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_ttc4uppuz",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "这",
             "answer": "cái này, đây",
@@ -1402,8 +1402,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "zhè"
           },
           {
-            "id": "ex_1761708494557_9340e5n7m",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_kwmybhx2l",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "的",
             "answer": "trợ từ (biểu thị sở hữu hoặc liên kết)",
@@ -1411,8 +1411,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "de"
           },
           {
-            "id": "ex_1761708494557_6843hxcco",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_1x891yl98",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "书",
             "answer": "sách",
@@ -1420,8 +1420,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "shū"
           },
           {
-            "id": "ex_1761708494557_p62p0bimm",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_kcidxteq7",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "词典",
             "answer": "từ điển",
@@ -1429,8 +1429,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "cídiǎn"
           },
           {
-            "id": "ex_1761708494557_6w3061nq",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_n5keoyrua",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "地图",
             "answer": "bản đồ",
@@ -1438,8 +1438,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "dìtú"
           },
           {
-            "id": "ex_1761708494557_qgl3gzk1l",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_1rinhnnsi",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "本子",
             "answer": "quyển vở",
@@ -1447,8 +1447,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "běnzi"
           },
           {
-            "id": "ex_1761708494557_l60g2riys",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_ulpaa0wdy",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "笔",
             "answer": "bút",
@@ -1456,8 +1456,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "bǐ"
           },
           {
-            "id": "ex_1761708494557_b578vcxih",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_u7eerrz7u",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "有",
             "answer": "có",
@@ -1465,8 +1465,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "yǒu"
           },
           {
-            "id": "ex_1761708494557_nv7vyohsv",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_tm9pi1ske",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "没有",
             "answer": "không có",
@@ -1474,8 +1474,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "méiyǒu"
           },
           {
-            "id": "ex_1761708494557_d2mq2wl3t",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_mabowg5m6",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "支",
             "answer": "cây (lượng từ cho bút, bút chì, v.v.)",
@@ -1483,8 +1483,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "zhī"
           },
           {
-            "id": "ex_1761708494557_dhfhi0iwf",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_dxvzv1oqs",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "个",
             "answer": "cái (lượng từ chung)",
@@ -1492,8 +1492,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "gè"
           },
           {
-            "id": "ex_1761708494557_wktnxftr3",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_vleee5o9b",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "两",
             "answer": "hai",
@@ -1501,8 +1501,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "liǎng"
           },
           {
-            "id": "ex_1761708494557_d2aumqjc4",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_9d1gt9ipx",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "本",
             "answer": "quyển, cuốn (lượng từ cho sách, vở)",
@@ -1510,8 +1510,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "běn"
           },
           {
-            "id": "ex_1761708494557_pqf7zm2t6",
-            "categoryId": "category_1761708494557_ka1gf20n7",
+            "id": "ex_1761709241382_qncgxfj3p",
+            "categoryId": "category_1761709241382_l4k7gxbda",
             "type": "writing",
             "question": "张",
             "answer": "tờ, tấm (lượng từ cho giấy, ảnh, bàn...)",
@@ -1521,16 +1521,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494557_mwx2nwnpt",
-        "lessonId": "lesson_1761708494557_qd2szfi63",
+        "id": "category_1761709241382_xm9foqccm",
+        "lessonId": "lesson_1761709241382_p30ho1nus",
         "type": "test",
         "name": "Kiểm tra",
         "description": "Bài tập Kiểm tra",
         "order": 6,
         "exercises": [
           {
-            "id": "ex_1761708494557_pyjz77mgx",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_k0865cr6f",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“这” nghĩa là gì?",
             "answer": "Cái này, đây",
@@ -1543,8 +1543,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_boiij9hdm",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_9ai5zd9hy",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“的” nghĩa là gì?",
             "answer": "Của",
@@ -1557,8 +1557,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_3r8v2xv7f",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_b4pxnamda",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“书” nghĩa là gì?",
             "answer": "Sách",
@@ -1571,8 +1571,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_5ewlsbeeh",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_fe1wcldvi",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“词典” nghĩa là gì?",
             "answer": "Từ điển",
@@ -1585,8 +1585,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_d3qw8qfpz",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_z8ja828zc",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“地图” nghĩa là gì?",
             "answer": "Bản đồ",
@@ -1599,8 +1599,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_m2sp5pkvi",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_rdavwssjv",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“本子” nghĩa là gì?",
             "answer": "Vở",
@@ -1613,8 +1613,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_7s694p3aw",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_k6axlo3gy",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“笔” nghĩa là gì?",
             "answer": "Bút",
@@ -1627,8 +1627,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_p6f5k6eo8",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_2hmhog9to",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“有” nghĩa là gì?",
             "answer": "Có",
@@ -1641,8 +1641,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_om8k9toft",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_djtdniz8l",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“没有” nghĩa là gì?",
             "answer": "Không có",
@@ -1655,8 +1655,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_tvlm6x99k",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_ryw1cc08k",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“支” nghĩa là gì?",
             "answer": "Lượng từ cho vật dài (bút, bút chì...)",
@@ -1669,8 +1669,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_7xpqoug1m",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_ro994tu9x",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“个” nghĩa là gì?",
             "answer": "Lượng từ chung",
@@ -1683,8 +1683,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_pk0z3ld9b",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_4s1lws4of",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“两” nghĩa là gì?",
             "answer": "Hai",
@@ -1697,8 +1697,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_kgbe47rm4",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_e3hg3ssjd",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“本” nghĩa là gì?",
             "answer": "Lượng từ cho sách, vở, từ điển",
@@ -1711,8 +1711,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_8mrgvd1gf",
-            "categoryId": "category_1761708494557_mwx2nwnpt",
+            "id": "ex_1761709241382_akusbguck",
+            "categoryId": "category_1761709241382_xm9foqccm",
             "type": "multiple_choice",
             "question": "“张” nghĩa là gì?",
             "answer": "Lượng từ cho vật phẳng (giấy, ảnh, bản đồ...)",
@@ -1729,23 +1729,23 @@ export const SAMPLE_DATA: Lesson[] = [
     ]
   },
   {
-    "id": "lesson_1761708494557_15s806pe6",
+    "id": "lesson_1761709241382_0er478nf7",
     "name_zh": "",
     "name_vi": "你家有几口人",
     "description": "Bài học 你家有几口人",
     "order": 1,
     "categories": [
       {
-        "id": "category_1761708494557_tl740d771",
-        "lessonId": "lesson_1761708494557_15s806pe6",
+        "id": "category_1761709241382_r7rsv88tk",
+        "lessonId": "lesson_1761709241382_0er478nf7",
         "type": "vocabulary",
         "name": "Từ vựng",
         "description": "Bài tập Từ vựng",
         "order": 1,
         "exercises": [
           {
-            "id": "ex_1761708494557_phpgixc58",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_7gxs3v6qo",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "什么",
             "answer": "gì / cái gì",
@@ -1753,8 +1753,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "shénme"
           },
           {
-            "id": "ex_1761708494557_pdqr0c0hi",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_ys6pcxgfq",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "家",
             "answer": "nhà / gia đình",
@@ -1762,8 +1762,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "jiā"
           },
           {
-            "id": "ex_1761708494557_vkpwjuulj",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_83qftzz51",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "照片",
             "answer": "ảnh / tấm ảnh",
@@ -1771,8 +1771,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "zhàopiàn"
           },
           {
-            "id": "ex_1761708494557_dee8qnry9",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_b2lhxvk84",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "几",
             "answer": "mấy / bao nhiêu",
@@ -1780,8 +1780,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "jǐ"
           },
           {
-            "id": "ex_1761708494557_1ulea6ab2",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_aa68c9ws3",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "口",
             "answer": "(lượng từ dùng cho người trong gia đình) / miệng",
@@ -1789,8 +1789,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "kǒu"
           },
           {
-            "id": "ex_1761708494557_icdpgk0jt",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_vpczxuiy6",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "谁",
             "answer": "ai",
@@ -1798,8 +1798,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "shéi"
           },
           {
-            "id": "ex_1761708494557_klgzgba4c",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_fkoq4ko7n",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "哥哥",
             "answer": "anh trai",
@@ -1807,8 +1807,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "gēge"
           },
           {
-            "id": "ex_1761708494557_tpnkhwf50",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_txvj16tef",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "爸爸",
             "answer": "bố / cha",
@@ -1816,8 +1816,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "bàba"
           },
           {
-            "id": "ex_1761708494557_qx61nq1a9",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_tmrjswf61",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "妈妈",
             "answer": "mẹ",
@@ -1825,8 +1825,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "māma"
           },
           {
-            "id": "ex_1761708494557_nmn4rf5zv",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_g04lu3ihc",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "姐姐",
             "answer": "chị gái",
@@ -1834,8 +1834,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "jiějie"
           },
           {
-            "id": "ex_1761708494557_jljlmwrjl",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_m8tctm3ve",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "和",
             "answer": "và / cùng với",
@@ -1843,8 +1843,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "hé"
           },
           {
-            "id": "ex_1761708494557_p5w5a74j9",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_ye8hdvsf6",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "做",
             "answer": "làm / làm việc",
@@ -1852,8 +1852,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "zuò"
           },
           {
-            "id": "ex_1761708494557_mtm7pasuy",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_oq9124lqa",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "工作",
             "answer": "công việc / làm việc",
@@ -1861,8 +1861,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "gōngzuò"
           },
           {
-            "id": "ex_1761708494557_tgcqi0tao",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_9to9lkpkt",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "妹妹",
             "answer": "em gái",
@@ -1870,8 +1870,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "mèimei"
           },
           {
-            "id": "ex_1761708494557_plrxjfv6k",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_p4jbnmmua",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "大夫",
             "answer": "bác sĩ",
@@ -1879,8 +1879,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "dàifu"
           },
           {
-            "id": "ex_1761708494557_ql6cwi6na",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_04fantasq",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "全",
             "answer": "toàn bộ / tất cả",
@@ -1888,8 +1888,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "quán"
           },
           {
-            "id": "ex_1761708494557_dguxljzn9",
-            "categoryId": "category_1761708494557_tl740d771",
+            "id": "ex_1761709241382_3h29qp739",
+            "categoryId": "category_1761709241382_r7rsv88tk",
             "type": "vocabulary",
             "question": "弟弟",
             "answer": "em trai",
@@ -1899,16 +1899,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494557_9j02aughn",
-        "lessonId": "lesson_1761708494557_15s806pe6",
+        "id": "category_1761709241383_ajnvmncxj",
+        "lessonId": "lesson_1761709241382_0er478nf7",
         "type": "grammar",
         "name": "Ngữ pháp",
         "description": "Bài tập Ngữ pháp",
         "order": 2,
         "exercises": [
           {
-            "id": "ex_1761708494557_yvu52k812",
-            "categoryId": "category_1761708494557_9j02aughn",
+            "id": "ex_1761709241383_8fl4fzfa6",
+            "categoryId": "category_1761709241383_ajnvmncxj",
             "type": "grammar",
             "question": "1. Câu hỏi sử dụng đại từ nghi vấn",
             "answer": "谁 ai、几 mấy、什么 cái gì",
@@ -1919,8 +1919,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494557_utu4csrjy",
-            "categoryId": "category_1761708494557_9j02aughn",
+            "id": "ex_1761709241383_hxs4yve4f",
+            "categoryId": "category_1761709241383_ajnvmncxj",
             "type": "grammar",
             "question": "2. Đại từ nhân xưng làm định ngữ",
             "answer": " Đại từ nhân xưng làm định ngữ có thể biểu thị quan hệ sở hữu, phía sau phải thêm trợ từ kết cấu “的”，",
@@ -1933,16 +1933,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494557_86be133rm",
-        "lessonId": "lesson_1761708494557_15s806pe6",
+        "id": "category_1761709241383_vg00ectes",
+        "lessonId": "lesson_1761709241382_0er478nf7",
         "type": "dialogue",
         "name": "Hội thoại",
         "description": "Bài tập Hội thoại",
         "order": 3,
         "exercises": [
           {
-            "id": "dialogue_1761708494557_3ezek9wp8",
-            "categoryId": "category_1761708494557_86be133rm",
+            "id": "dialogue_1761709241383_c87l27icw",
+            "categoryId": "category_1761709241383_vg00ectes",
             "type": "dialogue",
             "context": "Bài khoá 1",
             "lines": [
@@ -1985,8 +1985,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "dialogue_1761708494557_mz6jeys10",
-            "categoryId": "category_1761708494557_86be133rm",
+            "id": "dialogue_1761709241383_b23tvnuax",
+            "categoryId": "category_1761709241383_vg00ectes",
             "type": "dialogue",
             "context": "Bài khoá 2",
             "lines": [
@@ -2041,8 +2041,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "dialogue_1761708494557_mo2bhgh0e",
-            "categoryId": "category_1761708494557_86be133rm",
+            "id": "dialogue_1761709241383_jodmkluys",
+            "categoryId": "category_1761709241383_vg00ectes",
             "type": "dialogue",
             "context": "Bài khoá 3",
             "lines": [
@@ -2057,16 +2057,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494557_btcj0duu3",
-        "lessonId": "lesson_1761708494557_15s806pe6",
+        "id": "category_1761709241383_9qaujnd2l",
+        "lessonId": "lesson_1761709241382_0er478nf7",
         "type": "review",
         "name": "Ôn tập",
         "description": "Bài tập Ôn tập",
         "order": 4,
         "exercises": [
           {
-            "id": "ex_1761708494557_kt9lasriv",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_gqwyue58h",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "什么",
             "answer": "gì / cái gì",
@@ -2075,8 +2075,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_p7hozv10y",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_jzqqm5ftg",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "家",
             "answer": "nhà / gia đình",
@@ -2085,8 +2085,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_tyukknpyu",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_ljamcg6bk",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "照片",
             "answer": "ảnh / tấm ảnh",
@@ -2095,8 +2095,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_eacmue9o9",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_o8hrht8xz",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "几",
             "answer": "mấy / bao nhiêu",
@@ -2105,8 +2105,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_9eucop2a7",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_v7qj6h8ir",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "口",
             "answer": "(lượng từ dùng cho người trong gia đình) / miệng",
@@ -2115,8 +2115,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_g3rbberfr",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_s6smp7k4a",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "谁",
             "answer": "ai",
@@ -2125,8 +2125,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_zr8ijuggx",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_25p2e3tmg",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "哥哥",
             "answer": "anh trai",
@@ -2135,8 +2135,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_pabjw2z1p",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_gs9ytr5ly",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "爸爸",
             "answer": "bố / cha",
@@ -2145,8 +2145,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_xvkifeebo",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_aq5yb5di2",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "妈妈",
             "answer": "mẹ",
@@ -2155,8 +2155,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_jyiyga6uu",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_uf0he173a",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "姐姐",
             "answer": "chị gái",
@@ -2165,8 +2165,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_yj37kcr2b",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_oc7b0jv8s",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "和",
             "answer": "và / cùng với",
@@ -2175,8 +2175,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_ix72iu5kk",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_dc5uwgcsl",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "做",
             "answer": "làm / làm việc",
@@ -2185,8 +2185,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_zlz2t52y3",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_liyinv1jr",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "工作",
             "answer": "công việc / làm việc",
@@ -2195,8 +2195,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_wi9exd6z7",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_o73qlnkat",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "妹妹",
             "answer": "em gái",
@@ -2205,8 +2205,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_p920xbtqq",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_3il22f22g",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "大夫",
             "answer": "bác sĩ",
@@ -2215,8 +2215,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_ju7fa8795",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_2bjvz616p",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "全",
             "answer": "toàn bộ / tất cả",
@@ -2225,8 +2225,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "description": ""
           },
           {
-            "id": "ex_1761708494557_lddyjqjr3",
-            "categoryId": "category_1761708494557_btcj0duu3",
+            "id": "ex_1761709241383_pao4wi3og",
+            "categoryId": "category_1761709241383_9qaujnd2l",
             "type": "flashcard",
             "question": "弟弟",
             "answer": "em trai",
@@ -2237,16 +2237,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494557_wctmga80c",
-        "lessonId": "lesson_1761708494557_15s806pe6",
+        "id": "category_1761709241383_5h4719l7y",
+        "lessonId": "lesson_1761709241382_0er478nf7",
         "type": "writing",
         "name": "Luyện viết",
         "description": "Bài tập Luyện viết",
         "order": 5,
         "exercises": [
           {
-            "id": "ex_1761708494557_tggdmeur3",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_zffitjil2",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "什么",
             "answer": "gì / cái gì",
@@ -2254,8 +2254,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "shénme"
           },
           {
-            "id": "ex_1761708494557_k3pj0egte",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_q51c0p4vh",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "家",
             "answer": "nhà / gia đình",
@@ -2263,8 +2263,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "jiā"
           },
           {
-            "id": "ex_1761708494557_xc3nrfqnp",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_qdz5swnhc",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "照片",
             "answer": "ảnh / tấm ảnh",
@@ -2272,8 +2272,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "zhàopiàn"
           },
           {
-            "id": "ex_1761708494557_0gcd5y9tj",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_dfdp1kpke",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "几",
             "answer": "mấy / bao nhiêu",
@@ -2281,8 +2281,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "jǐ"
           },
           {
-            "id": "ex_1761708494557_x7ivxmdqk",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_tn2fekxzi",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "口",
             "answer": "(lượng từ dùng cho người trong gia đình) / miệng",
@@ -2290,8 +2290,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "kǒu"
           },
           {
-            "id": "ex_1761708494557_9s8nm2k73",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_63rxs73l3",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "谁",
             "answer": "ai",
@@ -2299,8 +2299,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "shéi"
           },
           {
-            "id": "ex_1761708494557_vwtxql9nq",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_9xajex13c",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "哥哥",
             "answer": "anh trai",
@@ -2308,8 +2308,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "gēge"
           },
           {
-            "id": "ex_1761708494557_vfunjxx1f",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_mks40wxs7",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "爸爸",
             "answer": "bố / cha",
@@ -2317,8 +2317,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "bàba"
           },
           {
-            "id": "ex_1761708494557_zk6kmp4hb",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_hm0cvdhsi",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "妈妈",
             "answer": "mẹ",
@@ -2326,8 +2326,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "māma"
           },
           {
-            "id": "ex_1761708494557_dmxkv2m2v",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_leccoq33w",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "姐姐",
             "answer": "chị gái",
@@ -2335,8 +2335,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "jiějie"
           },
           {
-            "id": "ex_1761708494557_i3hc40i0a",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_9s5xalicx",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "和",
             "answer": "và / cùng với",
@@ -2344,8 +2344,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "hé"
           },
           {
-            "id": "ex_1761708494557_oiqcz4los",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_c6gxu0atr",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "做",
             "answer": "làm / làm việc",
@@ -2353,8 +2353,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "zuò"
           },
           {
-            "id": "ex_1761708494557_zq4eiw0f6",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_ucm59dii6",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "工作",
             "answer": "công việc / làm việc",
@@ -2362,8 +2362,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "gōngzuò"
           },
           {
-            "id": "ex_1761708494557_q3gy17l1g",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_1ei5qasqa",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "妹妹",
             "answer": "em gái",
@@ -2371,8 +2371,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "mèimei"
           },
           {
-            "id": "ex_1761708494557_d5xyzwf7q",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_81ta7ixu7",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "大夫",
             "answer": "bác sĩ",
@@ -2380,8 +2380,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "dàifu"
           },
           {
-            "id": "ex_1761708494558_45k5es7ar",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_kfcymf80u",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "全",
             "answer": "toàn bộ / tất cả",
@@ -2389,8 +2389,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "pinyin": "quán"
           },
           {
-            "id": "ex_1761708494558_k6b10vx7l",
-            "categoryId": "category_1761708494557_wctmga80c",
+            "id": "ex_1761709241383_5sa7cry1b",
+            "categoryId": "category_1761709241383_5h4719l7y",
             "type": "writing",
             "question": "弟弟",
             "answer": "em trai",
@@ -2400,16 +2400,16 @@ export const SAMPLE_DATA: Lesson[] = [
         ]
       },
       {
-        "id": "category_1761708494558_op97aqdzy",
-        "lessonId": "lesson_1761708494557_15s806pe6",
+        "id": "category_1761709241383_rfz7ngynk",
+        "lessonId": "lesson_1761709241382_0er478nf7",
         "type": "test",
         "name": "Kiểm tra",
         "description": "Bài tập Kiểm tra",
         "order": 6,
         "exercises": [
           {
-            "id": "ex_1761708494558_5v3h68gzk",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_1igt6w6wn",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“什么” nghĩa là gì?",
             "answer": "Gì, cái gì",
@@ -2421,8 +2421,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_8jgmyzqzm",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_gz4v92woz",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“家” nghĩa là gì?",
             "answer": "Nhà, gia đình",
@@ -2434,8 +2434,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_rwgdel61r",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_o9ekus4va",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“照片” nghĩa là gì?",
             "answer": "Ảnh, tấm ảnh",
@@ -2447,8 +2447,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_r2299e8tc",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_ea00o1piy",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“几” nghĩa là gì?",
             "answer": "Mấy",
@@ -2460,8 +2460,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_5shyelfto",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_12beyxvfp",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“口” nghĩa là gì?",
             "answer": "(Lượng từ cho người trong gia đình), miệng",
@@ -2473,8 +2473,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_u3xy2vas0",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_z7shvwctz",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“谁” nghĩa là gì?",
             "answer": "Ai",
@@ -2486,8 +2486,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_1h54vdsqz",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_3ecim9sko",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“哥哥” nghĩa là gì?",
             "answer": "Anh trai",
@@ -2499,8 +2499,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_bt48x3bqm",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_q0ilsy4ug",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“爸爸” nghĩa là gì?",
             "answer": "Bố, cha",
@@ -2512,8 +2512,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_ddppqnw7y",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_8ynir7y1d",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“妈妈” nghĩa là gì?",
             "answer": "Mẹ",
@@ -2525,8 +2525,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_571jfqibq",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_q0s0kaxc8",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“姐姐” nghĩa là gì?",
             "answer": "Chị gái",
@@ -2538,8 +2538,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_8m22h3vc0",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_mkuhzpae7",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“和” nghĩa là gì?",
             "answer": "Và, cùng với",
@@ -2551,8 +2551,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_v6vui74ur",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_j8yz1sepk",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“做” nghĩa là gì?",
             "answer": "Làm",
@@ -2564,8 +2564,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_ueq6u6vx8",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_sa5i8m10a",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“工作” nghĩa là gì?",
             "answer": "Công việc, làm việc",
@@ -2577,8 +2577,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_7tjw6xxw3",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_yx34gq00r",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“妹妹” nghĩa là gì?",
             "answer": "Em gái",
@@ -2590,8 +2590,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_g7m3lvg0a",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_63pd62wjh",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“大夫” nghĩa là gì?",
             "answer": "Bác sĩ",
@@ -2603,8 +2603,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_fu74bckme",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_rscjge2pq",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“全” nghĩa là gì?",
             "answer": "Toàn bộ, tất cả",
@@ -2616,8 +2616,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_zdemyvd9e",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_ivnkr3i39",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "multiple_choice",
             "question": "“弟弟” nghĩa là gì?",
             "answer": "Em trai",
@@ -2629,8 +2629,8 @@ export const SAMPLE_DATA: Lesson[] = [
             ]
           },
           {
-            "id": "ex_1761708494558_83bjdctzq",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_t4364onnt",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Xin chào! Đây là gì?",
             "answer": "你好！这是什么？",
@@ -2638,8 +2638,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_68e8e32ne",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_yb0esp2io",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Nhà tôi có 3 người: bố, mẹ và tôi.",
             "answer": "我家有三口人：爸爸、妈妈和我。",
@@ -2647,8 +2647,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_c0jybs9nl",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_mhctziwnq",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Tôi không có anh, chị, em trai hay em gái.",
             "answer": "我没有哥哥、姐姐，也没有弟弟、妹妹。",
@@ -2656,8 +2656,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_4qgd0zfyb",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_seyr0zdpg",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Bố tôi là giáo viên, mẹ là bác sĩ, tôi là học sinh.",
             "answer": "我爸爸是老师，妈妈是大夫。我是学生。",
@@ -2665,8 +2665,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_9rzwd29ik",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_jp646mfg3",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Nhà bạn có mấy người?",
             "answer": "你家有几口人？",
@@ -2674,8 +2674,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_3ly0ubvvg",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_uia2plj4p",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Nhà tôi cũng có 4 người.",
             "answer": "我家也有四口人。",
@@ -2683,8 +2683,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_xjha5b4nf",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_w1lssuag1",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Tôi không có chị gái, tôi có một em gái.",
             "answer": "我没有姐姐，我有一个妹妹。",
@@ -2692,8 +2692,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_jj6hcu309",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_fw5tswz1m",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Anh ấy là ai?",
             "answer": "他是谁？",
@@ -2701,8 +2701,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_jvf8xqin0",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_pnfug3slc",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Anh ấy là anh trai tôi.",
             "answer": "他是我哥哥。",
@@ -2710,8 +2710,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_hwos952wn",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241383_katx57krb",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Mẹ bạn có làm việc không?",
             "answer": "你妈妈工作吗？工作，她是大夫。",
@@ -2719,8 +2719,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_f1x6v1hht",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241384_z0kuzyy8g",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Đây là ảnh gì?",
             "answer": "这是什么照片。",
@@ -2728,8 +2728,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_v0mcjwwnr",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241384_utr3wac71",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Nhà bạn có mấy người?",
             "answer": "你家有几口人？",
@@ -2737,8 +2737,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_5u7z7kpnr",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241384_bmfkq0sxf",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Bốn người: bố, mẹ, chị gái và tôi.",
             "answer": "四口人：爸爸、妈妈、姐姐和我。",
@@ -2746,8 +2746,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_3v0364eai",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241384_ytdedz4d6",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Bố bạn làm nghề gì?",
             "answer": "你爸爸做什么工作？",
@@ -2755,8 +2755,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_7xa4etv6x",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241384_voidyxr64",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Mẹ bạn có làm việc không?",
             "answer": "你妈妈工作吗？",
@@ -2764,8 +2764,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_3bkl80th1",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241384_rtyvkkct4",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Bạn có anh chị em không?",
             "answer": "你有哥哥姐姐妹妹吗？",
@@ -2773,8 +2773,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_b88g5mpml",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241384_cqthyuar2",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Anh ấy là ai?",
             "answer": "他是谁？",
@@ -2782,8 +2782,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_9bygwd38x",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241384_sq8fmu9x1",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Anh ấy có sách không ?",
             "answer": "他有书吗？",
@@ -2791,8 +2791,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_jnyiqy5s8",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241384_iaa7g4nmf",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Bạn là học sinh đúng không?",
             "answer": "你是学生吗？",
@@ -2800,8 +2800,8 @@ export const SAMPLE_DATA: Lesson[] = [
             "placeholder": "Nhập đáp án"
           },
           {
-            "id": "ex_1761708494558_wzosi7b4g",
-            "categoryId": "category_1761708494558_op97aqdzy",
+            "id": "ex_1761709241384_obajtfvh4",
+            "categoryId": "category_1761709241383_rfz7ngynk",
             "type": "input",
             "question": "Bạn có toàn bộ ảnh gia đình không?",
             "answer": "你有全家的照片吗？",

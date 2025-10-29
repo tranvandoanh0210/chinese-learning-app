@@ -162,7 +162,7 @@ export class ExcelService {
       try {
         const worksheet = workbook.Sheets[sheetName];
         const data = XLSX.utils.sheet_to_json(worksheet);
-
+        let lessonCounter = 0;
         // Parse sheet name để lấy lesson name và category type
         const { lessonName, categoryType } = this.parseSheetName(sheetName);
 
@@ -172,7 +172,10 @@ export class ExcelService {
         }
 
         if (!lessonsMap.has(lessonName)) {
-          lessonsMap.set(lessonName, this.createEmptyLesson(lessonName));
+          lessonCounter++; // Tăng counter chỉ khi tạo lesson mới
+          const newLesson = this.createEmptyLesson(lessonName);
+          newLesson.order = lessonCounter; // Gán order dựa trên counter
+          lessonsMap.set(lessonName, newLesson);
         }
 
         const lesson = lessonsMap.get(lessonName)!;
@@ -233,7 +236,7 @@ export class ExcelService {
       name_zh: '', // Có thể để empty hoặc tự động generate
       name_vi: lessonName,
       description: `Bài học ${lessonName}`,
-      order: 1, // Sẽ được tính toán sau
+      order: 0, // Sẽ được tính toán sau
       categories: [],
     };
   }

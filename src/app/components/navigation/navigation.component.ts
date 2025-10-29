@@ -3,6 +3,7 @@ import { DataService } from '../../services/data.service';
 import { Lesson } from '../../models/lesson.model';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -13,11 +14,26 @@ import { CommonModule } from '@angular/common';
 })
 export class NavigationComponent implements OnInit {
   lessons: Lesson[] = [];
+  private lessonsSubscription!: Subscription;
+
   @Input() isMobileOpen = false;
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit() {
-    this.lessons = this.dataService.getAllLessons();
+    this.lessonsSubscription = this.dataService.lessons$.subscribe(
+      (lessons) => {
+        this.lessons = lessons;
+      },
+      (error) => {
+        console.error('HomeComponent: Error loading lessons', error);
+      }
+    );
+  }
+  ngOnDestroy() {
+    // Clean up subscription để tránh memory leak
+    if (this.lessonsSubscription) {
+      this.lessonsSubscription.unsubscribe();
+    }
   }
   isMobileDevice(): boolean {
     return window.innerWidth <= 768;

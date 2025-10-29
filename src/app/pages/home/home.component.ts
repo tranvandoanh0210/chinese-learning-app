@@ -3,6 +3,7 @@ import { Lesson } from '../../models/lesson.model';
 import { DataService } from '../../services/data.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -13,14 +14,28 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   lessons: Lesson[] = [];
-
+  private lessonsSubscription!: Subscription;
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit() {
-    this.lessons = this.dataService.getAllLessons();
+    // Subscribe to lessons changes
+    this.lessonsSubscription = this.dataService.lessons$.subscribe(
+      (lessons) => {
+        this.lessons = lessons;
+      },
+      (error) => {
+        console.error('HomeComponent: Error loading lessons', error);
+      }
+    );
   }
 
   selectLesson(lessonId: string) {
     this.router.navigate(['/lesson', lessonId]);
+  }
+  ngOnDestroy() {
+    // Clean up subscription để tránh memory leak
+    if (this.lessonsSubscription) {
+      this.lessonsSubscription.unsubscribe();
+    }
   }
 }

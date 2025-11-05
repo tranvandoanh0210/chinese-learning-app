@@ -12,6 +12,7 @@ import {
   FlashcardExercise,
 } from '../models/exercise.model';
 import { Category, Lesson } from '../models/lesson.model';
+import { DataService } from './data.service';
 
 export interface ExcelImportResult {
   success: boolean;
@@ -24,6 +25,8 @@ export interface ExcelImportResult {
   providedIn: 'root',
 })
 export class ExcelService {
+  constructor(private dataService: DataService) {}
+
   async exportToExcel(lessons: Lesson[]): Promise<void> {
     const workbook = XLSX.utils.book_new();
 
@@ -41,6 +44,125 @@ export class ExcelService {
     });
 
     XLSX.writeFile(workbook, 'chinese-learning-data.xlsx');
+  }
+
+  exportSingleLesson(lesson: Lesson): void {
+    const workbook = XLSX.utils.book_new();
+
+    // Tạo sheet cho từng category type
+    const categoryTypes = this.getUniqueCategoryTypes(lesson);
+    categoryTypes.forEach((categoryType) => {
+      const sheetData = this.prepareSheetData(lesson, categoryType);
+      if (sheetData.length > 0) {
+        const sheetName = `${lesson.name_vi} - ${this.getCategoryTypeName(categoryType)}`;
+        const worksheet = this.createStyledWorksheet(sheetData, sheetName);
+        XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
+      }
+    });
+
+    XLSX.writeFile(workbook, `${lesson.name_vi}-data.xlsx`);
+  }
+  exportMultipleLessons(lessons: Lesson[]): void {
+    const workbook = XLSX.utils.book_new();
+
+    lessons.forEach((lesson) => {
+      const categoryTypes = this.getUniqueCategoryTypes(lesson);
+      categoryTypes.forEach((categoryType) => {
+        const sheetData = this.prepareSheetData(lesson, categoryType);
+        if (sheetData.length > 0) {
+          const sheetName = `${lesson.name_vi} - ${this.getCategoryTypeName(categoryType)}`;
+          const worksheet = this.createStyledWorksheet(sheetData, sheetName);
+          XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
+        }
+      });
+    });
+
+    XLSX.writeFile(workbook, 'multiple-lessons-data.xlsx');
+  }
+
+  async importAddLessons(file: File): Promise<ExcelImportResult> {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      const errors: string[] = [];
+      const warnings: string[] = [];
+
+      reader.onload = (e: any) => {
+        try {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const newLessons = this.parseWorkbook(workbook, errors, warnings);
+
+          // Merge với lessons hiện tại (không override)
+          const currentLessons = this.dataService.getAllLessons();
+          const mergedLessons = this.mergeLessons(currentLessons, newLessons);
+
+          // Cập nhật data service
+          this.dataService.updateLessons(mergedLessons);
+
+          resolve({
+            success: errors.length === 0,
+            lessons: mergedLessons,
+            errors,
+            warnings,
+          });
+        } catch (error) {
+          resolve({
+            success: false,
+            lessons: [],
+            errors: ['Lỗi đọc file: ' + error],
+            warnings: [],
+          });
+        }
+      };
+
+      reader.readAsArrayBuffer(file);
+    });
+  }
+
+  private mergeLessons(currentLessons: Lesson[], newLessons: Lesson[]): Lesson[] {
+    const merged = [...currentLessons];
+
+    newLessons.forEach((newLesson) => {
+      const existingIndex = merged.findIndex((lesson) => lesson.name_vi === newLesson.name_vi);
+      if (existingIndex !== -1) {
+        // Merge categories của lesson trùng tên
+        merged[existingIndex] = this.mergeLessonCategories(merged[existingIndex], newLesson);
+      } else {
+        // Thêm lesson mới
+        merged.push(newLesson);
+      }
+    });
+
+    return merged;
+  }
+
+  private mergeLessonCategories(existingLesson: Lesson, newLesson: Lesson): Lesson {
+    const mergedCategories = [...existingLesson.categories];
+
+    newLesson.categories.forEach((newCategory) => {
+      const existingCategoryIndex = mergedCategories.findIndex(
+        (cat) => cat.type === newCategory.type
+      );
+
+      if (existingCategoryIndex !== -1) {
+        // Merge exercises của category trùng type
+        mergedCategories[existingCategoryIndex] = {
+          ...mergedCategories[existingCategoryIndex],
+          exercises: [
+            ...mergedCategories[existingCategoryIndex].exercises,
+            ...newCategory.exercises,
+          ],
+        };
+      } else {
+        // Thêm category mới
+        mergedCategories.push(newCategory);
+      }
+    });
+
+    return {
+      ...existingLesson,
+      categories: mergedCategories,
+    };
   }
   // Hàm tạo worksheet với styling
   private createStyledWorksheet(data: any[], sheetName: string): XLSX.WorkSheet {
@@ -233,7 +355,6 @@ export class ExcelService {
   private createEmptyLesson(lessonName: string): Lesson {
     return {
       id: this.generateId('lesson'),
-      name_zh: '', // Có thể để empty hoặc tự động generate
       name_vi: lessonName,
       description: `Bài học ${lessonName}`,
       order: 0, // Sẽ được tính toán sau
@@ -311,7 +432,6 @@ export class ExcelService {
               ...baseExercise,
               type: 'flashcard',
               pinyin: row.pinyin || '',
-              description: row.description || '',
             } as FlashcardExercise;
             break;
 
@@ -481,7 +601,7 @@ export class ExcelService {
             const review = exercise as FlashcardExercise;
             return {
               ...baseData,
-              description: review.description,
+              explanation: review.explanation,
               pinyin: review.pinyin,
             };
 

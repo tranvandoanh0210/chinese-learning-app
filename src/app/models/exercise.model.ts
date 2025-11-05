@@ -43,7 +43,6 @@ export interface SpeakingExercise extends BaseExercise {
 export interface FlashcardExercise extends BaseExercise {
   type: 'flashcard';
   pinyin: string;
-  description?: string;
 }
 export interface WritingExercise extends BaseExercise {
   type: 'writing';

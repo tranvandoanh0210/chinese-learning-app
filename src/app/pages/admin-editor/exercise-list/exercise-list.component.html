@@ -1,0 +1,108 @@
+<div class="exercise-list">
+  <!-- Header -->
+  <div class="page-header">
+    <div class="header-content">
+      <button class="btn-back" (click)="goBack()" title="Quay lại">←</button>
+      <div>
+        <h1>📝 Bài tập</h1>
+        <div class="breadcrumb">
+          <span *ngIf="lesson"
+            >Bài học: <strong>{{ lesson.name_vi }}</strong></span
+          >
+          <span *ngIf="category">
+            → Danh mục: <strong>{{ category.name }}</strong></span
+          >
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="createExercise()">
+      <span class="btn-icon">+</span>
+      Thêm bài tập
+    </button>
+  </div>
+
+  <!-- Exercises Table -->
+  <div class="table-container">
+    <div class="table-header">
+      <h2>Danh sách bài tập</h2>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="modern-table">
+        <thead>
+          <tr>
+            <th>Thứ tự</th>
+            <th>Loại</th>
+            <th>Câu hỏi</th>
+            <th>Đáp án</th>
+            <th>Giải thích</th>
+            <th class="actions-header">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let exercise of exercises; trackBy: trackByExerciseId" class="table-row">
+            <td>
+              <span class="order-badge">{{ exercises.indexOf(exercise) + 1 }}</span>
+            </td>
+            <td>
+              <div class="exercise-type">
+                <span class="type-icon">{{ getExerciseTypeIcon(exercise.type) }}</span>
+                <span class="type-name">{{ getExerciseTypeName(exercise.type) }}</span>
+              </div>
+            </td>
+            <td class="question-cell">
+              <strong>{{ exercise.question || '—' }}</strong>
+            </td>
+            <td class="preview-cell">
+              <span class="preview-text">{{ getExercisePreview(exercise) }}</span>
+            </td>
+            <td class="explanation-cell">
+              <span class="truncate-text">{{ exercise.explanation || '—' }}</span>
+            </td>
+            <td class="actions-cell">
+              <div class="action-buttons">
+                <button
+                  class="btn-icon btn-edit"
+                  (click)="editExercise(exercise)"
+                  title="Sửa bài tập"
+                >
+                  ✏️
+                </button>
+                <button
+                  class="btn-icon btn-delete"
+                  (click)="deleteExercise(exercise)"
+                  title="Xóa bài tập"
+                >
+                  🗑️
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="exercises.length === 0 && !loading" class="empty-state">
+        <div class="empty-icon">📝</div>
+        <h3>Chưa có bài tập nào</h3>
+        <p>Hãy tạo bài tập đầu tiên cho danh mục này</p>
+        <button class="btn btn-primary" (click)="createExercise()">+ Thêm bài tập đầu tiên</button>
+      </div>
+
+      <div *ngIf="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Đang tải dữ liệu...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Dialog -->
+  <app-confirm-dialog
+    *ngIf="showDeleteDialog"
+    title="Xóa bài tập"
+    [message]="'Bạn có chắc muốn xóa bài tập này?'"
+    confirmText="Xóa"
+    cancelText="Hủy"
+    (confirm)="confirmDelete()"
+    (cancel)="cancelDelete()"
+  ></app-confirm-dialog>
+</div>

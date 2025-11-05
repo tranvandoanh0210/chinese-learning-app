@@ -114,7 +114,17 @@ export class DataManagementComponent {
       this.isDeploying = false;
     }
   }
+  updateDataFile(): void {
+    this.githubService.updateDataFile();
+  }
 
+  async deployToGithub(): Promise<void> {
+    try {
+      // await this.githubService.deployToGithub();
+    } catch (error) {
+      console.error('Deploy error:', error);
+    }
+  }
   saveLocally() {
     if (!this.importedLessons.length) return;
 

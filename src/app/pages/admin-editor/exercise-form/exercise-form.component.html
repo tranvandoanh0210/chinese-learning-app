@@ -1,0 +1,268 @@
+<div class="form-container">
+  <!-- Form Content -->
+  <div class="form-content">
+    <div class="form-main">
+      <div class="form-card">
+        <!-- Basic Information -->
+        <div class="form-section">
+          <!-- Header -->
+          <div class="form-header">
+            <div class="header-content">
+              <button class="btn-back" (click)="cancel()" title="Quay lại">←</button>
+              <div>
+                <h1>{{ isEditMode ? '✏️ Sửa bài tập' : '➕ Thêm bài tập mới' }}</h1>
+                <div class="breadcrumb">
+                  <span *ngIf="lesson"
+                    >Bài học: <strong>{{ lesson.name_vi }}</strong></span
+                  >
+                  <span *ngIf="category">
+                    → Danh mục: <strong>{{ category.name }}</strong></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="header-actions">
+              <button class="btn btn-primary" (click)="saveExercise()" [disabled]="loading">
+                <span *ngIf="loading" class="spinner-small"></span>
+                💾 {{ isEditMode ? 'Cập nhật' : 'Tạo mới' }}
+              </button>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group" *ngIf="canEditExerciseType">
+              <label for="type" class="required">Loại bài tập</label>
+              <select
+                id="type"
+                [(ngModel)]="exercise.type"
+                (change)="onTypeChange()"
+                [disabled]="loading || isEditMode"
+              >
+                <option *ngFor="let type of availableExerciseTypes" [value]="type.value">
+                  {{ type.icon }} {{ type.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group full-width" *ngIf="exercise.type !== 'dialogue'">
+              <label for="question" class="required">Câu hỏi</label>
+              <input
+                type="text"
+                id="question"
+                [(ngModel)]="exercise.question"
+                placeholder="Nhập câu hỏi..."
+                [disabled]="loading"
+              />
+            </div>
+
+            <div class="form-group" *ngIf="exercise.type !== 'dialogue'">
+              <label for="answer">Đáp án</label>
+              <input
+                type="text"
+                id="answer"
+                [(ngModel)]="exercise.answer"
+                placeholder="Nhập đáp án..."
+                [disabled]="loading"
+              />
+            </div>
+            <!-- Dynamic Fields Based on Exercise Type -->
+
+            <div
+              class="form-group"
+              *ngIf="
+                exercise.type === 'vocabulary' ||
+                exercise.type === 'flashcard' ||
+                exercise.type === 'writing' ||
+                exercise.type === 'speaking'
+              "
+            >
+              <label for="pinyin">Pinyin</label>
+              <input
+                type="text"
+                id="pinyin"
+                [(ngModel)]="formData.pinyin"
+                placeholder="Nhập pinyin..."
+                [disabled]="loading"
+              />
+            </div>
+            <div class="form-group full-width" *ngIf="exercise.type === 'grammar'">
+              <div class="form-group">
+                <label for="content">Nội dung ngữ pháp</label>
+                <textarea
+                  id="content"
+                  [(ngModel)]="formData.content"
+                  placeholder="Giải thích điểm ngữ pháp..."
+                  rows="4"
+                  [disabled]="loading"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Ví dụ minh họa</label>
+                <div *ngFor="let example of formData.examples; let i = index" class="array-item">
+                  <input
+                    type="text"
+                    [(ngModel)]="formData.examples[i]"
+                    [placeholder]="'Ví dụ ' + (i + 1) + '...'"
+                    [disabled]="loading"
+                  />
+                  <button
+                    type="button"
+                    class="btn-icon btn-danger"
+                    (click)="removeExample(i)"
+                    [disabled]="formData.examples.length === 1"
+                  >
+                    🗑️
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-outline"
+                  (click)="addExample()"
+                  [disabled]="loading"
+                >
+                  + Thêm ví dụ
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group full-width" *ngIf="exercise.type === 'multiple_choice'">
+              <label class="required">Các lựa chọn</label>
+              <div *ngFor="let option of formData.options; let i = index" class="array-item">
+                <input
+                  type="text"
+                  [(ngModel)]="formData.options[i]"
+                  [placeholder]="'Lựa chọn ' + (i + 1) + '...'"
+                  [disabled]="loading"
+                />
+                <button
+                  type="button"
+                  class="btn-icon btn-danger"
+                  (click)="removeOption(i)"
+                  [disabled]="formData.options.length === 2"
+                >
+                  🗑️
+                </button>
+              </div>
+              <button
+                type="button"
+                class="btn btn-outline"
+                (click)="addOption()"
+                [disabled]="loading"
+              >
+                + Thêm lựa chọn
+              </button>
+            </div>
+
+            <div class="form-group full-width" *ngIf="exercise.type !== 'dialogue'">
+              <label for="explanation">Giải thích</label>
+              <textarea
+                id="explanation"
+                [(ngModel)]="exercise.explanation"
+                placeholder="Giải thích đáp án..."
+                rows="3"
+                [disabled]="loading"
+              ></textarea>
+            </div>
+
+            <div class="form-group" *ngIf="exercise.type === 'input'">
+              <label for="placeholder">Placeholder</label>
+              <input
+                type="text"
+                id="placeholder"
+                [(ngModel)]="formData.placeholder"
+                placeholder="Văn bản gợi ý..."
+                [disabled]="loading"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group full-width" *ngIf="exercise.type === 'dialogue'">
+          <div class="form-group">
+            <label for="context" class="required">Ngữ cảnh</label>
+            <input
+              type="text"
+              id="context"
+              [(ngModel)]="formData.context"
+              placeholder="Mô tả ngữ cảnh hội thoại..."
+              [disabled]="loading"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="required">Các lượt hội thoại</label>
+            <div *ngFor="let line of formData.lines; let i = index" class="dialogue-line">
+              <div class="line-header">
+                <h4>Lượt {{ i + 1 }}</h4>
+                <button
+                  type="button"
+                  class="btn-icon btn-danger"
+                  (click)="removeDialogueLine(i)"
+                  [disabled]="formData.lines.length === 1"
+                >
+                  🗑️
+                </button>
+              </div>
+
+              <div class="line-fields">
+                <div class="form-group">
+                  <label [for]="'speaker_' + i" class="required">Người nói</label>
+                  <input
+                    type="text"
+                    [id]="'speaker_' + i"
+                    [(ngModel)]="line.speaker"
+                    placeholder="Tên người nói..."
+                    [disabled]="loading"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label [for]="'text_' + i" class="required">Nội dung</label>
+                  <textarea
+                    [id]="'text_' + i"
+                    [(ngModel)]="line.text"
+                    placeholder="Nội dung nói..."
+                    rows="2"
+                    [disabled]="loading"
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label [for]="'pinyin_' + i">Pinyin</label>
+                  <input
+                    type="text"
+                    [id]="'pinyin_' + i"
+                    [(ngModel)]="line.pinyin"
+                    placeholder="Pinyin..."
+                    [disabled]="loading"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label [for]="'translation_' + i" class="required">Dịch nghĩa</label>
+                  <input
+                    type="text"
+                    [id]="'translation_' + i"
+                    [(ngModel)]="line.translation"
+                    placeholder="Bản dịch..."
+                    [disabled]="loading"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-outline"
+              (click)="addDialogueLine()"
+              [disabled]="loading"
+            >
+              + Thêm lượt hội thoại
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

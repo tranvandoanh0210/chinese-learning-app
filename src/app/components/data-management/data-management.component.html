@@ -1,8 +1,12 @@
-<div class="app-outlet data-management">
-  <h3>Quản lý dữ liệu</h3>
+<div class="import-export-panel">
+  <div class="panel-header">
+    <h3>📊 Quản lý dữ liệu</h3>
+  </div>
   <div class="action-buttons">
-    <button class="btn btn-primary" (click)="exportData()">📥 Export to Excel</button>
-
+    <div>
+      <button class="btn btn-primary" (click)="exportData()">📥 Export to Excel</button>
+      <small>Xuất tất cả bài học ra file Excel</small>
+    </div>
     <div class="import-section">
       <input
         type="file"
@@ -12,6 +16,19 @@
         style="display: none"
       />
       <button class="btn btn-success" (click)="fileInput.click()">📤 Import from Excel</button>
+      <small>Thay thế toàn bộ dữ liệu hiện tại bằng file Excel mới</small>
+    </div>
+    <div>
+      <button class="btn btn-success btn-block" (click)="updateDataFile()">
+        💾 Cập nhật data.ts
+      </button>
+
+      <small>Tạo file data.ts từ dữ liệu hiện tại</small>
+    </div>
+    <div>
+      <button class="btn btn-warning btn-block" (click)="deployToGithub()">🚀 Deploy GitHub</button>
+
+      <small>Deploy dữ liệu lên GitHub repository</small>
     </div>
   </div>
 

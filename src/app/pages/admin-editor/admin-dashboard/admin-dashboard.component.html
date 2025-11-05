@@ -1,0 +1,138 @@
+<div class="admin-dashboard">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div class="header-content">
+      <h1>📊 Quản lý Bài học</h1>
+      <p>Quản lý tất cả bài học và nội dung học tập</p>
+    </div>
+    <button class="btn btn-primary" (click)="createLesson()">
+      <span class="btn-icon">+</span>
+      Thêm bài học
+    </button>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">📚</div>
+      <div class="stat-info">
+        <div class="stat-number">{{ lessons.length }}</div>
+        <div class="stat-label">Tổng bài học</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">📁</div>
+      <div class="stat-info">
+        <div class="stat-number">{{ countCategory }}</div>
+        <div class="stat-label">Tổng danh mục</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">📝</div>
+      <div class="stat-info">
+        <div class="stat-number">{{ countExercise }}</div>
+        <div class="stat-label">Tổng bài tập</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lessons Table -->
+  <div class="table-container">
+    <div class="table-header">
+      <h2>Danh sách bài học</h2>
+      <div class="table-actions">
+        <input type="text" placeholder="Tìm kiếm bài học..." class="search-input" />
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="modern-table">
+        <thead>
+          <tr>
+            <th>Thứ tự</th>
+            <th>Tên bài học</th>
+            <th>Tên tiếng Trung</th>
+            <th>Mô tả</th>
+            <th>Danh mục</th>
+            <th>Bài tập</th>
+            <th class="actions-header">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let lesson of lessons; trackBy: trackByLessonId" class="table-row">
+            <td>
+              <span class="order-badge">{{ lesson.order }}</span>
+            </td>
+            <td class="lesson-name">
+              <strong>{{ lesson.name_vi }}</strong>
+            </td>
+            <td>{{ lesson.name_zh || '—' }}</td>
+            <td class="description-cell">
+              <span class="truncate-text">{{ lesson.description }}</span>
+            </td>
+            <td>
+              <span class="badge">{{ getTotalCategories(lesson) }}</span>
+            </td>
+            <td>
+              <span class="badge">{{ getTotalExercises(lesson) }}</span>
+            </td>
+            <td class="actions-cell">
+              <div class="action-buttons">
+                <button
+                  class="btn-icon btn-view"
+                  (click)="viewCategories(lesson)"
+                  title="Xem danh mục"
+                >
+                  👁️
+                </button>
+                <button class="btn-icon btn-edit" (click)="editLesson(lesson)" title="Sửa bài học">
+                  ✏️
+                </button>
+                <button
+                  class="btn-icon btn-export"
+                  (click)="exportLesson(lesson)"
+                  title="Export bài học"
+                >
+                  📥
+                </button>
+                <button
+                  class="btn-icon btn-delete"
+                  (click)="deleteLesson(lesson)"
+                  title="Xóa bài học"
+                >
+                  🗑️
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="lessons.length === 0 && !loading" class="empty-state">
+        <div class="empty-icon">📚</div>
+        <h3>Chưa có bài học nào</h3>
+        <p>Hãy tạo bài học đầu tiên để bắt đầu</p>
+        <button class="btn btn-primary" (click)="createLesson()">+ Thêm bài học đầu tiên</button>
+      </div>
+
+      <div *ngIf="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Đang tải dữ liệu...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import/Export Panel -->
+  <app-data-management></app-data-management>
+
+  <!-- Delete Confirmation Dialog -->
+  <app-confirm-dialog
+    *ngIf="showDeleteDialog"
+    title="Xóa bài học"
+    [message]="'Bạn có chắc muốn xóa bài học \'' + (lessonToDelete?.name_vi || '') + '\'?'"
+    confirmText="Xóa"
+    cancelText="Hủy"
+    (confirm)="confirmDelete()"
+    (cancel)="cancelDelete()"
+  ></app-confirm-dialog>
+</div>

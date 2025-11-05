@@ -63,6 +63,10 @@ export class HeaderComponent implements OnInit {
     this.showDropdown = false;
     this.router.navigate(['/data']);
   }
+  goToAdministrator() {
+    this.showDropdown = false;
+    this.router.navigate(['/admin']);
+  }
   logout() {
     this.userService.clearUser();
     this.router.navigate(['/welcome']);

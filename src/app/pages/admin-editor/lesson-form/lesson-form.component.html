@@ -1,0 +1,73 @@
+<div class="form-container">
+  <!-- Form Content -->
+  <div class="form-content">
+    <div class="form-card">
+      <div class="form-section">
+        <!-- Header -->
+        <div class="form-header">
+          <div class="header-content">
+            <button class="btn-back" (click)="cancel()" title="Quay lại">←</button>
+            <div>
+              <h1>{{ isEditMode ? '✏️ Sửa bài học' : '➕ Thêm bài học mới' }}</h1>
+              <p>
+                {{ isEditMode ? 'Cập nhật thông tin bài học' : 'Tạo bài học mới cho hệ thống' }}
+              </p>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-primary" (click)="saveLesson()" [disabled]="loading">
+              <span *ngIf="loading" class="spinner-small"></span>
+              💾 {{ isEditMode ? 'Cập nhật' : 'Tạo mới' }}
+            </button>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name_vi" class="required">Tên bài học (Tiếng Việt)</label>
+            <input
+              type="text"
+              id="name_vi"
+              [(ngModel)]="lesson.name_vi"
+              placeholder="Nhập tên bài học..."
+              [disabled]="loading"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="name_zh">Tên bài học (Tiếng Trung)</label>
+            <input
+              type="text"
+              id="name_zh"
+              [(ngModel)]="lesson.name_zh"
+              placeholder="Nhập tên tiếng Trung..."
+              [disabled]="loading"
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="description">Mô tả bài học</label>
+            <textarea
+              id="description"
+              [(ngModel)]="lesson.description"
+              placeholder="Mô tả ngắn về bài học..."
+              rows="4"
+              [disabled]="loading"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="order" class="required">Thứ tự hiển thị</label>
+            <input
+              type="number"
+              id="order"
+              [(ngModel)]="lesson.order"
+              min="1"
+              [disabled]="loading"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

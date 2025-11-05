@@ -1,0 +1,101 @@
+.category-list {
+  padding: 0;
+  background: #f8f9fa;
+}
+
+/* Page Header */
+.page-header {
+  background: white;
+  padding: 20px;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.header-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.btn-back {
+  background: #6c757d;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+  background: #545b62;
+  transform: translateX(-2px);
+}
+
+.header-content h1 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  color: #2c3e50;
+}
+
+.header-content p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 16px;
+}
+
+/* Type Badges */
+.type-badge {
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.type-vocabulary {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.type-grammar {
+  background: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.type-dialogue {
+  background: #e8f5e8;
+  color: #388e3c;
+}
+
+.type-writing {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.type-test {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+.type-review {
+  background: #fce4ec;
+  color: #c2185b;
+}
+
+.type-speaking {
+  background: #e0f2f1;
+  color: #00796b;
+}
+
+/* Rest of the CSS similar to admin-dashboard */
+/* ... (copy relevant styles from admin-dashboard.component.css) ... */

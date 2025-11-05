@@ -101,4 +101,34 @@ export class DataService {
     const updatedLessons = currentLessons.filter((lesson) => lesson.id !== lessonId);
     this.updateLessons(updatedLessons);
   }
+
+  getTotalCategoriesStats(): number {
+    const lessons = this.getAllLessons();
+    return lessons.reduce((total, lesson) => total + lesson.categories.length, 0);
+  }
+
+  getTotalExercisesStats(): number {
+    const lessons = this.getAllLessons();
+    return lessons.reduce(
+      (total, lesson) =>
+        total +
+        lesson.categories.reduce((catTotal, category) => catTotal + category.exercises.length, 0),
+      0
+    );
+  }
+
+  getExerciseTypesCount(): number {
+    const lessons = this.getAllLessons();
+    const types = new Set<string>();
+
+    lessons.forEach((lesson) => {
+      lesson.categories.forEach((category) => {
+        category.exercises.forEach((exercise) => {
+          types.add(exercise.type);
+        });
+      });
+    });
+
+    return types.size;
+  }
 }

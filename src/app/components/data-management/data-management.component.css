@@ -1,6 +1,15 @@
+.import-export-panel {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+}
+
 .data-management {
   padding: 20px;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin-left: 320px;
   /* Thêm margin để tránh sidebar */
 }
@@ -54,6 +63,16 @@
   gap: 15px;
   margin-bottom: 30px;
   flex-wrap: wrap;
+  justify-content: start;
+  flex-direction: column;
+}
+
+small {
+  display: block;
+  margin-top: 8px;
+  color: #6c757d;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .import-results {
@@ -331,6 +350,11 @@
   .github-status {
     padding: 12px;
     margin-bottom: 15px;
+  }
+
+  .import-export-panel {
+    margin: 15px;
+    padding: 15px;
   }
 
   /* Tối ưu dialog cho mobile */

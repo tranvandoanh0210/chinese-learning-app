@@ -8,24 +8,8 @@ import { BackToTopComponent } from './components/back-to-top/back-to-top.compone
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, NavigationComponent, BackToTopComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App implements OnInit {
-  hasUser = false;
-  isMobileNavOpen = false;
-  constructor(private userService: UserService, private router: Router) {}
-  ngOnInit() {
-    this.userService.user$.subscribe((user) => {
-      this.hasUser = !!user;
-
-      if (!user && !window.location.hash.includes('welcome')) {
-        this.router.navigate(['/welcome']);
-      }
-    });
-  }
-  onMobileMenuToggle() {
-    this.isMobileNavOpen = !this.isMobileNavOpen;
-  }
-}
+export class App {}

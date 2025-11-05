@@ -1,0 +1,30 @@
+<div *ngIf="show" class="dialog-overlay" (click)="onBackdropClick($event)">
+  <div class="dialog-container">
+    <div class="dialog">
+      <!-- Header -->
+      <div class="dialog-header">
+        <div class="dialog-icon">
+          {{ getIcon() }}
+        </div>
+        <div class="dialog-title">
+          <h3>{{ title }}</h3>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="dialog-body">
+        <p>{{ message }}</p>
+      </div>
+
+      <!-- Actions -->
+      <div class="dialog-actions">
+        <button class="btn btn-secondary" (click)="onCancel()">
+          {{ cancelText }}
+        </button>
+        <button [class]="'btn ' + getConfirmButtonClass()" (click)="onConfirm()">
+          {{ confirmText }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

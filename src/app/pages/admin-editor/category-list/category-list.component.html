@@ -1,0 +1,109 @@
+<div class="category-list">
+  <!-- Header -->
+  <div class="page-header">
+    <div class="header-content">
+      <button class="btn-back" (click)="goBack()" title="Quay lại">←</button>
+      <div>
+        <h1>📁 Danh mục bài tập</h1>
+        <p *ngIf="lesson">
+          Bài học: <strong>{{ lesson.name_vi }}</strong>
+        </p>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="createCategory()">
+      <span class="btn-icon">+</span>
+      Thêm danh mục
+    </button>
+  </div>
+
+  <!-- Categories Table -->
+  <div class="table-container">
+    <div class="table-header">
+      <h2>Danh sách danh mục</h2>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="modern-table">
+        <thead>
+          <tr>
+            <th>Thứ tự</th>
+            <th>Tên danh mục</th>
+            <th>Loại</th>
+            <th>Mô tả</th>
+            <th>Số bài tập</th>
+            <th class="actions-header">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories; trackBy: trackByCategoryId" class="table-row">
+            <td>
+              <span class="order-badge">{{ category.order }}</span>
+            </td>
+            <td class="category-name">
+              <strong>{{ category.name }}</strong>
+            </td>
+            <td>
+              <span class="type-badge" [class]="'type-' + category.type">
+                {{ getCategoryTypeName(category.type) }}
+              </span>
+            </td>
+            <td class="description-cell">
+              <span class="truncate-text">{{ category.description }}</span>
+            </td>
+            <td>
+              <span class="badge">{{ getTotalExercises(category) }}</span>
+            </td>
+            <td class="actions-cell">
+              <div class="action-buttons">
+                <button
+                  class="btn-icon btn-view"
+                  (click)="viewExercises(category)"
+                  title="Xem bài tập"
+                >
+                  👁️
+                </button>
+                <button
+                  class="btn-icon btn-edit"
+                  (click)="editCategory(category)"
+                  title="Sửa danh mục"
+                >
+                  ✏️
+                </button>
+                <button
+                  class="btn-icon btn-delete"
+                  (click)="deleteCategory(category)"
+                  title="Xóa danh mục"
+                >
+                  🗑️
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="categories.length === 0 && !loading" class="empty-state">
+        <div class="empty-icon">📁</div>
+        <h3>Chưa có danh mục nào</h3>
+        <p>Hãy tạo danh mục đầu tiên cho bài học này</p>
+        <button class="btn btn-primary" (click)="createCategory()">+ Thêm danh mục đầu tiên</button>
+      </div>
+
+      <div *ngIf="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Đang tải dữ liệu...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Dialog -->
+  <app-confirm-dialog
+    *ngIf="showDeleteDialog"
+    title="Xóa danh mục"
+    [message]="'Bạn có chắc muốn xóa danh mục \'' + (categoryToDelete?.name || '') + '\'?'"
+    confirmText="Xóa"
+    cancelText="Hủy"
+    (confirm)="confirmDelete()"
+    (cancel)="cancelDelete()"
+  ></app-confirm-dialog>
+</div>

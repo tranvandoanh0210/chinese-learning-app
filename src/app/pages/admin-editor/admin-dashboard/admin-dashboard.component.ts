@@ -4,7 +4,6 @@ import { RouterModule, Router } from '@angular/router';
 import { Lesson } from '../../../models/lesson.model';
 import { AdminService } from '../../../services/admin.service';
 import { DataService } from '../../../services/data.service';
-import { ImportExportPanelComponent } from '../import-export-panel/import-export-panel.component';
 import { ConfirmDialogComponent } from '../../../components/confirm-dialog/confirm-dialog.component';
 import { ExcelService } from '../../../services/excel.service';
 import { DataManagementComponent } from '../../../components/data-management/data-management.component';
@@ -14,13 +13,7 @@ import { DataManagementComponent } from '../../../components/data-management/dat
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css'],
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    ConfirmDialogComponent,
-    ImportExportPanelComponent,
-    DataManagementComponent,
-  ],
+  imports: [CommonModule, RouterModule, ConfirmDialogComponent, DataManagementComponent],
 })
 export class AdminDashboardComponent implements OnInit {
   lessons: Lesson[] = [];

@@ -59,10 +59,6 @@ export class HeaderComponent implements OnInit {
       this.userService.setUser(newName.trim());
     }
   }
-  goToDataManagement() {
-    this.showDropdown = false;
-    this.router.navigate(['/data']);
-  }
   goToAdministrator() {
     this.showDropdown = false;
     this.router.navigate(['/admin']);

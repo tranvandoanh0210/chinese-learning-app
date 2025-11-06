@@ -7,6 +7,7 @@ import { DataService } from '../../../services/data.service';
 import { ConfirmDialogComponent } from '../../../components/confirm-dialog/confirm-dialog.component';
 import { ExcelService } from '../../../services/excel.service';
 import { DataManagementComponent } from '../../../components/data-management/data-management.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -17,6 +18,7 @@ import { DataManagementComponent } from '../../../components/data-management/dat
 })
 export class AdminDashboardComponent implements OnInit {
   lessons: Lesson[] = [];
+  private lessonsSubscription!: Subscription;
   loading = true;
   showDeleteDialog = false;
   lessonToDelete: Lesson | null = null;
@@ -38,10 +40,22 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   loadLessons(): void {
-    this.lessons = this.dataService.getAllLessons();
+    this.lessonsSubscription = this.dataService.lessons$.subscribe(
+      (lessons) => {
+        this.lessons = lessons;
+      },
+      (error) => {
+        console.error('HomeComponent: Error loading lessons', error);
+      }
+    );
     this.loading = false;
   }
-
+  ngOnDestroy() {
+    // Clean up subscription để tránh memory leak
+    if (this.lessonsSubscription) {
+      this.lessonsSubscription.unsubscribe();
+    }
+  }
   createLesson(): void {
     this.router.navigate(['/admin/lessons/create']);
   }
@@ -83,9 +97,5 @@ export class AdminDashboardComponent implements OnInit {
 
   getTotalExercises(lesson: Lesson): number {
     return lesson.categories.reduce((total, category) => total + category.exercises.length, 0);
-  }
-
-  trackByLessonId(index: number, lesson: Lesson): string {
-    return lesson.id;
   }
 }

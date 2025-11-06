@@ -6,12 +6,13 @@
       <div>
         <h1>📝 Bài tập</h1>
         <div class="breadcrumb">
-          <span *ngIf="lesson"
+          @if(lesson){
+          <span
             >Bài học: <strong>{{ lesson.name_vi }}</strong></span
-          >
-          <span *ngIf="category">
+          >}@if(category){
+          <span>
             → Danh mục: <strong>{{ category.name }}</strong></span
-          >
+          >}
         </div>
       </div>
     </div>
@@ -40,7 +41,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let exercise of exercises; trackBy: trackByExerciseId" class="table-row">
+          @for (exercise of exercises; track exercise.id) {
+          <tr class="table-row">
             <td>
               <span class="order-badge">{{ exercises.indexOf(exercise) + 1 }}</span>
             </td>
@@ -78,31 +80,34 @@
               </div>
             </td>
           </tr>
+          }
         </tbody>
       </table>
-
-      <div *ngIf="exercises.length === 0 && !loading" class="empty-state">
+      @if(exercises.length === 0 && !loading){
+      <div class="empty-state">
         <div class="empty-icon">📝</div>
         <h3>Chưa có bài tập nào</h3>
         <p>Hãy tạo bài tập đầu tiên cho danh mục này</p>
         <button class="btn btn-primary" (click)="createExercise()">+ Thêm bài tập đầu tiên</button>
       </div>
-
-      <div *ngIf="loading" class="loading-state">
+      }@if(loading){
+      <div class="loading-state">
         <div class="spinner"></div>
         <p>Đang tải dữ liệu...</p>
       </div>
+      }
     </div>
   </div>
 
   <!-- Delete Confirmation Dialog -->
+  @if(showDeleteDialog){
   <app-confirm-dialog
-    *ngIf="showDeleteDialog"
     title="Xóa bài tập"
     [message]="'Bạn có chắc muốn xóa bài tập này?'"
     confirmText="Xóa"
     cancelText="Hủy"
     (confirm)="confirmDelete()"
     (cancel)="cancelDelete()"
-  ></app-confirm-dialog>
+  ></app-confirm-dialog
+  >}
 </div>

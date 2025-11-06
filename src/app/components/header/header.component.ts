@@ -3,6 +3,7 @@ import { DataService } from '../../services/data.service';
 import { User, UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   countLession: number = 0;
+
+  private lessonsSubscription!: Subscription;
   user: User | null = null;
   showDropdown = false;
   @Output() mobileMenuToggle = new EventEmitter<void>();
@@ -23,12 +26,24 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.countLession = this.dataService.countLessons();
+    this.lessonsSubscription = this.dataService.lessons$.subscribe(
+      (lessons) => {
+        this.countLession = lessons.length;
+      },
+      (error) => {
+        console.error('HomeComponent: Error loading lessons', error);
+      }
+    );
     this.userService.user$.subscribe((user) => {
       this.user = user;
     });
   }
-
+  ngOnDestroy() {
+    // Clean up subscription để tránh memory leak
+    if (this.lessonsSubscription) {
+      this.lessonsSubscription.unsubscribe();
+    }
+  }
   toggleMobileNav() {
     this.mobileMenuToggle.emit();
   }

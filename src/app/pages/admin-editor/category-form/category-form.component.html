@@ -9,15 +9,17 @@
             <button class="btn-back" (click)="cancel()" title="Quay lại">←</button>
             <div>
               <h1>{{ isEditMode ? '✏️ Sửa danh mục' : '➕ Thêm danh mục mới' }}</h1>
-              <p *ngIf="lesson">
+              @if(lesson){
+              <p>
                 Bài học: <strong>{{ lesson.name_vi }}</strong>
               </p>
+              }
             </div>
           </div>
           <div class="header-actions">
             <button class="btn btn-primary" (click)="saveCategory()" [disabled]="loading">
-              <span *ngIf="loading" class="spinner-small"></span>
-              💾 {{ isEditMode ? 'Cập nhật' : 'Tạo mới' }}
+              @if(loading){ <span class="spinner-small"></span>} 💾
+              {{ isEditMode ? 'Cập nhật' : 'Tạo mới' }}
             </button>
           </div>
         </div>
@@ -31,9 +33,9 @@
               (change)="onTypeChange()"
               [disabled]="loading || isEditMode"
             >
-              <option *ngFor="let type of categoryTypes" [value]="type.value">
-                {{ type.icon }} {{ type.label }}
-              </option>
+              @for (type of categoryTypes; track $index) {
+              <option [value]="type.value">{{ type.icon }} {{ type.label }}</option>
+              }
             </select>
           </div>
 

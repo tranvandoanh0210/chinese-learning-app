@@ -12,25 +12,27 @@
               <div>
                 <h1>{{ isEditMode ? '✏️ Sửa bài tập' : '➕ Thêm bài tập mới' }}</h1>
                 <div class="breadcrumb">
-                  <span *ngIf="lesson"
+                  @if(lesson){
+                  <span
                     >Bài học: <strong>{{ lesson.name_vi }}</strong></span
-                  >
-                  <span *ngIf="category">
+                  >} @if(category){
+                  <span>
                     → Danh mục: <strong>{{ category.name }}</strong></span
-                  >
+                  >}
                 </div>
               </div>
             </div>
             <div class="header-actions">
               <button class="btn btn-primary" (click)="saveExercise()" [disabled]="loading">
-                <span *ngIf="loading" class="spinner-small"></span>
-                💾 {{ isEditMode ? 'Cập nhật' : 'Tạo mới' }}
+                @if(loading){ <span class="spinner-small"></span>} 💾
+                {{ isEditMode ? 'Cập nhật' : 'Tạo mới' }}
               </button>
             </div>
           </div>
 
           <div class="form-grid">
-            <div class="form-group" *ngIf="canEditExerciseType">
+            @if(canEditExerciseType){
+            <div class="form-group">
               <label for="type" class="required">Loại bài tập</label>
               <select
                 id="type"
@@ -38,13 +40,13 @@
                 (change)="onTypeChange()"
                 [disabled]="loading || isEditMode"
               >
-                <option *ngFor="let type of availableExerciseTypes" [value]="type.value">
-                  {{ type.icon }} {{ type.label }}
-                </option>
+                @for (type of availableExerciseTypes; track $index) {
+                <option [value]="type.value">{{ type.icon }} {{ type.label }}</option>
+                }
               </select>
             </div>
-
-            <div class="form-group full-width" *ngIf="exercise.type !== 'dialogue'">
+            } @if(exercise.type !== 'dialogue'){
+            <div class="form-group full-width">
               <label for="question" class="required">Câu hỏi</label>
               <input
                 type="text"
@@ -54,8 +56,8 @@
                 [disabled]="loading"
               />
             </div>
-
-            <div class="form-group" *ngIf="exercise.type !== 'dialogue'">
+            } @if(exercise.type !== 'dialogue'){
+            <div class="form-group">
               <label for="answer">Đáp án</label>
               <input
                 type="text"
@@ -65,17 +67,12 @@
                 [disabled]="loading"
               />
             </div>
+            }
             <!-- Dynamic Fields Based on Exercise Type -->
 
-            <div
-              class="form-group"
-              *ngIf="
-                exercise.type === 'vocabulary' ||
-                exercise.type === 'flashcard' ||
-                exercise.type === 'writing' ||
-                exercise.type === 'speaking'
-              "
-            >
+            @if( exercise.type === 'vocabulary' || exercise.type === 'flashcard' || exercise.type
+            === 'writing' || exercise.type === 'speaking' ){
+            <div class="form-group">
               <label for="pinyin">Pinyin</label>
               <input
                 type="text"
@@ -85,7 +82,8 @@
                 [disabled]="loading"
               />
             </div>
-            <div class="form-group full-width" *ngIf="exercise.type === 'grammar'">
+            }@if(exercise.type === 'grammar'){
+            <div class="form-group full-width">
               <div class="form-group">
                 <label for="content">Nội dung ngữ pháp</label>
                 <textarea
@@ -99,7 +97,8 @@
 
               <div class="form-group">
                 <label>Ví dụ minh họa</label>
-                <div *ngFor="let example of formData.examples; let i = index" class="array-item">
+                @for (example of formData.examples; track $index; let i = $index) {
+                <div class="array-item">
                   <input
                     type="text"
                     [(ngModel)]="formData.examples[i]"
@@ -115,6 +114,7 @@
                     🗑️
                   </button>
                 </div>
+                }
                 <button
                   type="button"
                   class="btn btn-outline"
@@ -125,10 +125,11 @@
                 </button>
               </div>
             </div>
-
-            <div class="form-group full-width" *ngIf="exercise.type === 'multiple_choice'">
+            } @if(exercise.type === 'multiple_choice'){
+            <div class="form-group full-width">
               <label class="required">Các lựa chọn</label>
-              <div *ngFor="let option of formData.options; let i = index" class="array-item">
+              @for ( option of formData.options; track $index; let i = $index) {
+              <div class="array-item">
                 <input
                   type="text"
                   [(ngModel)]="formData.options[i]"
@@ -144,6 +145,7 @@
                   🗑️
                 </button>
               </div>
+              }
               <button
                 type="button"
                 class="btn btn-outline"
@@ -153,8 +155,8 @@
                 + Thêm lựa chọn
               </button>
             </div>
-
-            <div class="form-group full-width" *ngIf="exercise.type !== 'dialogue'">
+            } @if(exercise.type !== 'dialogue'){
+            <div class="form-group full-width">
               <label for="explanation">Giải thích</label>
               <textarea
                 id="explanation"
@@ -164,8 +166,8 @@
                 [disabled]="loading"
               ></textarea>
             </div>
-
-            <div class="form-group" *ngIf="exercise.type === 'input'">
+            } @if(exercise.type === 'input'){
+            <div class="form-group">
               <label for="placeholder">Placeholder</label>
               <input
                 type="text"
@@ -175,10 +177,11 @@
                 [disabled]="loading"
               />
             </div>
+            }
           </div>
         </div>
-
-        <div class="form-group full-width" *ngIf="exercise.type === 'dialogue'">
+        @if(exercise.type === 'dialogue'){
+        <div class="form-group full-width">
           <div class="form-group">
             <label for="context" class="required">Ngữ cảnh</label>
             <input
@@ -192,7 +195,8 @@
 
           <div class="form-group">
             <label class="required">Các lượt hội thoại</label>
-            <div *ngFor="let line of formData.lines; let i = index" class="dialogue-line">
+            @for (line of formData.lines; track $index; let i = $index) {
+            <div class="dialogue-line">
               <div class="line-header">
                 <h4>Lượt {{ i + 1 }}</h4>
                 <button
@@ -251,6 +255,7 @@
                 </div>
               </div>
             </div>
+            }
 
             <button
               type="button"
@@ -262,6 +267,7 @@
             </button>
           </div>
         </div>
+        }
       </div>
     </div>
   </div>

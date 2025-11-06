@@ -19,6 +19,12 @@ export interface ExcelImportResult {
   lessons: Lesson[];
   errors: string[];
   warnings: string[];
+  summary?: {
+    totalImported: number;
+    replaced: number;
+    added: number;
+    skipped: number;
+  };
 }
 
 @Injectable({
@@ -80,90 +86,6 @@ export class ExcelService {
     XLSX.writeFile(workbook, 'multiple-lessons-data.xlsx');
   }
 
-  async importAddLessons(file: File): Promise<ExcelImportResult> {
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      const errors: string[] = [];
-      const warnings: string[] = [];
-
-      reader.onload = (e: any) => {
-        try {
-          const data = new Uint8Array(e.target.result);
-          const workbook = XLSX.read(data, { type: 'array' });
-          const newLessons = this.parseWorkbook(workbook, errors, warnings);
-
-          // Merge với lessons hiện tại (không override)
-          const currentLessons = this.dataService.getAllLessons();
-          const mergedLessons = this.mergeLessons(currentLessons, newLessons);
-
-          // Cập nhật data service
-          this.dataService.updateLessons(mergedLessons);
-
-          resolve({
-            success: errors.length === 0,
-            lessons: mergedLessons,
-            errors,
-            warnings,
-          });
-        } catch (error) {
-          resolve({
-            success: false,
-            lessons: [],
-            errors: ['Lỗi đọc file: ' + error],
-            warnings: [],
-          });
-        }
-      };
-
-      reader.readAsArrayBuffer(file);
-    });
-  }
-
-  private mergeLessons(currentLessons: Lesson[], newLessons: Lesson[]): Lesson[] {
-    const merged = [...currentLessons];
-
-    newLessons.forEach((newLesson) => {
-      const existingIndex = merged.findIndex((lesson) => lesson.name_vi === newLesson.name_vi);
-      if (existingIndex !== -1) {
-        // Merge categories của lesson trùng tên
-        merged[existingIndex] = this.mergeLessonCategories(merged[existingIndex], newLesson);
-      } else {
-        // Thêm lesson mới
-        merged.push(newLesson);
-      }
-    });
-
-    return merged;
-  }
-
-  private mergeLessonCategories(existingLesson: Lesson, newLesson: Lesson): Lesson {
-    const mergedCategories = [...existingLesson.categories];
-
-    newLesson.categories.forEach((newCategory) => {
-      const existingCategoryIndex = mergedCategories.findIndex(
-        (cat) => cat.type === newCategory.type
-      );
-
-      if (existingCategoryIndex !== -1) {
-        // Merge exercises của category trùng type
-        mergedCategories[existingCategoryIndex] = {
-          ...mergedCategories[existingCategoryIndex],
-          exercises: [
-            ...mergedCategories[existingCategoryIndex].exercises,
-            ...newCategory.exercises,
-          ],
-        };
-      } else {
-        // Thêm category mới
-        mergedCategories.push(newCategory);
-      }
-    });
-
-    return {
-      ...existingLesson,
-      categories: mergedCategories,
-    };
-  }
   // Hàm tạo worksheet với styling
   private createStyledWorksheet(data: any[], sheetName: string): XLSX.WorkSheet {
     // Tạo worksheet từ data
@@ -274,6 +196,113 @@ export class ExcelService {
 
       reader.readAsArrayBuffer(file);
     });
+  }
+  async importLessons(file: File): Promise<ExcelImportResult> {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      const errors: string[] = [];
+      const warnings: string[] = [];
+
+      reader.onload = (e: any) => {
+        try {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const importedLessons = this.parseWorkbook(workbook, errors, warnings);
+
+          if (importedLessons.length === 0) {
+            errors.push('Không tìm thấy bài học nào trong file');
+            resolve({
+              success: false,
+              lessons: [],
+              errors,
+              warnings,
+            });
+            return;
+          }
+
+          // Merge với lessons hiện tại - thay thế nếu trùng tên, thêm mới nếu chưa có
+          const currentLessons = this.dataService.getAllLessons();
+          const mergeResult = this.mergeLessonsWithReplace(currentLessons, importedLessons);
+
+          resolve({
+            success: errors.length === 0,
+            lessons: mergeResult.mergedLessons,
+            errors,
+            warnings,
+            summary: {
+              totalImported: importedLessons.length,
+              replaced: mergeResult.replacedCount,
+              added: mergeResult.addedCount,
+              skipped: mergeResult.skippedCount,
+            },
+          });
+        } catch (error) {
+          resolve({
+            success: false,
+            lessons: [],
+            errors: ['Lỗi đọc file: ' + error],
+            warnings: [],
+          });
+        }
+      };
+
+      reader.readAsArrayBuffer(file);
+    });
+  }
+
+  private mergeLessonsWithReplace(
+    currentLessons: Lesson[],
+    importedLessons: Lesson[]
+  ): {
+    mergedLessons: Lesson[];
+    replacedCount: number;
+    addedCount: number;
+    skippedCount: number;
+  } {
+    const merged = [...currentLessons];
+    let replacedCount = 0;
+    let addedCount = 0;
+    let skippedCount = 0;
+
+    importedLessons.forEach((importedLesson) => {
+      // Tìm lesson trùng tên
+      const existingIndex = merged.findIndex(
+        (lesson) =>
+          lesson.name_vi.trim().toLowerCase() === importedLesson.name_vi.trim().toLowerCase()
+      );
+
+      if (existingIndex !== -1) {
+        // Thay thế lesson cũ bằng lesson mới (giữ nguyên ID cũ để đảm bảo consistency)
+        const existingLesson = merged[existingIndex];
+        merged[existingIndex] = {
+          ...importedLesson,
+          id: existingLesson.id, // Giữ nguyên ID
+          order: existingLesson.order, // Giữ nguyên thứ tự
+          name_zh: importedLesson.name_zh || existingLesson.name_zh, // Ưu tiên dữ liệu mới, fallback về cũ
+          description: importedLesson.description || existingLesson.description,
+        };
+
+        replacedCount++;
+        console.log(`Đã thay thế bài học: "${existingLesson.name_vi}"`);
+      } else {
+        // Thêm lesson mới vào cuối
+        const newLesson = {
+          ...importedLesson,
+          order: merged.length + 1, // Thêm vào cuối danh sách
+        };
+        merged.push(newLesson);
+        addedCount++;
+
+        console.log(`Đã thêm bài học mới: "${importedLesson.name_vi}"`);
+      }
+    });
+
+    return {
+      mergedLessons: merged,
+      replacedCount,
+      addedCount,
+      skippedCount,
+    };
   }
 
   private parseWorkbook(workbook: XLSX.WorkBook, errors: string[], warnings: string[]): Lesson[] {

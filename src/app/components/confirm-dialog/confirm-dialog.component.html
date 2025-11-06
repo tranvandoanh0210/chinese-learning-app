@@ -1,4 +1,5 @@
-<div *ngIf="show" class="dialog-overlay" (click)="onBackdropClick($event)">
+@if(show){
+<div class="dialog-overlay" (click)="onBackdropClick($event)">
   <div class="dialog-container">
     <div class="dialog">
       <!-- Header -->
@@ -28,3 +29,4 @@
     </div>
   </div>
 </div>
+}

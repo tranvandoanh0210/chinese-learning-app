@@ -7,7 +7,8 @@
         <h1>{{ lesson?.name_vi }}</h1>
         <h2 class="chinese-title">{{ lesson?.name_zh }}</h2>
         <p class="lesson-description">{{ lesson?.description }}</p>
-        <div class="lesson-progress-overview" *ngIf="lesson">
+        @if(lesson){
+        <div class="lesson-progress-overview">
           <div class="progress-card">
             <div class="progress-header">
               <h4>📊 Tiến độ bài học</h4>
@@ -32,6 +33,7 @@
             </div>
           </div>
         </div>
+        }
       </div>
     </div>
   </div>
@@ -49,7 +51,9 @@
         >
           <div class="category-icon">
             <i [class]="getCategoryIcon(category.type)"></i>
-            <div class="completion-badge" *ngIf="isCategoryCompleted(category.id)">✓</div>
+            @if(isCategoryCompleted(category.id)){
+            <div class="completion-badge">✓</div>
+            }
           </div>
           <div class="category-info">
             <div class="category-name">{{ category.name }}</div>
@@ -117,9 +121,11 @@
         <div class="no-category-icon">📚</div>
         <h3>Chọn một chuyên mục để bắt đầu học</h3>
         <p>Hãy chọn một trong các chuyên mục ở trên để xem nội dung bài học</p>
-        <div class="completion-hint" *ngIf="getLessonProgressPercentage() > 0">
+        @if(getLessonProgressPercentage() > 0){
+        <div class="completion-hint">
           🎉 Bạn đã hoàn thành {{ getLessonProgressPercentage() }}% bài học này!
         </div>
+        }
       </div>
     </div>
   </div>

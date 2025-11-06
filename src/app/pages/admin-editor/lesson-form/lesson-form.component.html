@@ -16,8 +16,8 @@
           </div>
           <div class="header-actions">
             <button class="btn btn-primary" (click)="saveLesson()" [disabled]="loading">
-              <span *ngIf="loading" class="spinner-small"></span>
-              💾 {{ isEditMode ? 'Cập nhật' : 'Tạo mới' }}
+              @if(loading){ <span class="spinner-small"></span>} 💾
+              {{ isEditMode ? 'Cập nhật' : 'Tạo mới' }}
             </button>
           </div>
         </div>

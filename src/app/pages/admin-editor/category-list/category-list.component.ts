@@ -94,8 +94,4 @@ export class CategoryListComponent implements OnInit {
   getTotalExercises(category: Category): number {
     return category.exercises.length;
   }
-
-  trackByCategoryId(index: number, category: Category): string {
-    return category.id;
-  }
 }

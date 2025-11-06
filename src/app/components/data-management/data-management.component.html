@@ -4,29 +4,36 @@
   </div>
   <div class="action-buttons">
     <div>
-      <button class="btn btn-primary" (click)="exportData()">📥 Export to Excel</button>
+      <button class="btn btn-primary" (click)="exportData()">📥 Export all to Excel</button>
       <small>Xuất tất cả bài học ra file Excel</small>
     </div>
     <div class="import-section">
       <input
         type="file"
-        #fileInput
-        (change)="onFileSelected($event)"
+        #importReplace
+        (change)="onFileSelected($event, 'replace')"
         accept=".xlsx, .xls"
         style="display: none"
       />
-      <button class="btn btn-success" (click)="fileInput.click()">📤 Import from Excel</button>
+      <button class="btn btn-warning" (click)="importReplace.click()">📤 Import replace</button>
       <small>Thay thế toàn bộ dữ liệu hiện tại bằng file Excel mới</small>
     </div>
-    <div>
-      <button class="btn btn-success btn-block" (click)="updateDataFile()">
-        💾 Cập nhật data.ts
-      </button>
-
-      <small>Tạo file data.ts từ dữ liệu hiện tại</small>
+    <div class="import-section">
+      <input
+        type="file"
+        #importAdd
+        (change)="onFileSelected($event, 'add')"
+        accept=".xlsx, .xls"
+        style="display: none"
+      />
+      <button class="btn btn-warning" (click)="importAdd.click()">📤 Import add</button>
+      <small>Thay thế toàn bộ dữ liệu hiện tại bằng file Excel mới</small>
     </div>
+
     <div>
-      <button class="btn btn-warning btn-block" (click)="deployToGithub()">🚀 Deploy GitHub</button>
+      <button class="btn btn-success btn-block" (click)="openDeployDialog()">
+        🚀 Deploy GitHub
+      </button>
 
       <small>Deploy dữ liệu lên GitHub repository</small>
     </div>
@@ -43,10 +50,8 @@
     @if(importResult.success){
     <div>
       <p>Đã import {{ importResult.lessons.length }} bài học</p>
-      <div class="action-buttons">
-        <button class="btn btn-success" (click)="saveLocally()">💾 Lưu local</button>
-        <button class="btn btn-success" (click)="openDeployDialog()">💾 Lưu và Deploy</button>
-      </div>
+
+      <button class="btn btn-success" (click)="openDeployDialog()">🚀 Deploy GitHub</button>
     </div>
     } @if(importResult.errors.length > 0){
     <div class="errors">
@@ -70,7 +75,7 @@
     </div>
   </div>
   } @if(showTokenDialog){
-  <div class="dialog - overlay">
+  <div class="dialog-overlay">
     <div class="dialog-container">
       <div class="dialog-header">
         <h3>🔑 Nhập GitHub Token</h3>

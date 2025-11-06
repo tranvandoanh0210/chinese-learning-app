@@ -1,5 +1,5 @@
+@if(isVisible){
 <button
-  *ngIf="isVisible"
   (click)="scrollToTop()"
   class="back-to-top-btn"
   [class.visible]="isVisible"
@@ -10,3 +10,4 @@
     <path d="M18 15l-6-6-6 6" />
   </svg>
 </button>
+}

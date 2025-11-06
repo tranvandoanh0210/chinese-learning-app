@@ -18,7 +18,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class DataManagementComponent {
   importResult: ExcelImportResult | null = null;
-  importedLessons: Lesson[] = [];
   deploymentStatus: DeploymentResult | null = null;
   isDeploying = false;
 
@@ -50,19 +49,23 @@ export class DataManagementComponent {
     }
   }
 
-  async onFileSelected(event: any) {
+  async onFileSelected(event: any, mode: 'replace' | 'add') {
     const file = event.target.files[0];
     if (!file) return;
     try {
-      this.importResult = await this.excelService.importFromExcel(file);
-      this.importedLessons = this.importResult.lessons;
+      if (mode === 'replace') {
+        this.importResult = await this.excelService.importFromExcel(file);
+      } else {
+        this.importResult = await this.excelService.importLessons(file);
+      }
       this.deploymentStatus = null;
+      this.dataService.updateLessons(this.importResult.lessons);
     } catch (error) {
       console.error('Import error:', error);
     }
   }
   openDeployDialog() {
-    if (!this.importedLessons.length) return;
+    if (!this.dataService.countLessons()) return;
     this.showTokenDialog = true;
     this.tokenForm.reset();
   }
@@ -75,34 +78,30 @@ export class DataManagementComponent {
     if (this.tokenForm.invalid) return;
     this.isSubmittingToken = true;
     const token = this.tokenForm.value.githubToken;
-    if (!this.importedLessons.length) return;
 
     this.isDeploying = true;
     this.deploymentStatus = null;
 
     try {
-      // 1. Lưu dữ liệu cục bộ
-      this.dataService.updateLessons(this.importedLessons);
-
-      // 2. Tạo commit message
-      const lessonNames = this.importedLessons.map((lesson) => lesson.name_vi).join(', ');
+      const lessons = this.dataService.getAllLessons();
+      //  Tạo commit message
+      const lessonNames = lessons.map((lesson) => lesson.name_vi).join(', ');
       const commitMessage = `Feat (data) : Update data ${lessonNames} - ${new Date().toLocaleString(
         'vi-VN'
       )}`;
 
-      // 3. Deploy lên GitHub
+      //  Deploy lên GitHub
       this.deploymentStatus = await this.githubService.commitAndDeploy(
-        this.importedLessons,
+        lessons,
         commitMessage,
         token
       );
 
-      // 4. Reset form nếu thành công
+      //  Reset form nếu thành công
       if (this.deploymentStatus.success) {
         this.closeTokenDialog();
         setTimeout(() => {
           this.importResult = null;
-          this.importedLessons = [];
         }, 3000);
       }
     } catch (error) {
@@ -114,9 +113,6 @@ export class DataManagementComponent {
       this.isDeploying = false;
     }
   }
-  updateDataFile(): void {
-    this.githubService.updateDataFile();
-  }
 
   async deployToGithub(): Promise<void> {
     try {
@@ -124,17 +120,5 @@ export class DataManagementComponent {
     } catch (error) {
       console.error('Deploy error:', error);
     }
-  }
-  saveLocally() {
-    if (!this.importedLessons.length) return;
-
-    this.dataService.updateLessons(this.importedLessons);
-    this.importResult = null;
-    this.importedLessons = [];
-
-    this.deploymentStatus = {
-      success: true,
-      message: 'Đã lưu dữ liệu cục bộ thành công!',
-    };
   }
 }

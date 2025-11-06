@@ -145,8 +145,4 @@ export class ExerciseListComponent implements OnInit {
     }
     return exercise.answer || '—';
   }
-
-  trackByExerciseId(index: number, exercise: Exercise): string {
-    return exercise.id;
-  }
 }

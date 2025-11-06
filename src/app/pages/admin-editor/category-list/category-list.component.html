@@ -5,9 +5,11 @@
       <button class="btn-back" (click)="goBack()" title="Quay lại">←</button>
       <div>
         <h1>📁 Danh mục bài tập</h1>
-        <p *ngIf="lesson">
+        @if(lesson){
+        <p>
           Bài học: <strong>{{ lesson.name_vi }}</strong>
         </p>
+        }
       </div>
     </div>
     <button class="btn btn-primary" (click)="createCategory()">
@@ -35,7 +37,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let category of categories; trackBy: trackByCategoryId" class="table-row">
+          @for (category of categories; track category.id) {
+          <tr class="table-row">
             <td>
               <span class="order-badge">{{ category.order }}</span>
             </td>
@@ -79,31 +82,35 @@
               </div>
             </td>
           </tr>
+          }
         </tbody>
       </table>
 
-      <div *ngIf="categories.length === 0 && !loading" class="empty-state">
+      @if(categories.length === 0 && !loading){
+      <div class="empty-state">
         <div class="empty-icon">📁</div>
         <h3>Chưa có danh mục nào</h3>
         <p>Hãy tạo danh mục đầu tiên cho bài học này</p>
         <button class="btn btn-primary" (click)="createCategory()">+ Thêm danh mục đầu tiên</button>
       </div>
-
-      <div *ngIf="loading" class="loading-state">
+      } @if(loading){
+      <div class="loading-state">
         <div class="spinner"></div>
         <p>Đang tải dữ liệu...</p>
       </div>
+      }
     </div>
   </div>
 
   <!-- Delete Confirmation Dialog -->
+  @if(showDeleteDialog){
   <app-confirm-dialog
-    *ngIf="showDeleteDialog"
     title="Xóa danh mục"
     [message]="'Bạn có chắc muốn xóa danh mục \'' + (categoryToDelete?.name || '') + '\'?'"
     confirmText="Xóa"
     cancelText="Hủy"
     (confirm)="confirmDelete()"
     (cancel)="cancelDelete()"
-  ></app-confirm-dialog>
+  ></app-confirm-dialog
+  >}
 </div>

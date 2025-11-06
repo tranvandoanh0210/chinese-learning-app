@@ -66,22 +66,6 @@ export class GithubService {
       };
     }
   }
-  async updateDataFile(): Promise<void> {
-    const lessons = this.dataService.getAllLessons();
-    const dataContent = this.generateDataFileContent(lessons);
-
-    // Tạo file download
-    this.downloadFile(dataContent, 'data.ts', 'text/typescript');
-  }
-  private downloadFile(content: string, filename: string, contentType: string): void {
-    const blob = new Blob([content], { type: contentType });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    link.click();
-    window.URL.revokeObjectURL(url);
-  }
   private generateDataFileContent(lessons: Lesson[]): string {
     return `import { Lesson } from '../app/models/lesson.model';
 
